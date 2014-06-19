@@ -23,10 +23,10 @@
 		<property name="format_sql">true</property>
 		
 		<!-- List of XML mapping files -->
-		<mapping resource="mappingHibernate/ChampionNaamId.hbm.xml"/>
-		<mapping resource="mappingHibernate/SummonerSpelNaamId.hbm.xml"/>
-		<mapping resource="mappingHibernate/RuneNaamId.hbm.xml"/>
-		<mapping resource="mappingHibernate/ItemNaamId.hbm.xml"/>
-		<mapping resource="mappingHibernate/MasteryNaamId.hbm.xml"/>
+		<mapping resource="mappingHibernate/ChampionNameId.hbm.xml"/>
+		<mapping resource="mappingHibernate/SummonerSpelNameId.hbm.xml"/>
+		<mapping resource="mappingHibernate/RuneNameId.hbm.xml"/>
+		<mapping resource="mappingHibernate/ItemNameId.hbm.xml"/>
+		<mapping resource="mappingHibernate/MasteryNameId.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

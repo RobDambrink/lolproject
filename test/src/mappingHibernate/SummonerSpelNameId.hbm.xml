@@ -5,11 +5,11 @@
     
 <hibernate-mapping> 
     <class 
-        name="mappingHibernate.RuneNaamId" 
-        table="rune_naam_id">             
+        name="mappingHibernate.ChampionNameId" 
+        table="champion_name_id">             
         <id 
             name="id" 
-            column="rune_id">  
+            column="champion_id">  
         </id>	
         <property 
             name="name" 

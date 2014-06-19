@@ -6,11 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import mappingHibernate.ChampionNaamId;
-import mappingHibernate.ItemNaamId;
-import mappingHibernate.MasteryNaamId;
-import mappingHibernate.RuneNaamId;
-import mappingHibernate.SummonerSpelNaamId;
+import mappingHibernate.ChampionNameId;
+import mappingHibernate.ItemNameId;
+import mappingHibernate.MasteryNameId;
+import mappingHibernate.RuneNameId;
+import mappingHibernate.SummonerSpelNameId;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,8 +56,8 @@ public class StaticDataInsert {
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.SUMMONER_SPEL_ID+summonerSpelKey);
 			// create new object for hibernate
-			SummonerSpelNaamId cham = new SummonerSpelNaamId();
-			cham.setId(Integer.parseInt(summonerSpelKey));
+			SummonerSpelNameId cham = new SummonerSpelNameId();
+			cham.setId(Long.parseLong(summonerSpelKey));
 			cham.setName(name);
 			// save the item to the mysql database
 			hib.addToDatabase(cham);
@@ -81,8 +81,8 @@ public class StaticDataInsert {
 			couch.addDataToDatabase(doc, CouchDB.RUNE_ID+runeKey);
 			String name=obj.getString("name");
 			// create new object for hibernate
-			RuneNaamId cham = new RuneNaamId();
-			cham.setId(Integer.parseInt(runeKey));
+			RuneNameId cham = new RuneNameId();
+			cham.setId(Long.parseLong(runeKey));
 			cham.setName(name);
 			// save the item to the mysql database
 			hib.addToDatabase(cham);
@@ -106,8 +106,8 @@ public class StaticDataInsert {
 			couch.addDataToDatabase(doc, CouchDB.MASTERY_ID+masteryKey);
 			String name=obj.getString("name");
 			// create new object for hibernate
-			MasteryNaamId cham = new MasteryNaamId();
-			cham.setId(Integer.parseInt(masteryKey));
+			MasteryNameId cham = new MasteryNameId();
+			cham.setId(Long.parseLong(masteryKey));
 			cham.setName(name);
 			// save the item to the mysql database
 			hib.addToDatabase(cham);
@@ -134,8 +134,8 @@ public class StaticDataInsert {
 			couch.addDataToDatabase(doc, CouchDB.ITEM_ID+itemKey);
 			String name=obj.getString("name");
 			// create new object for hibernate
-			ItemNaamId cham = new ItemNaamId();
-			cham.setId(Integer.parseInt(itemKey));
+			ItemNameId cham = new ItemNameId();
+			cham.setId(Long.parseLong(itemKey));
 			cham.setName(name);
 			// save the item to the mysql database
 			hib.addToDatabase(cham);
@@ -156,8 +156,8 @@ public class StaticDataInsert {
 			// get a name
 			String nameChamp = keys.get(keyChamp).toString();
 			// create new object for hibernate
-			ChampionNaamId cham = new ChampionNaamId();
-			cham.setId(Integer.parseInt(keyChamp));
+			ChampionNameId cham = new ChampionNameId();
+			cham.setId(Long.parseLong(keyChamp));
 			cham.setName(nameChamp);
 			// save the item to the mysql database
 			hib.addToDatabase(cham);

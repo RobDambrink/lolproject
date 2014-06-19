@@ -2,8 +2,8 @@ package mappingHibernate;
 
 import exeption.ToLargeVariableExeption;
 
-public class ItemNaamId {
-	private int id;
+public class ItemNameId {
+	private Long id;
 	private String name;
 	
 	/**
@@ -31,14 +31,14 @@ public class ItemNaamId {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		try {
 			if (String.valueOf(id).length()<=11)
 				this.id = id;

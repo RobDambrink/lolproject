@@ -15,20 +15,24 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		System.out.println(getChampionByName("Annie"));
+		System.out.println(getChampionByName("AnnIe"));
+		System.out.println(getItemByName("Boots of Speed"));
+		System.out.println(getMasteryByName("Double-Edged Sword"));
+		System.out.println(getRuneByName("Lesser Mark of Attack Damage"));
+		System.out.println(getSummonerSpelByName("Cleanse"));
+		System.out.println(getChampionByID(1L));
 		System.out.println(getItemByID(3105L));
-		System.out.println(getMasterysByID(4214L));
+		System.out.println(getMasteryByID(4214L));
 		System.out.println(getRuneByID(5063L));
-		System.out.println(getSummonerSpelByID(7));
+		System.out.println(getSummonerSpelByID(7L));
 	}
 	
 	public JSONObject getChampionByName(String name){
-		// TODO NU HOOFDLETTER GEVOELIG, WIJZIGEN OF NIET?
-		Integer id = (Integer)hib.getOneValueFromTheDatabase("SELECT id FROM ChampionNaamId WHERE name='Annie'");
+		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM ChampionNameId WHERE LOWER(name) = LOWER('" + name + "')");
 		return getChampionByID(id);
 	}
 	
-	public JSONObject getChampionByID(Integer id){
+	public JSONObject getChampionByID(Long id){
 		Document champion = couch.getDataFromDatabase(CouchDB.CHAMPION_ID+id.toString());
 		champion.remove("_id");
 		champion.remove("_rev");
@@ -42,19 +46,21 @@ public class StaticDataGet {
 		return item.getJSONObject();
 	}
 	
-	public void getItemByName(){
-		// TODO miss als we sql gaan gebruiken, want het halen uit couch is een beetje vervelend
+	public JSONObject getItemByName(String name){
+		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM ItemNameId WHERE LOWER(name) = LOWER('" + name + "')");
+		return getItemByID(id);
 	}
 	
-	public JSONObject getMasterysByID(Long id){
+	public JSONObject getMasteryByID(Long id){
 		Document mastery = couch.getDataFromDatabase(CouchDB.MASTERY_ID+id.toString());
 		mastery.remove("_id");
 		mastery.remove("_rev");
 		return mastery.getJSONObject();
 	}
 	
-	public void getMasteryByName(){
-		// TODO miss als we sql gaan gebruiken, want het halen uit couch is een beetje vervelend
+	public JSONObject getMasteryByName(String name){
+		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM MasteryNameId WHERE LOWER(name) = LOWER('" + name + "')");
+		return getMasteryByID(id);
 	}
 	
 	public JSONObject getRuneByID(Long id){
@@ -64,18 +70,20 @@ public class StaticDataGet {
 		return rune.getJSONObject();
 	}
 	
-	public void getRuneByName(){
-		// TODO miss als we sql gaan gebruiken, want het halen uit couch is een beetje vervelend
+	public JSONObject getRuneByName(String name){
+		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM RuneNameId WHERE LOWER(name) = LOWER('" + name + "')");
+		return getRuneByID(id);
 	}
 	
-	public JSONObject getSummonerSpelByID(Integer id){
+	public JSONObject getSummonerSpelByID(Long id){
 		Document summonerSpel = couch.getDataFromDatabase(CouchDB.SUMMONER_SPEL_ID+id.toString());
 		summonerSpel.remove("_id");
 		summonerSpel.remove("_rev");
 		return summonerSpel.getJSONObject();
 	}
 	
-	public void getSummonerSpelByName(){
-		// TODO miss als we sql gaan gebruiken, want het halen uit couch is een beetje vervelend
+	public JSONObject getSummonerSpelByName(String name){
+		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM SummonerSpelNameId WHERE LOWER(name) = LOWER('" + name + "')");
+		return getSummonerSpelByID(id);
 	}
 }

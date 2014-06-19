@@ -16,8 +16,8 @@ public class Hibernate {
 	public Hibernate(){
 		Configuration cfg = new Configuration().configure();
 		// DIT MOET AAN STAAN ALS DE TABEL NOG NIET BESTAAT, ANDERS WORDEN BESTAANDE TABELEN OVERSCHREVEN
-		SchemaExport ex = new SchemaExport(cfg);
-		ex.create(true, true);
+		//SchemaExport ex = new SchemaExport(cfg);
+		//ex.create(true, true);
 		// TOT HIER DUS DE 2 REGELS HIERBOVEN
 		/*addToDatabase();
 		getDataFromDatabase();
