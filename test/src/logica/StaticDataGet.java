@@ -9,8 +9,8 @@ import databaseConnection.Hibernate;
 
 public class StaticDataGet {
 	
-	private Hibernate hib = new Hibernate();
-	private CouchDB couch = new CouchDB();
+	private Hibernate hib;
+	private CouchDB couch;
 	
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;

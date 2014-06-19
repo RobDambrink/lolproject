@@ -17,7 +17,7 @@ public class Main {
 			Hibernate hib = new Hibernate();
 			CouchDB couch = new CouchDB();
 			new StaticDataInsert(hib,couch);
-			new StaticDataGet(hib, couch);
+			//new StaticDataGet(hib, couch);
 			//tests
 			/*JSONObject j = api.getChallengerTierLeagues(RankedType.RANKED_SOLO_5x5);
 			System.out.println(j.length());

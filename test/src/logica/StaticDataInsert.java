@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import mappingHibernate.ChampionNaamId;
+import mappingHibernate.ItemNaamId;
+import mappingHibernate.MasteryNaamId;
+import mappingHibernate.RuneNaamId;
+import mappingHibernate.SummonerSpelNaamId;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,8 +27,8 @@ import databaseConnection.Hibernate;
 
 public class StaticDataInsert {
 	private ApiRequest api = new ApiRequest(new HttpsClient(new String[] {"bf9782d6-8d7f-424a-bbfb-1b2dc389d2dc"}));
-	private Hibernate hib = new Hibernate();
-	private CouchDB couch = new CouchDB();
+	private Hibernate hib;
+	private CouchDB couch;
 	
 	public StaticDataInsert(Hibernate hib, CouchDB couch) throws ResponseException{
 		this.hib=hib;
@@ -38,18 +42,25 @@ public class StaticDataInsert {
 	}
 	
 	public void insertAllSummonerSpel() throws ResponseException{
-		// name="data" that is all the data per rune
+		// name="data" that is all the data per summonerSpel
 		JSONObject j = api.getSummomerSpellList(true, SpellData.all);
 		JSONObject summonerSpels = (JSONObject) j.get("data");
 		for (int i = 0; i< summonerSpels.length(); i++) {
-			// get the mastery key
-			String itemKey = summonerSpels.names().get(i).toString();
+			// get the summonerSpel key
+			String summonerSpelKey = summonerSpels.names().get(i).toString();
 			// make a document
 			Document doc = new Document();
-			doc.putAll(toMap(summonerSpels.getJSONObject(itemKey)));
+			JSONObject obj = summonerSpels.getJSONObject(summonerSpelKey);
+			doc.putAll(toMap(obj));
+			String name=obj.getString("name");
 			// add the document to the couchdb
-			couch.addDataToDatabase(doc, CouchDB.SUMMONER_SPEL_ID+itemKey);
-			// TODO misschien ook in sql zodat zoeken makkelijker is
+			couch.addDataToDatabase(doc, CouchDB.SUMMONER_SPEL_ID+summonerSpelKey);
+			// create new object for hibernate
+			SummonerSpelNaamId cham = new SummonerSpelNaamId();
+			cham.setId(Integer.parseInt(summonerSpelKey));
+			cham.setName(name);
+			// save the item to the mysql database
+			hib.addToDatabase(cham);
 		}
 		System.out.println("all summonerSpels inserted");
 	}
@@ -58,16 +69,23 @@ public class StaticDataInsert {
 		JSONObject j = api.getRuneList(RuneListData.all);
 		// name="data" that is all the data per rune
 		// name="basic" TODO uitzoeken wat dat precies is
-		JSONObject masterys = (JSONObject) j.get("data");
-		for (int i = 0; i< masterys.length(); i++) {
-			// get the mastery key
-			String itemKey = masterys.names().get(i).toString();
+		JSONObject runes = (JSONObject) j.get("data");
+		for (int i = 0; i< runes.length(); i++) {
+			// get the rune key
+			String runeKey = runes.names().get(i).toString();
 			// make a document
 			Document doc = new Document();
-			doc.putAll(toMap(masterys.getJSONObject(itemKey)));
+			JSONObject obj = runes.getJSONObject(runeKey);
+			doc.putAll(toMap(obj));
 			// add the document to the couchdb
-			couch.addDataToDatabase(doc, CouchDB.RUNE_ID+itemKey);
-			// TODO misschien ook in sql zodat zoeken makkelijker is
+			couch.addDataToDatabase(doc, CouchDB.RUNE_ID+runeKey);
+			String name=obj.getString("name");
+			// create new object for hibernate
+			RuneNaamId cham = new RuneNaamId();
+			cham.setId(Integer.parseInt(runeKey));
+			cham.setName(name);
+			// save the item to the mysql database
+			hib.addToDatabase(cham);
 		}
 		System.out.println("all runes inserted");
 	}
@@ -79,13 +97,20 @@ public class StaticDataInsert {
 		JSONObject masterys = (JSONObject) j.get("data");
 		for (int i = 0; i< masterys.length(); i++) {
 			// get the mastery key
-			String itemKey = masterys.names().get(i).toString();
+			String masteryKey = masterys.names().get(i).toString();
 			// make a document
 			Document doc = new Document();
-			doc.putAll(toMap(masterys.getJSONObject(itemKey)));
+			JSONObject obj = masterys.getJSONObject(masteryKey);
+			doc.putAll(toMap(obj));
 			// add the document to the couchdb
-			couch.addDataToDatabase(doc, CouchDB.MASTERY_ID+itemKey);
-			// TODO misschien ook in sql zodat zoeken makkelijker is
+			couch.addDataToDatabase(doc, CouchDB.MASTERY_ID+masteryKey);
+			String name=obj.getString("name");
+			// create new object for hibernate
+			MasteryNaamId cham = new MasteryNaamId();
+			cham.setId(Integer.parseInt(masteryKey));
+			cham.setName(name);
+			// save the item to the mysql database
+			hib.addToDatabase(cham);
 		}
 		System.out.println("all masterys inserted");
 	}
@@ -103,10 +128,17 @@ public class StaticDataInsert {
 			String itemKey = items.names().get(i).toString();
 			// make a document
 			Document doc = new Document();
-			doc.putAll(toMap(items.getJSONObject(itemKey)));
+			JSONObject obj = items.getJSONObject(itemKey);
+			doc.putAll(toMap(obj));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.ITEM_ID+itemKey);
-			// TODO misschien ook in sql zodat zoeken makkelijker is
+			String name=obj.getString("name");
+			// create new object for hibernate
+			ItemNaamId cham = new ItemNaamId();
+			cham.setId(Integer.parseInt(itemKey));
+			cham.setName(name);
+			// save the item to the mysql database
+			hib.addToDatabase(cham);
 		}
 		System.out.println("all items inserted");
 	}

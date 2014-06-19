@@ -1,15 +1,11 @@
 package databaseConnection;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import net.sf.json.JSONException;
 
 import com.fourspaces.couchdb.Database;
 import com.fourspaces.couchdb.Document;
 import com.fourspaces.couchdb.Session;
-import com.fourspaces.couchdb.ViewResults;
 
 public class CouchDB {
 	public static final String CHAMPION_ID = "CHID";
