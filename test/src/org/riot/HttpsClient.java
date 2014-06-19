@@ -84,7 +84,8 @@ private String request(String api_location) throws ResponseException {
 			//throw new Exception ("Response code: " + responseCode);
 		}
 		String data = getContent(con);
-		System.out.println(data.length() + ":" + data);
+		// TODO TERUG ZETTEN 
+		//System.out.println(data.length() + ":" + data);
 		if (data.length() == 0) {
 			System.out.println("No data received?");
 		}
@@ -104,12 +105,12 @@ public JSONObject requestData(String api_location) throws ResponseException {
 }
 
 public JSONObject staticRequestData(String api_location) throws ResponseException {
-	String data = request("https://na.api.pvp.net/api/lol/static-data/euw/" + api_location);
+	String data = request("https://global.api.pvp.net/api/lol/static-data/euw/" + api_location);
 	return new JSONObject(data);
 }
 
 public JSONArray staticRequestDataArray(String api_location) throws ResponseException {
-	String data = request("https://na.api.pvp.net/api/lol/static-data/euw/" + api_location);
+	String data = request("https://global.api.pvp.net/api/lol/static-data/euw/" + api_location);
 	return new JSONArray(data);
 }
 

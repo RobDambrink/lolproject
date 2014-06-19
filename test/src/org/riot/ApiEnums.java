@@ -6,7 +6,7 @@ public class ApiEnums {
 		RANKED_TEAM_3x3,
 		RANKED_TEAM_5x5
 	}
-	enum ChampData {
+	public enum ChampData {
 		all,
 		allytips,
 		altimages,
@@ -23,7 +23,7 @@ public class ApiEnums {
 		stats,
 		tags
 	}
-	enum ItemListData {
+	public enum ItemListData {
 		all,
 		colloq,
 		consumeOnFull,
@@ -45,7 +45,7 @@ public class ApiEnums {
 		tags,
 		tree
 	}
-	enum ItemData {
+	public enum ItemData {
 		all,
 		colloq,
 		consumeOnFull,
@@ -65,7 +65,7 @@ public class ApiEnums {
 		stats,
 		tags
 	}
-	enum MasteryListData {
+	public enum MasteryListData {
 		all,
 		image,
 		prereq,
@@ -73,14 +73,14 @@ public class ApiEnums {
 		sanitizedDescription,
 		tree
 	}
-	enum MasteryData {
+	public enum MasteryData {
 		all,
 		image,
 		prereq,
 		ranks,
 		sanitizedDescription
 	}
-	enum RuneListData {
+	public enum RuneListData {
 		all,
 		basic,
 		colloq,
@@ -101,7 +101,7 @@ public class ApiEnums {
 		stats,
 		tags
 	}
-	enum RuneData { //same as ItemData
+	public enum RuneData { //same as ItemData
 		all,
 		colloq,
 		consumeOnFull,
@@ -121,7 +121,7 @@ public class ApiEnums {
 		stats,
 		tags
 	}
-	enum SpellData {
+	public enum SpellData {
 		all,
 		cooldown,
 		cooldownBurn,
@@ -143,15 +143,15 @@ public class ApiEnums {
 		tooltip,
 		vars
 	}
-	enum Season {
+	public enum Season {
 		SEASON3,
 		SEASON4
 	}
 	
-	enum Version {
+	public enum Version {
 		
 	}
-	enum Locale {
+	public enum Locale {
 		
 	}
 }
