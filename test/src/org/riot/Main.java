@@ -1,16 +1,23 @@
 package org.riot;
 
+import logica.StaticDataGet;
 import logica.StaticDataInsert;
 
 import org.json.*;
 import org.riot.ApiEnums.*;
+
+import databaseConnection.CouchDB;
+import databaseConnection.Hibernate;
 
 public class Main {
 	public static void main(String[] args) {
 		//ApiRequest api = new ApiRequest(new HttpsClient(new String[] {"bf9782d6-8d7f-424a-bbfb-1b2dc389d2dc"}));
 
 		try {
-			new StaticDataInsert();
+			Hibernate hib = new Hibernate();
+			CouchDB couch = new CouchDB();
+			new StaticDataInsert(hib,couch);
+			new StaticDataGet(hib, couch);
 			//tests
 			/*JSONObject j = api.getChallengerTierLeagues(RankedType.RANKED_SOLO_5x5);
 			System.out.println(j.length());
@@ -76,10 +83,10 @@ public class Main {
 
 			//api.getTeamsFromSummoner("42567292");
 			///api.getTeamsFromId("");
-		} catch (ResponseException e) {
+		/*} catch (ResponseException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		} catch (Exception e) {
+		*/} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

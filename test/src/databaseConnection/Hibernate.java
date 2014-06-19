@@ -13,7 +13,7 @@ import util.HibernateUtil;
 
 public class Hibernate {
 	
-	private static Session session;
+	private static Session session = HibernateUtil.getSessionFactory().openSession();;
 	
 	public Hibernate(){
 		Configuration cfg = new Configuration().configure();
@@ -30,8 +30,7 @@ public class Hibernate {
 	}
 	
 	public void addToDatabase(Object obj){
-		try{
-			session = HibernateUtil.getSessionFactory().openSession();
+		try{ 
 			session.beginTransaction();
 			session.save(obj);
 			session.getTransaction().commit();
@@ -45,6 +44,17 @@ public class Hibernate {
 				ex.printStackTrace();
 			}
 		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Object getOneValueFromTheDatabase(String queryIn){
+		Object val=null;
+		Query query = session.createQuery(queryIn);
+		List list = query.list();
+		if (!list.isEmpty()){
+			val = list.get(0);
+		}
+		return val;
 	}
 	
 	/**

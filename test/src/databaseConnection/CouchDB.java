@@ -1,6 +1,7 @@
 package databaseConnection;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONException;
@@ -47,36 +48,9 @@ public class CouchDB {
 				System.out.println("ERROR!! THIS KEY PROBABLY EXISTED ALREADY");
 			}
 		}
-		/*Creating a new Document*/
-		//Document newdoc = new Document();
-		   
-		/*Map for list of properties for the new document*/
-		//Map<String , String> properties = new HashMap<String,String>();
-		
-		/*properties.put(STUDENT_KEY_NAME, "saana");
-		properties.put(STUDENT_KEY_MARKS, "67");
-		properties.put(STUDENT_KEY_ROLL, "12");
-		properties.put(STUDENT_KEY_CONTACT, "+31513216549879");
-		   
-		   
-		/*Adding all the properties to the new document*/
-		//newdoc.putAll(properties);
-		   
-		/*Saving the new document in the 'student' database */
-		//studentCouchDb.saveDocument(newdoc);
-		// DIT KUN JE DOEN ALS JE ZELF EEN ID WILT TOEVOEGEN
-		/*String id = "RUNESid12";
-		try{
-			studentCouchDb.getDocument(id);
-			System.out.println("hij is er");
-		}
-		catch(JSONException e){
-			if (e.getMessage().equals("JSONObject[\"error\"] is not a JSONObject.")){
-				studentCouchDb.saveDocument(newdoc,id);
-			}
-			else{
-				e.printStackTrace();
-			}
-		}*/
+	}
+	
+	public Document getDataFromDatabase(String id){
+		return lolStaticDB.getDocument(id);
 	}
 }

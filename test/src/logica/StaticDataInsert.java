@@ -26,7 +26,9 @@ public class StaticDataInsert {
 	private Hibernate hib = new Hibernate();
 	private CouchDB couch = new CouchDB();
 	
-	public StaticDataInsert() throws ResponseException{
+	public StaticDataInsert(Hibernate hib, CouchDB couch) throws ResponseException{
+		this.hib=hib;
+		this.couch=couch;
 		insertAllChampions();
 		insertAllItems();
 		insertAllMasterys();
@@ -47,12 +49,8 @@ public class StaticDataInsert {
 			doc.putAll(toMap(summonerSpels.getJSONObject(itemKey)));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.SUMMONER_SPEL_ID+itemKey);
+			// TODO misschien ook in sql zodat zoeken makkelijker is
 		}
-		/*for (int i = 0; i< summonerSpels.length(); i++) {
-			String name = summonerSpels.names().get(i).toString();
-			String value = summonerSpels.get(name).toString();
-			System.out.println(name + ": " + value);
-		}*/
 		System.out.println("all summonerSpels inserted");
 	}
 	
@@ -69,6 +67,7 @@ public class StaticDataInsert {
 			doc.putAll(toMap(masterys.getJSONObject(itemKey)));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.RUNE_ID+itemKey);
+			// TODO misschien ook in sql zodat zoeken makkelijker is
 		}
 		System.out.println("all runes inserted");
 	}
@@ -86,6 +85,7 @@ public class StaticDataInsert {
 			doc.putAll(toMap(masterys.getJSONObject(itemKey)));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.MASTERY_ID+itemKey);
+			// TODO misschien ook in sql zodat zoeken makkelijker is
 		}
 		System.out.println("all masterys inserted");
 	}
@@ -106,6 +106,7 @@ public class StaticDataInsert {
 			doc.putAll(toMap(items.getJSONObject(itemKey)));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.ITEM_ID+itemKey);
+			// TODO misschien ook in sql zodat zoeken makkelijker is
 		}
 		System.out.println("all items inserted");
 	}
