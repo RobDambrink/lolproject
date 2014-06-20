@@ -1,7 +1,9 @@
 package org.riot;
 
+import logica.AccountLogica;
 import logica.StaticDataGet;
 import logica.StaticDataInsert;
+import logica.SummonerLogica;
 
 import org.json.*;
 import org.riot.ApiEnums.*;
@@ -10,14 +12,18 @@ import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 
 public class Main {
+	public static ApiRequest api = new ApiRequest(new HttpsClient(new String[] {"bf9782d6-8d7f-424a-bbfb-1b2dc389d2dc","cd445537-91b6-401e-b386-c43b8a140a29"}));
 	public static void main(String[] args) {
-		//ApiRequest api = new ApiRequest(new HttpsClient(new String[] {"bf9782d6-8d7f-424a-bbfb-1b2dc389d2dc"}));
 
 		try {
 			Hibernate hib = new Hibernate();
 			CouchDB couch = new CouchDB();
 			//new StaticDataInsert(hib,couch);
-			new StaticDataGet(hib, couch);
+			//new StaticDataGet(hib, couch);
+			//new AccountLogica(hib, couch);
+			//new SummonerLogica(hib);
+			
+			
 			//tests
 			/*JSONObject j = api.getChallengerTierLeagues(RankedType.RANKED_SOLO_5x5);
 			System.out.println(j.length());

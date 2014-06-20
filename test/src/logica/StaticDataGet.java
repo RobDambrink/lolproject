@@ -1,5 +1,12 @@
 package logica;
 
+import java.util.List;
+
+import mappingHibernate.ChampionNameId;
+import mappingHibernate.ItemNameId;
+import mappingHibernate.MasteryNameId;
+import mappingHibernate.RuneNameId;
+import mappingHibernate.SummonerSpelNameId;
 import net.sf.json.JSONObject;
 
 import com.fourspaces.couchdb.Document;
@@ -15,7 +22,12 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		System.out.println(getChampionByName("AnnIe"));
+		getChampionByParselName("ann' and 1=1");
+		getItemByParselName("boot");
+		getMasteryByParselName("cer");
+		getRuneByParselName("lesser");
+		getSummonerSpelByParselName("ig");
+		/*System.out.println(getChampionByName("AnnIe"));
 		System.out.println(getItemByName("Boots of Speed"));
 		System.out.println(getMasteryByName("Double-Edged Sword"));
 		System.out.println(getRuneByName("Lesser Mark of Attack Damage"));
@@ -24,7 +36,76 @@ public class StaticDataGet {
 		System.out.println(getItemByID(3105L));
 		System.out.println(getMasteryByID(4214L));
 		System.out.println(getRuneByID(5063L));
-		System.out.println(getSummonerSpelByID(7L));
+		System.out.println(getSummonerSpelByID(7L));*/
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List getChampionByParselName(String name){
+		List list = hib.getDataFromDatabase("from ChampionNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		if (list!=null && !list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				ChampionNameId champ = (ChampionNameId) list.get(i);
+				System.out.println(champ.getName());
+				// TODO een array returnen met id/naam is misschien handiger voor web
+			}			
+		}
+		return list;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List getItemByParselName(String name){
+		List list = hib.getDataFromDatabase("from ItemNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		if (list!=null &&!list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				ItemNameId champ = (ItemNameId) list.get(i);
+				System.out.println(champ.getName());
+				// TODO een array returnen met id/naam is misschien handiger voor web
+			}
+			
+		}
+		return list;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List getMasteryByParselName(String name){
+		List list = hib.getDataFromDatabase("from MasteryNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		if (list!=null &&!list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				MasteryNameId champ = (MasteryNameId) list.get(i);
+				System.out.println(champ.getName());
+				// TODO een array returnen met id/naam is misschien handiger voor web
+			}
+			
+		}
+		return list;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List getRuneByParselName(String name){
+		List list = hib.getDataFromDatabase("from RuneNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		if (list!=null &&!list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				RuneNameId champ = (RuneNameId) list.get(i);
+				System.out.println(champ.getName());
+				// TODO een array returnen met id/naam is misschien handiger voor web
+			}
+			
+		}
+		return list;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public List getSummonerSpelByParselName(String name){
+		List list = hib.getDataFromDatabase("from SummonerSpelNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		if (list!=null &&!list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				SummonerSpelNameId champ = (SummonerSpelNameId) list.get(i);
+				System.out.println(champ.getName());
+				// TODO een array returnen met id/naam is misschien handiger voor web
+			}
+			
+		}
+		return list;
 	}
 	
 	public JSONObject getChampionByName(String name){

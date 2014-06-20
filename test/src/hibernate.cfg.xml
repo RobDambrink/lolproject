@@ -28,5 +28,9 @@
 		<mapping resource="mappingHibernate/RuneNameId.hbm.xml"/>
 		<mapping resource="mappingHibernate/ItemNameId.hbm.xml"/>
 		<mapping resource="mappingHibernate/MasteryNameId.hbm.xml"/>
+		<mapping resource="mappingHibernate/Accounts.hbm.xml"/>
+		<mapping resource="mappingHibernate/Summoner.hbm.xml"/>
+		<mapping resource="mappingHibernate/RunepageSummoner.hbm.xml"/>
+		<mapping resource="mappingHibernate/MasterypageSummoner.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

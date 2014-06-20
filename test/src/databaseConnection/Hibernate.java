@@ -3,6 +3,7 @@ package databaseConnection;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
@@ -36,12 +37,18 @@ public class Hibernate {
 		catch(Exception ex){
 			if (ex.getMessage().equals("Could not execute JDBC batch update")){
 				// TODO exeption van maken
-				System.out.println("THIS PRIMARY KEY PROBABLY EXISTED ALREADY");
+				System.out.println("ERROR IN INSERT THIS PRIMARY KEY MABY ALREADY EXISTED");
 			}
 			else{
 				ex.printStackTrace();
 			}
 		}
+	}
+	
+	public void updateToDatabse(Object obj){
+		session.beginTransaction();
+		session.update(obj);
+		session.getTransaction().commit();
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -53,6 +60,32 @@ public class Hibernate {
 			val = list.get(0);
 		}
 		return val;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List getDataFromDatabase(String queryIn){
+		List list = null;
+		try{
+			Query query = session.createQuery(queryIn);
+			list = query.list();
+		}
+		catch(QueryException ex){
+			System.out.println("Error in the query");
+			// TODO exeption van maken
+		}
+		return list;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void deleteFromDatabase(String queryIn){
+		Query query = session.createQuery(queryIn);
+		List list = query.list();
+		if (!list.isEmpty()){
+			Object obj= list.get(0);
+			session.beginTransaction();
+			session.delete(obj);
+			session.getTransaction().commit();
+		}
 	}
 	
 	/**

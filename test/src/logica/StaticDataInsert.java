@@ -15,8 +15,7 @@ import mappingHibernate.SummonerSpelNameId;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.riot.ApiRequest;
-import org.riot.HttpsClient;
+import org.riot.Main;
 import org.riot.ResponseException;
 import org.riot.ApiEnums.*;
 
@@ -26,7 +25,6 @@ import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 
 public class StaticDataInsert {
-	private ApiRequest api = new ApiRequest(new HttpsClient(new String[] {"bf9782d6-8d7f-424a-bbfb-1b2dc389d2dc"}));
 	private Hibernate hib;
 	private CouchDB couch;
 	
@@ -43,7 +41,7 @@ public class StaticDataInsert {
 	
 	public void insertAllSummonerSpel() throws ResponseException{
 		// name="data" that is all the data per summonerSpel
-		JSONObject j = api.getSummomerSpellList(true, SpellData.all);
+		JSONObject j = Main.api.getSummomerSpellList(true, SpellData.all);
 		JSONObject summonerSpels = (JSONObject) j.get("data");
 		for (int i = 0; i< summonerSpels.length(); i++) {
 			// get the summonerSpel key
@@ -66,7 +64,7 @@ public class StaticDataInsert {
 	}
 	
 	public void insertAllRunes() throws ResponseException{
-		JSONObject j = api.getRuneList(RuneListData.all);
+		JSONObject j = Main.api.getRuneList(RuneListData.all);
 		// name="data" that is all the data per rune
 		// name="basic" TODO uitzoeken wat dat precies is
 		JSONObject runes = (JSONObject) j.get("data");
@@ -91,7 +89,7 @@ public class StaticDataInsert {
 	}
 	
 	public void insertAllMasterys() throws ResponseException{
-		JSONObject j = api.getMasteryList(MasteryListData.all);
+		JSONObject j = Main.api.getMasteryList(MasteryListData.all);
 		// name="tree" that is the tree where lol orders the masterys
 		// name="data" that is all the data per item
 		JSONObject masterys = (JSONObject) j.get("data");
@@ -116,7 +114,7 @@ public class StaticDataInsert {
 	}
 	
 	public void insertAllItems() throws ResponseException{
-		JSONObject j = api.getItemList(ItemListData.all);
+		JSONObject j = Main.api.getItemList(ItemListData.all);
 		// name="tree" that is the tree where lol orders the items
 		// name="data" that is all the data per item
 		// name="groups" that is how many items you can carry arround
@@ -145,7 +143,7 @@ public class StaticDataInsert {
 	
 	public void insertAllChampions() throws ResponseException{
 		// get all the champion items
-		JSONObject j = api.getChampionList(true, ChampData.all);
+		JSONObject j = Main.api.getChampionList(true, ChampData.all);
 		// get all the keys of the champion
 		JSONObject keys = (JSONObject) j.get("keys");
 		// get all the champion data
@@ -170,11 +168,7 @@ public class StaticDataInsert {
 		System.out.println("all champions inserted");
 	}
 	
-	public static Map<String, Object> getMap(JSONObject object, String key) throws JSONException {
-        return toMap(object.getJSONObject(key));
-    }
- 
-	public static Map<String, Object> toMap(JSONObject object) throws JSONException {
+	private Map<String, Object> toMap(JSONObject object) throws JSONException {
         Map<String, Object> map = new HashMap<String, Object>();
         Iterator<String> keys = object.keys();
         while (keys.hasNext()) {
@@ -184,7 +178,7 @@ public class StaticDataInsert {
         return map;
     }
     
-    private static Object fromJson(Object json) throws JSONException {
+    private Object fromJson(Object json) throws JSONException {
         if (json == JSONObject.NULL) {
             return null;
         } else if (json instanceof JSONObject) {
@@ -197,7 +191,7 @@ public class StaticDataInsert {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public static List toList(JSONArray array) throws JSONException {
+	private List toList(JSONArray array) throws JSONException {
         List list = new ArrayList();
         for (int i = 0; i < array.length(); i++) {
             list.add(fromJson(array.get(i)));
