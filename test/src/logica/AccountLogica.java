@@ -2,18 +2,15 @@ package logica;
 
 import java.util.List;
 
-import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import mappingHibernate.Accounts;
 
 public class AccountLogica {
 	
 	private Hibernate hib;
-	private CouchDB couch;
 	
-	public AccountLogica(Hibernate hib, CouchDB couch){
+	public AccountLogica(Hibernate hib){
 		this.hib=hib;
-		this.couch=couch;
 		//createAccount("bb", "b", null);
 		edditAccount("bb", "bb", 23l);
 		// TODO profiel maken

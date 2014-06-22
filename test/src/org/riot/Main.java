@@ -1,6 +1,7 @@
 package org.riot;
 
 import logica.AccountLogica;
+import logica.ItemBuldLogica;
 import logica.StaticDataGet;
 import logica.StaticDataInsert;
 import logica.SummonerLogica;
@@ -18,10 +19,11 @@ public class Main {
 		try {
 			Hibernate hib = new Hibernate();
 			CouchDB couch = new CouchDB();
+			ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			//new StaticDataInsert(hib,couch);
 			//new StaticDataGet(hib, couch);
-			//new AccountLogica(hib, couch);
-			//new SummonerLogica(hib);
+			//new AccountLogica(hib);
+			new SummonerLogica(hib);
 			
 			
 			//tests

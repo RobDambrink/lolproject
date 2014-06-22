@@ -1,9 +1,17 @@
 package logica;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import mappingHibernate.MasterypageSummoner;
 import mappingHibernate.RunepageSummoner;
 import mappingHibernate.Summoner;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.riot.Main;
 import org.riot.ResponseException;
@@ -19,12 +27,12 @@ public class SummonerLogica {
 	public static final String SUMMONERID="id";
 	public static final String SUMMONESUMLEVEL="summonerLevel";
 	public static final String RUNESPAGES="pages";
-	public SummonerLogica(Hibernate hib) throws ResponseException{
+	public SummonerLogica(Hibernate hib) throws ResponseException, IOException{
 		this.hib=hib;
-		getSummonerByName("palmboom1212");
-		getSummonerByID(42567292L);
+		//getSummonerByName("palmboom1212");
+		//getSummonerByID(42567292L);
 		getRunesByID(42567292L);
-		getMasteriesByID(42567292L);
+		//getMasteriesByID(42567292L);
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -95,7 +103,9 @@ public class SummonerLogica {
 		return summoner;
 	}
 	
-	public String getRunesByID(Long id){
+	// http://stackoverflow.com/questions/2836646/java-serializable-object-to-byte-array
+	// dit voor object to byte array
+	public String getRunesByID(Long id) throws IOException{
 		JSONObject j = null;
 		try{
 			j = Main.api.getSummonersRunes(id.toString());
@@ -119,8 +129,43 @@ public class SummonerLogica {
 			}
 			// TODO OPGELET IK PAK EEN JSONARRAY NAAR STRING EN DIE WEER NAAR BYTE ARRAY ZO WORDT HET OPGESLAGEN
 			JSONObject runes = (JSONObject) j.get(id.toString());
-			value = runes.get(RUNESPAGES).toString();
-			byte[] b = value.getBytes();
+			JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
+			List<RunePage> listRunePages = new ArrayList<RunePage>();;			
+			for (int i = 0; i < runePages.length(); i++) {
+				JSONObject runePageJSON = (JSONObject)runePages.get(i);
+				for (int k = 0; k < runePageJSON.length(); k++) {
+					RunePage runePage = new RunePage();
+					runePage.setId(Long.parseLong(runePageJSON.get(RunePage.ID).toString()));
+					runePage.setCurrent(Boolean.parseBoolean(runePageJSON.get(RunePage.CURRENT).toString()));
+					runePage.setName(runePageJSON.get(RunePage.NAME).toString());
+					JSONArray runesIdAndName = (JSONArray)runePageJSON.get(RunePage.SLOT);
+					for (int l = 0; l < runesIdAndName.length(); l++) {
+						JSONObject runeIdName = (JSONObject)runesIdAndName.get(l);
+						runePage.addItemToSlot(Long.parseLong(runeIdName.get(RunePage.RUNEID).toString()), Integer.parseInt(runeIdName.get(RunePage.RUNESLOTID).toString()));
+					}
+					listRunePages.add(runePage);
+				}
+			}
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			ObjectOutput out = null;
+			try {
+			  out = new ObjectOutputStream(bos);   
+			  out.writeObject(listRunePages);
+			} finally {
+			  try {
+			    if (out != null) {
+			      out.close();
+			    }
+			  } catch (IOException ex) {
+			    // ignore close exception
+			  }
+			  try {
+			    bos.close();
+			  } catch (IOException ex) {
+			    // ignore close exception
+			  }
+			}
+			byte[] b = bos.toByteArray();
 			RunepageSummoner rune = new RunepageSummoner();
 			rune.setId(id);
 			rune.setPages(b);
