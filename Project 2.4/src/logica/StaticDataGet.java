@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.HashMap;
 import java.util.List;
 
 import mappingHibernate.ChampionNameId;
@@ -22,11 +23,11 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		getChampionByParselName("ann' and 1=1");
-		getItemByParselName("boot");
-		getMasteryByParselName("cer");
-		getRuneByParselName("lesser");
-		getSummonerSpelByParselName("ig");
+		getChampionByParselName("ann");
+		//getItemByParselName("boot");
+		//getMasteryByParselName("cer");
+		//getRuneByParselName("lesser");
+		//getSummonerSpelByParselName("ig");
 		/*System.out.println(getChampionByName("AnnIe"));
 		System.out.println(getItemByName("Boots of Speed"));
 		System.out.println(getMasteryByName("Double-Edged Sword"));
@@ -40,74 +41,89 @@ public class StaticDataGet {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List getChampionByParselName(String name){
+	public JSONObject getChampionByParselName(String name){
 		List list = hib.getDataFromDatabase("from ChampionNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		JSONObject obj = new JSONObject();
 		if (list!=null && !list.isEmpty()){
+			HashMap<Long,String> hm = new HashMap<Long,String>();
 			for (int i = 0; i < list.size(); i++) {
 				ChampionNameId champ = (ChampionNameId) list.get(i);
-				System.out.println(champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
-			}			
+				hm.put(champ.getId(), champ.getName());		
+			}
+			obj.putAll(hm);
+			System.out.println(obj);	
 		}
-		return list;
+		return obj;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List getItemByParselName(String name){
+	public JSONObject getItemByParselName(String name){
 		List list = hib.getDataFromDatabase("from ItemNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		JSONObject obj = new JSONObject();
+		HashMap<Long,String> hm = new HashMap<Long,String>();
 		if (list!=null &&!list.isEmpty()){
 			for (int i = 0; i < list.size(); i++) {
 				ItemNameId champ = (ItemNameId) list.get(i);
-				System.out.println(champ.getName());
+				hm.put(champ.getId(), champ.getName());
 				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
-			
+			obj.putAll(hm);
+			System.out.println(obj);
 		}
-		return list;
+		return obj;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List getMasteryByParselName(String name){
+	public JSONObject getMasteryByParselName(String name){
 		List list = hib.getDataFromDatabase("from MasteryNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		JSONObject obj = new JSONObject();
+		HashMap<Long,String> hm = new HashMap<Long,String>();
 		if (list!=null &&!list.isEmpty()){
 			for (int i = 0; i < list.size(); i++) {
 				MasteryNameId champ = (MasteryNameId) list.get(i);
-				System.out.println(champ.getName());
+				hm.put(champ.getId(), champ.getName());
 				// TODO een array returnen met id/naam is misschien handiger voor web
 				
 				// TODO JSONObject maken
 			}
-			
+			obj.putAll(hm);
+			System.out.println(obj);
 		}
-		return list;
+		return obj;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List getRuneByParselName(String name){
+	public JSONObject getRuneByParselName(String name){
 		List list = hib.getDataFromDatabase("from RuneNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		JSONObject obj = new JSONObject();
+		HashMap<Long,String> hm = new HashMap<Long,String>();
 		if (list!=null &&!list.isEmpty()){
 			for (int i = 0; i < list.size(); i++) {
 				RuneNameId champ = (RuneNameId) list.get(i);
-				System.out.println(champ.getName());
+				hm.put(champ.getId(), champ.getName());
 				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
-			
+			obj.putAll(hm);
+			System.out.println(obj);
 		}
-		return list;
+		return obj;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public List getSummonerSpelByParselName(String name){
+	public JSONObject getSummonerSpelByParselName(String name){
 		List list = hib.getDataFromDatabase("from SummonerSpelNameId where LOWER(name) LIKE LOWER('%" + name + "%')");
+		JSONObject obj = new JSONObject();
+		HashMap<Long,String> hm = new HashMap<Long,String>();
 		if (list!=null &&!list.isEmpty()){
 			for (int i = 0; i < list.size(); i++) {
 				SummonerSpelNameId champ = (SummonerSpelNameId) list.get(i);
-				System.out.println(champ.getName());
+				hm.put(champ.getId(), champ.getName());
 				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
-			
+			obj.putAll(hm);
+			System.out.println(obj);
 		}
-		return list;
+		return obj;
 	}
 	
 	public JSONObject getChampionByName(String name){
