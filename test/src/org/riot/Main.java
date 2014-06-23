@@ -1,6 +1,7 @@
 package org.riot;
 
 import logica.AccountLogica;
+import logica.CommentLogic;
 import logica.ItemBuldLogica;
 import logica.StaticDataGet;
 import logica.StaticDataInsert;
@@ -23,7 +24,8 @@ public class Main {
 			//new StaticDataInsert(hib,couch);
 			//new StaticDataGet(hib, couch);
 			//new AccountLogica(hib,couch);
-			new SummonerLogica(hib,couch);
+			//new SummonerLogica(hib,couch);
+			new CommentLogic(hib);
 			
 			
 			//tests

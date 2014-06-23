@@ -5,14 +5,14 @@
     
 <hibernate-mapping> 
     <class 
-        name="mappingHibernate.ChampionNameId" 
-        table="champion_name_id">             
+        name="mappingHibernate.MasteryComment" 
+        table="mastery_comment">             
         <id 
-            name="id" 
-            column="champion_id">  
+            name="masteryid" 
+            column="masteryid">  
         </id>	
         <property 
-            name="name" 
-            column="name"/>
+            name="commentid" 
+            column="commentid"/>
     </class> 
 </hibernate-mapping> 

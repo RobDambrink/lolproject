@@ -33,5 +33,9 @@
 		<mapping resource="mappingHibernate/RunepageSummoner.hbm.xml"/>
 		<mapping resource="mappingHibernate/MasterypageSummoner.hbm.xml"/>
 		<mapping resource="mappingHibernate/MatchHistory.hbm.xml"/>
+		<mapping resource="mappingHibernate/Comments.hbm.xml"/>
+		<mapping resource="mappingHibernate/BuildComment.hbm.xml"/>
+		<mapping resource="mappingHibernate/RuneComment.hbm.xml"/>
+		<mapping resource="mappingHibernate/MasteryComment.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

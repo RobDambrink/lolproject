@@ -2,6 +2,7 @@ package logica;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import mappingHibernate.MasterypageSummoner;
@@ -39,7 +40,8 @@ public class SummonerLogica {
 		//getRunesByID(37268473L);
 		//getRunesByID(37268473L);
 		//getMasteriesByID(37268473L);
-		getMatchHistory(37268473L);
+		//getMatchHistory(37268473L);
+		getAllMatchesFromDatabase(37268473L);
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -220,7 +222,7 @@ public class SummonerLogica {
 				// TODO exeption van maken;
 			}
 			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+				getAllMatchesFromDatabase(id);
 			}
 			
 		}
@@ -250,5 +252,23 @@ public class SummonerLogica {
 			}
 		}
 		return j;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public JSONObject getAllMatchesFromDatabase(Long id){
+		List list = hib.getDataFromDatabase("FROM MatchHistory WHERE summonerId = " + id + "");
+		HashMap hm = new HashMap();
+		if (list!=null && !list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				MatchHistory match = (MatchHistory)list.get(i);
+				Document matchData = couch.getDataFromDatabase(CouchDB.MATCH_HISTORY_ID+match.getGameId());
+				matchData.remove("_id");
+				matchData.remove("_rev");
+				hm.put(matchData.get(GAMEID).toString(), matchData.getJSONObject());
+			}
+		}
+		JSONObject obj = new JSONObject();
+		obj.put(GAMES, hm);
+		return obj;
 	}
 }
