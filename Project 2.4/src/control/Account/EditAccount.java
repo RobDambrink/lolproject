@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.riot.ResponseException;
 
 import util.JSONUtility;
+import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import logica.AccountLogica;
 import logica.SummonerLogica;
@@ -45,8 +46,9 @@ public class EditAccount extends HttpServlet {
 		String summoner = request.getParameter("summonername");
 		try {
 			Hibernate h = new Hibernate();
-			AccountLogica al = new AccountLogica(h);
-			SummonerLogica sl = new SummonerLogica(h);
+			CouchDB c = new CouchDB();
+			AccountLogica al = new AccountLogica(h,c);
+			SummonerLogica sl = new SummonerLogica(h,c);
 			sl.getSummonerByName(summoner);
 			
 		} catch (ResponseException e) {

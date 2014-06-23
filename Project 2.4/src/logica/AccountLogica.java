@@ -5,16 +5,19 @@ import java.util.List;
 
 import org.riot.ResponseException;
 
+import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import mappingHibernate.Accounts;
 
 public class AccountLogica {
 	
 	private Hibernate hib;
+	private CouchDB couch;
 	public static final int ERROR =403;
 	public static final int OK =200;
-	public AccountLogica(Hibernate hib) throws ResponseException, IOException{
+	public AccountLogica(Hibernate hib, CouchDB couch) throws ResponseException, IOException{
 		this.hib=hib;
+		this.couch=couch;
 		//createAccount("bb", "b", null);
 		//edditAccount("bb", "bb", 23l);
 		// TODO profiel maken
@@ -40,7 +43,7 @@ public class AccountLogica {
 		account.setName(name);
 		account.setPassword(md5.getMD5Hash(password));
 		if (summonerID!=null){
-			SummonerLogica sum = new SummonerLogica(hib);
+			SummonerLogica sum = new SummonerLogica(hib,couch);
 			if (sum.getSummonerByID(summonerID)!=null)
 				account.setSummonerID(summonerID);
 			else{
@@ -71,7 +74,7 @@ public class AccountLogica {
 				}
 				if (summonerID!=null){
 					if (summonerID!=-1){
-						SummonerLogica sum = new SummonerLogica(hib);
+						SummonerLogica sum = new SummonerLogica(hib,couch);
 						if (sum.getSummonerByID(summonerID)!=null)
 							account.setSummonerID(summonerID);
 						else{

@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
-
 import org.riot.ResponseException;
 
 import util.JSONUtility;
+import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import logica.AccountLogica;
 import logica.SummonerLogica;
@@ -47,8 +47,9 @@ public class CreateAccount extends HttpServlet {
 		String summoner = request.getParameter("summonername");
 		try {
 			Hibernate h = new Hibernate();
-			AccountLogica al = new AccountLogica(h);
-			SummonerLogica sl = new SummonerLogica(h);
+			CouchDB c = new CouchDB();
+			AccountLogica al = new AccountLogica(h,c);
+			SummonerLogica sl = new SummonerLogica(h,c);
 			JSONObject tmp = sl.getSummonerByName(summoner);
 			al.createAccount(username, password, tmp.getLong(SummonerLogica.SUMMONERID));
 			JSONObject json = new JSONObject();
