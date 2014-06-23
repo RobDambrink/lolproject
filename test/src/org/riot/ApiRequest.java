@@ -19,22 +19,6 @@ public class ApiRequest {
 	 */
 	public JSONObject getChampions() throws ResponseException {
 		return client.requestData("v1.2/champion");
-				
-//		if (ah.has("champions")) {
-//			System.out.println("champion data found");
-//			JSONArray champions = ah.getJSONArray("champions");
-//			for (int i = 0; i< champions.length(); i++) {
-//				JSONObject champion = champions.getJSONObject(i);
-//				System.out.print("Id: " + champion.get("id") + "\t");
-//				System.out.print("Ranked: " + champion.get("rankedPlayEnabled") + "\t");
-//				System.out.print("Bot: " + champion.get("botEnabled") + "\t");
-//				System.out.print("BotMm: " + champion.get("botMmEnabled") + "\t");
-//				System.out.print("Active: " + champion.get("active") + "\t");
-//				System.out.println("Free: " + champion.get("freeToPlay"));
-//				
-//				//System.out.println(champions.get(i));
-//			}
-//		}
 	}
 	
 	/**
@@ -45,22 +29,6 @@ public class ApiRequest {
 	 */
 	public JSONObject getChampions(boolean freeToPlay) throws ResponseException {
 		return client.requestData("v1.2/champion?freeToPlay=" + Boolean.toString(freeToPlay));
-				
-//		if (ah.has("champions")) {
-//			System.out.println("champion data found");
-//			JSONArray champions = ah.getJSONArray("champions");
-//			for (int i = 0; i< champions.length(); i++) {
-//				JSONObject champion = champions.getJSONObject(i);
-//				System.out.print("Id: " + champion.get("id") + "\t");
-//				System.out.print("Ranked: " + champion.get("rankedPlayEnabled") + "\t");
-//				System.out.print("Bot: " + champion.get("botEnabled") + "\t");
-//				System.out.print("BotMm: " + champion.get("botMmEnabled") + "\t");
-//				System.out.print("Active: " + champion.get("active") + "\t");
-//				System.out.println("Free: " + champion.get("freeToPlay"));
-//				
-//				//System.out.println(champions.get(i));
-//			}
-//		}
 	}
 	
 	/**
@@ -70,16 +38,7 @@ public class ApiRequest {
 	 * @throws ResponseException
 	 */
 	public JSONObject getChampionInfo(Integer id) throws ResponseException {
-		JSONObject champion = client.requestData("v1.2/champion/" + id);
-		
-		System.out.print("Id: " + champion.get("id") + "\t");
-		System.out.print("Ranked: " + champion.get("rankedPlayEnabled") + "\t");
-		System.out.print("Bot: " + champion.get("botEnabled") + "\t");
-		System.out.print("BotMm: " + champion.get("botMmEnabled") + "\t");
-		System.out.print("Active: " + champion.get("active") + "\t");
-		System.out.println("Free: " + champion.get("freeToPlay"));
-
-		return null;
+		return client.requestData("v1.2/champion/" + id);
 	}
 	
 	//game-v1.3
@@ -105,7 +64,6 @@ public class ApiRequest {
 	}
 
 	//Get league entries mapped by summoner ID for a given list of summoner IDs
-	//same?
 	public JSONObject getLeaguesEntries(String summomerIds) throws ResponseException {
 		return client.requestData("v2.4/league/by-summoner/" + summomerIds + "/entry");
 	}
@@ -116,7 +74,6 @@ public class ApiRequest {
 	}
 	
 	//Get league entries mapped by team ID for a given list of team IDs
-	//same?
 	public JSONObject getLeaguesTeamsEntries(String teamIds) throws ResponseException {
 		return client.requestData("v2.4/league/by-team/" + teamIds + "/entry");
 	}
@@ -131,7 +88,6 @@ public class ApiRequest {
 		//no rate limit
 	
 	//Retrieves champion list
-	//champdata paramter?
 	public JSONObject getChampionList() throws ResponseException {
 		return client.staticRequestData("v1.2/champion");
 	}
@@ -146,7 +102,6 @@ public class ApiRequest {
 	}
 	
 	//Retrieves a champion by its id
-	//champdata paramter?
 	public JSONObject getChampion(Integer id) throws ResponseException {
 		return client.staticRequestData("v1.2/champion/" + id);
 	}
@@ -155,7 +110,6 @@ public class ApiRequest {
 	}
 	
     //Retrieves item list
-	//itemListData parameter?
 	public JSONObject getItemList() throws ResponseException {
 		return client.staticRequestData("v1.2/item");
 	}

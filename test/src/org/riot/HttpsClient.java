@@ -31,7 +31,7 @@ public HttpsClient(String[] api_keys) {
 	this.api_keys = api_keys;
 }
 
-private void increaseApiIndex() {
+private synchronized void increaseApiIndex() {
 	api_index ++;
 	api_index %= api_keys.length;
 }
