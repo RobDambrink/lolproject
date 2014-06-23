@@ -27,12 +27,13 @@ public class SummonerLogica {
 	public static final String SUMMONERID="id";
 	public static final String SUMMONESUMLEVEL="summonerLevel";
 	public static final String RUNESPAGES="pages";
+	public static final String MASTERYPAGES="pages";
 	public SummonerLogica(Hibernate hib) throws ResponseException, IOException{
 		this.hib=hib;
-		//getSummonerByName("palmboom1212");
-		//getSummonerByID(42567292L);
+		getSummonerByName("palmboom1212");
+		getSummonerByID(42567292L);
 		getRunesByID(42567292L);
-		//getMasteriesByID(42567292L);
+		getMasteriesByID(42567292L);
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -57,7 +58,6 @@ public class SummonerLogica {
 			String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Summoner WHERE id=" + Long.parseLong(summoner.get(SUMMONERID).toString()) + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM Summoner WHERE id=" + Long.parseLong(summoner.get(SUMMONERID).toString()) + "");
-				// TODO misschien kiezen voor update ipv delete???
 			}				
 			sum.setId(Long.parseLong(summoner.get(SUMMONERID).toString()));
 			sum.setName(summoner.get(SUMMONERNAME).toString());
@@ -91,7 +91,6 @@ public class SummonerLogica {
 			String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Summoner WHERE id=" + Long.parseLong(summoner.get(SUMMONERID).toString()) + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM Summoner WHERE id=" + id + "");
-				// TODO misschien kiezen voor update ipv delete???
 			}				
 			sum.setId(Long.parseLong(summoner.get(SUMMONERID).toString()));
 			sum.setName(summoner.get(SUMMONERNAME).toString());
@@ -125,9 +124,7 @@ public class SummonerLogica {
 			Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM RunepageSummoner WHERE id=" + id + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM RunepageSummoner WHERE id=" + id + "");
-				// TODO misschien kiezen voor update ipv delete???
 			}
-			// TODO OPGELET IK PAK EEN JSONARRAY NAAR STRING EN DIE WEER NAAR BYTE ARRAY ZO WORDT HET OPGESLAGEN
 			JSONObject runes = (JSONObject) j.get(id.toString());
 			JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
 			List<RunePage> listRunePages = new ArrayList<RunePage>();;			
@@ -146,29 +143,9 @@ public class SummonerLogica {
 					listRunePages.add(runePage);
 				}
 			}
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			ObjectOutput out = null;
-			try {
-			  out = new ObjectOutputStream(bos);   
-			  out.writeObject(listRunePages);
-			} finally {
-			  try {
-			    if (out != null) {
-			      out.close();
-			    }
-			  } catch (IOException ex) {
-			    // ignore close exception
-			  }
-			  try {
-			    bos.close();
-			  } catch (IOException ex) {
-			    // ignore close exception
-			  }
-			}
-			byte[] b = bos.toByteArray();
 			RunepageSummoner rune = new RunepageSummoner();
 			rune.setId(id);
-			rune.setPages(b);
+			rune.setPages(ObjectToByteConvert.ObjectToByteArray(listRunePages));
 			hib.addToDatabase(rune);
 		}
 		return value;
@@ -189,21 +166,33 @@ public class SummonerLogica {
 			}
 			
 		}
-		String value="";
 		if (j!=null){
 			Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MasterypageSummoner WHERE id=" + id + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM MasterypageSummoner WHERE id=" + id + "");
-				// TODO misschien kiezen voor update ipv delete???
 			}
-			// TODO OPGELET IK PAK EEN JSONARRAY NAAR STRING EN DIE WEER NAAR BYTE ARRAY ZO WORDT HET OPGESLAGEN
-			JSONObject runes = (JSONObject) j.get(id.toString());
-			value = runes.get(RUNESPAGES).toString();
-			byte[] b = value.getBytes();
-			MasterypageSummoner rune = new MasterypageSummoner();
-			rune.setId(id);
-			rune.setPages(b);
-			hib.addToDatabase(rune);
+			JSONObject masterys = (JSONObject) j.get(id.toString());
+			JSONArray masteryPages = (JSONArray) masterys.get(RUNESPAGES);
+			List<MasteryPage> listMasteryPages = new ArrayList<MasteryPage>();;			
+			for (int i = 0; i < masteryPages.length(); i++) {
+				JSONObject masteryPageJSON = (JSONObject)masteryPages.get(i);
+				for (int k = 0; k < masteryPageJSON.length(); k++) {
+					MasteryPage masteryPage = new MasteryPage();
+					masteryPage.setId(Long.parseLong(masteryPageJSON.get(MasteryPage.ID).toString()));
+					masteryPage.setCurrent(Boolean.parseBoolean(masteryPageJSON.get(MasteryPage.CURRENT).toString()));
+					masteryPage.setName(masteryPageJSON.get(MasteryPage.NAME).toString());
+					JSONArray masteryIdAndName = (JSONArray)masteryPageJSON.get(MasteryPage.MASTERIES);
+					for (int l = 0; l < masteryIdAndName.length(); l++) {
+						JSONObject masteryIdName = (JSONObject)masteryIdAndName.get(l);
+						masteryPage.addItemToMastery(Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYID).toString()), Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYRANK).toString()));
+					}
+					listMasteryPages.add(masteryPage);
+				}
+			}
+			MasterypageSummoner mastery = new MasterypageSummoner();
+			mastery.setId(id);
+			mastery.setPages(ObjectToByteConvert.ObjectToByteArray(listMasteryPages));
+			hib.addToDatabase(mastery);
 		}
 		return null;
 	}

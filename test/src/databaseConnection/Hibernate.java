@@ -38,6 +38,7 @@ public class Hibernate {
 			if (ex.getMessage().equals("Could not execute JDBC batch update")){
 				// TODO exeption van maken
 				System.out.println("ERROR IN INSERT THIS PRIMARY KEY MABY ALREADY EXISTED");
+				ex.printStackTrace();
 			}
 			else{
 				ex.printStackTrace();

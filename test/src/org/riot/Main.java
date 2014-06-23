@@ -19,7 +19,7 @@ public class Main {
 		try {
 			Hibernate hib = new Hibernate();
 			CouchDB couch = new CouchDB();
-			ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
+			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			//new StaticDataInsert(hib,couch);
 			//new StaticDataGet(hib, couch);
 			//new AccountLogica(hib);

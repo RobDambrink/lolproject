@@ -70,6 +70,8 @@ public class AccountLogica {
 		}		
 	}
 	
+	// TODO INLOG DING
+	
 	private boolean checkAccountExist(String name){
 		String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Accounts WHERE name='" + name + "'");
 		if (check==null)
