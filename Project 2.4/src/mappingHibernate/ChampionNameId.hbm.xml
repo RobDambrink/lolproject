@@ -1,0 +1,18 @@
+<?xml version="1.0"?> 
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD//EN" 
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+    
+<hibernate-mapping> 
+    <class 
+        name="mappingHibernate.SummonerSpelNameId" 
+        table="summoner_spel_name_id">             
+        <id 
+            name="id" 
+            column="summoner_spel_id">  
+        </id>	
+        <property 
+            name="name" 
+            column="name"/>
+    </class> 
+</hibernate-mapping> 
