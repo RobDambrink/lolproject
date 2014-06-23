@@ -19,7 +19,6 @@ public class GetChampionById extends HttpServlet {
      */
     public GetChampionById() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,7 +32,7 @@ public class GetChampionById extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO get champion by ID
+		
 	}
 
 }

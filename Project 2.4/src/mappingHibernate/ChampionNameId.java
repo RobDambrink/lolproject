@@ -43,7 +43,7 @@ public class ChampionNameId {
 			if (String.valueOf(id).length()<=11)
 				this.id = id;
 			else
-				throw new ToLargeVariableExeption("You have a to long id");
+				throw new ToLargeVariableExeption("You have a too long id");
 		} catch (ToLargeVariableExeption e) {
 			e.getMessage();
 		}

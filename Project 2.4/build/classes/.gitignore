@@ -1,7 +1,4 @@
 /databaseConnection
-/exeption
-/hibernate.cfg.xml
-/logica
-/mappingHibernate
-/org
+/control
 /util
+/logica

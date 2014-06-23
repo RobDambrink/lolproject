@@ -22,11 +22,12 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		getChampionByParselName("ann' and 1=1");
-		getItemByParselName("boot");
-		getMasteryByParselName("cer");
-		getRuneByParselName("lesser");
-		getSummonerSpelByParselName("ig");
+		//getChampionByParselName("ann' and 1=1");
+		//getItemByParselName("boot");
+		//getMasteryByParselName("cer");
+		//getRuneByParselName("lesser");
+		//getSummonerSpelByParselName("ig");
+		//System.out.println(getChampionByName("Annie"));
 		/*System.out.println(getChampionByName("AnnIe"));
 		System.out.println(getItemByName("Boots of Speed"));
 		System.out.println(getMasteryByName("Double-Edged Sword"));
@@ -116,10 +117,12 @@ public class StaticDataGet {
 	}
 	
 	public JSONObject getChampionByID(Long id){
-		Document champion = couch.getDataFromDatabase(CouchDB.CHAMPION_ID+id.toString());
-		champion.remove("_id");
-		champion.remove("_rev");
-		return champion.getJSONObject();
+		try {
+			Document champion = couch.getDataFromDatabase(CouchDB.CHAMPION_ID+id.toString());
+			champion.remove("_id");
+			champion.remove("_rev");
+			return champion.getJSONObject();
+		} catch(NullPointerException e) { return null;}
 	}
 	
 	public JSONObject getItemByID(Long id){

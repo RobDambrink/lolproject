@@ -21,9 +21,9 @@ public class Main {
 			CouchDB couch = new CouchDB();
 			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			//new StaticDataInsert(hib,couch);
-			//new StaticDataGet(hib, couch);
+			new StaticDataGet(hib, couch);
 			//new AccountLogica(hib);
-			new SummonerLogica(hib);
+			//new SummonerLogica(hib);
 			
 			
 			//tests

@@ -1,0 +1,27 @@
+<?xml version="1.0"?> 
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD//EN" 
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+    
+<hibernate-mapping> 
+    <class 
+        name="mappingHibernate.Summoner" 
+        table="summoner">             
+        <id 
+            name="id" 
+            column="id">   
+        </id>	
+        <property 
+            name="name" 
+            column="name"/>
+        <property 
+            name="profileIconId" 
+            column="profileIconId"/>
+        <property 
+            name="revisionDate" 
+            column="revisionDate"/>
+        <property 
+            name="summonerLevel" 
+            column="summonerLevel"/>
+    </class> 
+</hibernate-mapping> 

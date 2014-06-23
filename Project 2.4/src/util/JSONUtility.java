@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 
-public class Utility {
+public class JSONUtility {
 
-	
-	public static void returnJSON(HttpServletResponse response, JSONObject json) throws IOException {
+	public static void returnJSON(HttpServletResponse response, JSONObject json)
+			throws IOException {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.print(json);
