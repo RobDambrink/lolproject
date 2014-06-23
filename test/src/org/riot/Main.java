@@ -3,6 +3,7 @@ package org.riot;
 import logica.AccountLogica;
 import logica.CommentLogic;
 import logica.ItemBuldLogica;
+import logica.MasteriesPageLogic;
 import logica.StaticDataGet;
 import logica.StaticDataInsert;
 import logica.SummonerLogica;
@@ -25,7 +26,9 @@ public class Main {
 			//new StaticDataGet(hib, couch);
 			//new AccountLogica(hib,couch);
 			//new SummonerLogica(hib,couch);
-			new CommentLogic(hib);
+			//new CommentLogic(hib);
+			//new ItemBuldLogica(hib);
+			new MasteriesPageLogic(hib);
 			
 			
 			//tests

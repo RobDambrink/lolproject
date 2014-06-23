@@ -15,7 +15,7 @@ public class MasteryPage implements Serializable{
 	private Long id;
 	private Integer[] masteries = new Integer[9999];
 	private String name;
-	private boolean current;
+	private boolean current=false;
 	
 	/**
 	 * @return the id
@@ -39,7 +39,10 @@ public class MasteryPage implements Serializable{
 	 * @param masteries the masteries to set
 	 */
 	public void setMasteries(Integer[] masteries) {
-		this.masteries = masteries;
+		if (masteries==null)
+			this.masteries = new Integer[9999];
+		else
+			this.masteries = masteries;
 	}
 	/**
 	 * @return the name
