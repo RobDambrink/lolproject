@@ -14,7 +14,7 @@ public class RunePage implements Serializable {
 	public static final String RUNESLOTID="runeSlotId";	
 	
 	private Long id;
-	private Long[] slots = new Long[30];
+	private Long[] slots = new Long[31];
 	private String name;
 	private boolean current;
 	/**

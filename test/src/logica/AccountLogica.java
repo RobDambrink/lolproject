@@ -1,6 +1,9 @@
 package logica;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.riot.ResponseException;
 
 import databaseConnection.Hibernate;
 import mappingHibernate.Accounts;
@@ -8,15 +11,25 @@ import mappingHibernate.Accounts;
 public class AccountLogica {
 	
 	private Hibernate hib;
-	
-	public AccountLogica(Hibernate hib){
+	public static final int ERROR =403;
+	public static final int OK =200;
+	public AccountLogica(Hibernate hib) throws ResponseException, IOException{
 		this.hib=hib;
-		//createAccount("bb", "b", null);
+		createAccount("bb", "b", null);
 		edditAccount("bb", "bb", 23l);
 		// TODO profiel maken
 	}
 	
-	public void createAccount(String name, String password, Long summonerID){
+	public int login(String name, String pass ){
+		MD5Hashing md5 = new MD5Hashing();
+		String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Accounts WHERE name='" + name + "' AND password = '" + md5.getMD5Hash(pass) + "' ");
+		if (check==null)
+			return ERROR;
+		return OK;
+		
+		
+	}
+	public void createAccount(String name, String password, Long summonerID) throws ResponseException, IOException{
 		if (checkAccountExist(name)){
 			System.out.println("This name already exist");
 			// TODO exeption van maken
@@ -26,8 +39,15 @@ public class AccountLogica {
 		MD5Hashing md5 = new MD5Hashing();
 		account.setName(name);
 		account.setPassword(md5.getMD5Hash(password));
-		if (summonerID!=null)
-			account.setSummonerID(summonerID);
+		if (summonerID!=null){
+			SummonerLogica sum = new SummonerLogica(hib);
+			if (sum.getSummonerByID(summonerID)!=null)
+				account.setSummonerID(summonerID);
+			else{
+				System.out.println("This summoner does not exist");
+				// TODO exeption van maken
+			}
+		}
 		hib.addToDatabase(account);
 	}
 	
@@ -36,9 +56,11 @@ public class AccountLogica {
 	 * @param name this is the current name
 	 * @param password if null then not changed
 	 * @param summonerID if null then not changed if -1 set to null
+	 * @throws IOException 
+	 * @throws ResponseException 
 	 */
 	@SuppressWarnings("rawtypes")
-	public void edditAccount(String name,String password, Long summonerID){
+	public void edditAccount(String name,String password, Long summonerID) throws ResponseException, IOException{
 		if (checkAccountExist(name)){
 			List list = hib.getDataFromDatabase("FROM Accounts WHERE name='" + name + "'");
 			if (!list.isEmpty()){
@@ -49,8 +71,13 @@ public class AccountLogica {
 				}
 				if (summonerID!=null){
 					if (summonerID!=-1){
-						// TODO CHECK of summoner bestaat
-						account.setSummonerID(summonerID);
+						SummonerLogica sum = new SummonerLogica(hib);
+						if (sum.getSummonerByID(summonerID)!=null)
+							account.setSummonerID(summonerID);
+						else{
+							System.out.println("This summoner does not exist");
+							// TODO exeption van maken
+						}
 					}
 					else{
 						account.setSummonerID(null);

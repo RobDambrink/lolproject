@@ -30,10 +30,11 @@ public class SummonerLogica {
 	public static final String MASTERYPAGES="pages";
 	public SummonerLogica(Hibernate hib) throws ResponseException, IOException{
 		this.hib=hib;
-		getSummonerByName("palmboom1212");
-		getSummonerByID(42567292L);
-		getRunesByID(42567292L);
-		getMasteriesByID(42567292L);
+		getSummonerByName("demonswill");
+		getSummonerByID(37268473L);
+		getRunesByID(37268473L);
+		getMasteriesByID(37268473L);
+		// TODO match history
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -77,6 +78,7 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			if (ex.getMessage().contains("404 : Not Found")){
 				System.out.println("This summoner does not exist");
+				return null;
 				// TODO exeption van maken;
 			}
 			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
@@ -135,10 +137,12 @@ public class SummonerLogica {
 					runePage.setId(Long.parseLong(runePageJSON.get(RunePage.ID).toString()));
 					runePage.setCurrent(Boolean.parseBoolean(runePageJSON.get(RunePage.CURRENT).toString()));
 					runePage.setName(runePageJSON.get(RunePage.NAME).toString());
-					JSONArray runesIdAndName = (JSONArray)runePageJSON.get(RunePage.SLOT);
-					for (int l = 0; l < runesIdAndName.length(); l++) {
-						JSONObject runeIdName = (JSONObject)runesIdAndName.get(l);
-						runePage.addItemToSlot(Long.parseLong(runeIdName.get(RunePage.RUNEID).toString()), Integer.parseInt(runeIdName.get(RunePage.RUNESLOTID).toString()));
+					if (runePageJSON.has(RunePage.SLOT)){
+						JSONArray runesIdAndName = (JSONArray)runePageJSON.get(RunePage.SLOT);
+						for (int l = 0; l < runesIdAndName.length(); l++) {
+							JSONObject runeIdName = (JSONObject)runesIdAndName.get(l);
+							runePage.addItemToSlot(Long.parseLong(runeIdName.get(RunePage.RUNEID).toString()), Integer.parseInt(runeIdName.get(RunePage.RUNESLOTID).toString()));
+						}
 					}
 					listRunePages.add(runePage);
 				}
@@ -181,10 +185,12 @@ public class SummonerLogica {
 					masteryPage.setId(Long.parseLong(masteryPageJSON.get(MasteryPage.ID).toString()));
 					masteryPage.setCurrent(Boolean.parseBoolean(masteryPageJSON.get(MasteryPage.CURRENT).toString()));
 					masteryPage.setName(masteryPageJSON.get(MasteryPage.NAME).toString());
-					JSONArray masteryIdAndName = (JSONArray)masteryPageJSON.get(MasteryPage.MASTERIES);
-					for (int l = 0; l < masteryIdAndName.length(); l++) {
-						JSONObject masteryIdName = (JSONObject)masteryIdAndName.get(l);
-						masteryPage.addItemToMastery(Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYID).toString()), Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYRANK).toString()));
+					if (masteryPageJSON.has(MasteryPage.MASTERIES)){
+						JSONArray masteryIdAndName = (JSONArray)masteryPageJSON.get(MasteryPage.MASTERIES);
+						for (int l = 0; l < masteryIdAndName.length(); l++) {
+							JSONObject masteryIdName = (JSONObject)masteryIdAndName.get(l);
+							masteryPage.addItemToMastery(Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYID).toString()), Integer.parseInt(masteryIdName.get(MasteryPage.MASTERYRANK).toString()));
+						}
 					}
 					listMasteryPages.add(masteryPage);
 				}

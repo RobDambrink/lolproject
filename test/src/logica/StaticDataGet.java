@@ -74,6 +74,8 @@ public class StaticDataGet {
 				MasteryNameId champ = (MasteryNameId) list.get(i);
 				System.out.println(champ.getName());
 				// TODO een array returnen met id/naam is misschien handiger voor web
+				
+				// TODO JSONObject maken
 			}
 			
 		}
