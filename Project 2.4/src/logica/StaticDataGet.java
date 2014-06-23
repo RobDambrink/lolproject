@@ -2,12 +2,12 @@ package logica;
 
 import java.util.List;
 
+import net.sf.json.JSONObject;
 import mappingHibernate.ChampionNameId;
 import mappingHibernate.ItemNameId;
 import mappingHibernate.MasteryNameId;
 import mappingHibernate.RuneNameId;
 import mappingHibernate.SummonerSpelNameId;
-import net.sf.json.JSONObject;
 
 import com.fourspaces.couchdb.Document;
 

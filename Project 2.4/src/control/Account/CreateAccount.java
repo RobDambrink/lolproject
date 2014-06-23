@@ -1,11 +1,21 @@
 package control.Account;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+
+import org.riot.ResponseException;
+
+import util.JSONUtility;
+import databaseConnection.Hibernate;
+import logica.AccountLogica;
+import logica.SummonerLogica;
 
 /**
  * Servlet implementation class CreateAccount
@@ -32,7 +42,25 @@ public class CreateAccount extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String summoner = request.getParameter("summonername");
+		try {
+			Hibernate h = new Hibernate();
+			AccountLogica al = new AccountLogica(h);
+			SummonerLogica sl = new SummonerLogica(h);
+			JSONObject tmp = sl.getSummonerByName(summoner);
+			al.createAccount(username, password, tmp.getLong(SummonerLogica.SUMMONERID));
+			JSONObject json = new JSONObject();
+			json.put("username", username);
+			json.put("success", true);
+			JSONUtility.returnJSON(response, json);
+		} catch (ResponseException | NumberFormatException e) {
+			JSONObject json = new JSONObject();
+			json.put("success", false);
+			json.put("error", e.getMessage());
+			JSONUtility.returnJSON(response, json);
+		}
 	}
 
 }

@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.riot.ResponseException;
+
+import util.JSONUtility;
+import databaseConnection.Hibernate;
 import logica.AccountLogica;
-import mappingHibernate.Accounts;
+import logica.SummonerLogica;
 
 /**
  * Servlet implementation class EditAccount
@@ -36,6 +40,18 @@ public class EditAccount extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String summoner = request.getParameter("summonername");
+		try {
+			Hibernate h = new Hibernate();
+			AccountLogica al = new AccountLogica(h);
+			SummonerLogica sl = new SummonerLogica(h);
+			sl.getSummonerByName(summoner);
+			
+		} catch (ResponseException e) {
+			JSONUtility.sendError(response, "Time out while retrieving data... Try again later.");
+		}
 		
 	}
 

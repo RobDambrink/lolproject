@@ -15,8 +15,8 @@ public class AccountLogica {
 	public static final int OK =200;
 	public AccountLogica(Hibernate hib) throws ResponseException, IOException{
 		this.hib=hib;
-		createAccount("bb", "b", null);
-		edditAccount("bb", "bb", 23l);
+		//createAccount("bb", "b", null);
+		//edditAccount("bb", "bb", 23l);
 		// TODO profiel maken
 	}
 	
