@@ -32,5 +32,6 @@
 		<mapping resource="mappingHibernate/Summoner.hbm.xml"/>
 		<mapping resource="mappingHibernate/RunepageSummoner.hbm.xml"/>
 		<mapping resource="mappingHibernate/MasterypageSummoner.hbm.xml"/>
+		<mapping resource="mappingHibernate/MatchHistory.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

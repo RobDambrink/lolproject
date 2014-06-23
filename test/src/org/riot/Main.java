@@ -22,8 +22,8 @@ public class Main {
 			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			//new StaticDataInsert(hib,couch);
 			//new StaticDataGet(hib, couch);
-			//new AccountLogica(hib);
-			new SummonerLogica(hib);
+			//new AccountLogica(hib,couch);
+			new SummonerLogica(hib,couch);
 			
 			
 			//tests

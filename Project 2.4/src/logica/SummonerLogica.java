@@ -1,13 +1,11 @@
 package logica;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import mappingHibernate.MasterypageSummoner;
+import mappingHibernate.MatchHistory;
 import mappingHibernate.RunepageSummoner;
 import mappingHibernate.Summoner;
 
@@ -16,11 +14,14 @@ import org.json.JSONObject;
 import org.riot.Main;
 import org.riot.ResponseException;
 
+import com.fourspaces.couchdb.Document;
+
+import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 
 public class SummonerLogica {
 	private Hibernate hib;
-	
+	private CouchDB couch;	
 	public static final String SUMMONERPROFIELICON="profileIconId";
 	public static final String SUMMONERREVDATE="revisionDate";
 	public static final String SUMMONERNAME="name";
@@ -28,13 +29,17 @@ public class SummonerLogica {
 	public static final String SUMMONESUMLEVEL="summonerLevel";
 	public static final String RUNESPAGES="pages";
 	public static final String MASTERYPAGES="pages";
-	public SummonerLogica(Hibernate hib) throws ResponseException, IOException{
+	public static final String GAMES="games";
+	public static final String GAMEID="gameId";
+	public SummonerLogica(Hibernate hib,CouchDB couch) throws ResponseException, IOException{
 		this.hib=hib;
-		getSummonerByName("demonswill");
-		getSummonerByID(37268473L);
-		getRunesByID(37268473L);
-		getMasteriesByID(37268473L);
-		// TODO match history
+		this.couch=couch;
+		//getSummonerByName("demonswill");
+		//getSummonerByID(37268473L);
+		//getRunesByID(37268473L);
+		//getRunesByID(37268473L);
+		//getMasteriesByID(37268473L);
+		getMatchHistory(37268473L);
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -106,7 +111,7 @@ public class SummonerLogica {
 	
 	// http://stackoverflow.com/questions/2836646/java-serializable-object-to-byte-array
 	// dit voor object to byte array
-	public String getRunesByID(Long id) throws IOException{
+	public JSONObject getRunesByID(Long id) throws IOException{
 		JSONObject j = null;
 		try{
 			j = Main.api.getSummonersRunes(id.toString());
@@ -121,13 +126,13 @@ public class SummonerLogica {
 			}
 			
 		}
-		String value="";
+		JSONObject runes=null;
 		if (j!=null){
 			Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM RunepageSummoner WHERE id=" + id + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM RunepageSummoner WHERE id=" + id + "");
 			}
-			JSONObject runes = (JSONObject) j.get(id.toString());
+			runes = (JSONObject) j.get(id.toString());
 			JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
 			List<RunePage> listRunePages = new ArrayList<RunePage>();;			
 			for (int i = 0; i < runePages.length(); i++) {
@@ -152,7 +157,7 @@ public class SummonerLogica {
 			rune.setPages(ObjectToByteConvert.ObjectToByteArray(listRunePages));
 			hib.addToDatabase(rune);
 		}
-		return value;
+		return runes;
 	}
 	
 	public JSONObject getMasteriesByID(Long id){
@@ -170,12 +175,13 @@ public class SummonerLogica {
 			}
 			
 		}
+		JSONObject masterys = null;
 		if (j!=null){
 			Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MasterypageSummoner WHERE id=" + id + "");
 			if (check!=null){
 				hib.deleteFromDatabase("FROM MasterypageSummoner WHERE id=" + id + "");
 			}
-			JSONObject masterys = (JSONObject) j.get(id.toString());
+			masterys = (JSONObject) j.get(id.toString());
 			JSONArray masteryPages = (JSONArray) masterys.get(RUNESPAGES);
 			List<MasteryPage> listMasteryPages = new ArrayList<MasteryPage>();;			
 			for (int i = 0; i < masteryPages.length(); i++) {
@@ -200,6 +206,49 @@ public class SummonerLogica {
 			mastery.setPages(ObjectToByteConvert.ObjectToByteArray(listMasteryPages));
 			hib.addToDatabase(mastery);
 		}
-		return null;
+		return masterys;
+	}
+	
+	public JSONObject getMatchHistory(Long id){
+		JSONObject j = null;
+		try{
+			j = Main.api.getRecentGames(id);
+		}
+		catch(ResponseException ex){
+			if (ex.getMessage().contains("404 : Not Found")){
+				System.out.println("This summoner does not exist");
+				// TODO exeption van maken;
+			}
+			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+			}
+			
+		}
+		JSONArray gamesAll =null;
+		if (j!=null){
+			gamesAll = (JSONArray) j.get(GAMES);
+			for (int i = 0; i < gamesAll.length(); i++) {
+				JSONObject games= (JSONObject) gamesAll.get(i);
+				Long gameId = Long.parseLong(games.get(GAMEID).toString());
+				Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MatchHistory WHERE summonerId=" + id + " AND gameId=" + gameId + "");
+				if (check == null){
+					// check if game exist
+					check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MatchHistory WHERE gameId=" + gameId + "");
+					if (check == null){
+						// add to couch
+						Document doc = new Document();
+						doc.putAll(ConvertJSONToMap.toMap(games));
+						// add the document to the couchdb
+						couch.addDataToDatabase(doc, CouchDB.MATCH_HISTORY_ID+gameId);
+					}
+					// add to mysql
+					MatchHistory match = new MatchHistory();
+					match.setGameId(gameId);
+					match.setSummonerId(id);
+					hib.addToDatabase(match);
+				}
+			}
+		}
+		return j;
 	}
 }

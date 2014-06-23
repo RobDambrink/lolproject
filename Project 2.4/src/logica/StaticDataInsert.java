@@ -1,10 +1,5 @@
 package logica;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import mappingHibernate.ChampionNameId;
 import mappingHibernate.ItemNameId;
@@ -12,8 +7,6 @@ import mappingHibernate.MasteryNameId;
 import mappingHibernate.RuneNameId;
 import mappingHibernate.SummonerSpelNameId;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.riot.Main;
 import org.riot.ResponseException;
@@ -49,7 +42,7 @@ public class StaticDataInsert {
 			// make a document
 			Document doc = new Document();
 			JSONObject obj = summonerSpels.getJSONObject(summonerSpelKey);
-			doc.putAll(toMap(obj));
+			doc.putAll(ConvertJSONToMap.toMap(obj));
 			String name=obj.getString("name");
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.SUMMONER_SPEL_ID+summonerSpelKey);
@@ -74,7 +67,7 @@ public class StaticDataInsert {
 			// make a document
 			Document doc = new Document();
 			JSONObject obj = runes.getJSONObject(runeKey);
-			doc.putAll(toMap(obj));
+			doc.putAll(ConvertJSONToMap.toMap(obj));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.RUNE_ID+runeKey);
 			String name=obj.getString("name");
@@ -99,7 +92,7 @@ public class StaticDataInsert {
 			// make a document
 			Document doc = new Document();
 			JSONObject obj = masterys.getJSONObject(masteryKey);
-			doc.putAll(toMap(obj));
+			doc.putAll(ConvertJSONToMap.toMap(obj));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.MASTERY_ID+masteryKey);
 			String name=obj.getString("name");
@@ -127,7 +120,7 @@ public class StaticDataInsert {
 			// make a document
 			Document doc = new Document();
 			JSONObject obj = items.getJSONObject(itemKey);
-			doc.putAll(toMap(obj));
+			doc.putAll(ConvertJSONToMap.toMap(obj));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.ITEM_ID+itemKey);
 			String name=obj.getString("name");
@@ -161,41 +154,10 @@ public class StaticDataInsert {
 			hib.addToDatabase(cham);
 			// make a new document
 			Document doc = new Document();
-			doc.putAll(toMap(data.getJSONObject(keyChamp)));
+			doc.putAll(ConvertJSONToMap.toMap(data.getJSONObject(keyChamp)));
 			// add the document to the couchdb
 			couch.addDataToDatabase(doc, CouchDB.CHAMPION_ID+keyChamp);
 		}
 		System.out.println("all champions inserted");
 	}
-	
-	private Map<String, Object> toMap(JSONObject object) throws JSONException {
-        Map<String, Object> map = new HashMap<String, Object>();
-        Iterator<String> keys = object.keys();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            map.put(key, fromJson(object.get(key)));
-        }
-        return map;
-    }
-    
-    private Object fromJson(Object json) throws JSONException {
-        if (json == JSONObject.NULL) {
-            return null;
-        } else if (json instanceof JSONObject) {
-            return toMap((JSONObject) json);
-        } else if (json instanceof JSONArray) {
-            return toList((JSONArray) json);
-        } else {
-            return json;
-        }
-    }
-    
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	private List toList(JSONArray array) throws JSONException {
-        List list = new ArrayList();
-        for (int i = 0; i < array.length(); i++) {
-            list.add(fromJson(array.get(i)));
-        }
-        return list;
-    }
 }

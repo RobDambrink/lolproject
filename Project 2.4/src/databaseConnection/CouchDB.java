@@ -13,6 +13,7 @@ public class CouchDB {
 	public static final String MASTERY_ID = "MSID";
 	public static final String RUNE_ID = "RUID";
 	public static final String SUMMONER_SPEL_ID = "SUID";
+	public static final String MATCH_HISTORY_ID = "MHID";
 	
 	private Session lolStaticDBSession;
 	private Database lolStaticDB;
