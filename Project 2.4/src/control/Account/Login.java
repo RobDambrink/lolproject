@@ -55,7 +55,7 @@ public class Login extends HttpServlet {
 				JSONObject json = new JSONObject();
 				json.put("session", md.getMD5Hash(username));
 				json.put("success", true);
-				JSONUtility.returnJSON(response, json);
+				JSONUtility.sendJSON(response, json);
 			} else {
 				JSONUtility.sendError(response, "Username/password incorrect");
 			}

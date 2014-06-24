@@ -1,4 +1,4 @@
-package control.Champion;
+package control.Spell;
 
 import java.io.IOException;
 
@@ -8,24 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import logica.StaticDataGet;
+import net.sf.json.JSONObject;
+import util.JSONUtility;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.StaticDataGet;
-import mappingHibernate.ChampionNameId;
-import util.JSONUtility;
 
 /**
- * Servlet implementation class GetChampionOverview
+ * Servlet implementation class GetSpellById
  */
-@WebServlet(description = "Get a list of champions", urlPatterns = { "/Champion/Overview" })
-public class GetChampionOverview extends HttpServlet {
+@WebServlet(description = "Get a spell by Id", urlPatterns = { "/Spell/GetById" })
+public class GetSpellById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetChampionOverview() {
+    public GetSpellById() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,13 +34,23 @@ public class GetChampionOverview extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONUtility.sendJSON(response, new StaticDataGet(new Hibernate(), new CouchDB()).getAllChampionNameId());
+		try {
+			long id = Long.parseLong(request.getParameter("id"));
+			JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getSummonerSpelByID(id);
+			if(json != null) 
+				JSONUtility.sendJSON(response, json);
+			else
+				JSONUtility.sendError(response, "Spell not found.");
+		} catch (NumberFormatException e) {
+			JSONUtility.sendError(response, "Id not in correct format.");
+		}
 	}
 
 }

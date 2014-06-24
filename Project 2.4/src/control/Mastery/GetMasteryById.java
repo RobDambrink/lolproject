@@ -1,4 +1,4 @@
-package control.Champion;
+package control.Mastery;
 
 import java.io.IOException;
 
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import logica.StaticDataGet;
-import mappingHibernate.ChampionNameId;
+import net.sf.json.JSONObject;
 import util.JSONUtility;
 
 /**
- * Servlet implementation class GetChampionOverview
+ * Servlet implementation class GetMasteryById
  */
-@WebServlet(description = "Get a list of champions", urlPatterns = { "/Champion/Overview" })
-public class GetChampionOverview extends HttpServlet {
+@WebServlet(description = "Get a mastery by id", urlPatterns = { "/Mastery/GetById" })
+public class GetMasteryById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetChampionOverview() {
+    public GetMasteryById() {
         super();
     }
 
@@ -39,7 +39,16 @@ public class GetChampionOverview extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONUtility.sendJSON(response, new StaticDataGet(new Hibernate(), new CouchDB()).getAllChampionNameId());
+		try {
+			long id = Long.parseLong(request.getParameter("id"));
+			JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getMasteryByID(id);
+			if(json != null) 
+				JSONUtility.sendJSON(response, json);
+			else
+				JSONUtility.sendError(response, "Mastery not found.");
+		} catch (NumberFormatException e) {
+			JSONUtility.sendError(response, "Id not in correct format.");
+		}
 	}
 
 }

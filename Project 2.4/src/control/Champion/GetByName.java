@@ -48,11 +48,11 @@ public class GetByName extends HttpServlet {
 		StaticDataGet sdg = new StaticDataGet(new Hibernate(), new CouchDB());
 		JSONObject obj = sdg.getChampionByName(name);
 		if (obj != null)
-			JSONUtility.returnJSON(response, obj);
+			JSONUtility.sendJSON(response, obj);
 		else {
 			obj = new JSONObject();
 			obj.put("error", "Champion not found.");
-			JSONUtility.returnJSON(response, obj);
+			JSONUtility.sendJSON(response, obj);
 		}
 	}
 
