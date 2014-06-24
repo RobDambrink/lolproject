@@ -61,7 +61,7 @@ public class CreateAccount extends HttpServlet {
 			json.put("success", false);
 			json.put("error", e.getMessage());
 			JSONUtility.returnJSON(response, json);
-		}
+		} 
 	}
 
 }
