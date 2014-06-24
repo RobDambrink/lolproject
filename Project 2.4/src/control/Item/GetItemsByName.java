@@ -1,4 +1,4 @@
-package control.Account;
+package control.Item;
 
 import java.io.IOException;
 
@@ -8,29 +8,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jdk.nashorn.internal.scripts.JS;
+import util.JSONUtility;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
-
-import org.riot.ResponseException;
-
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.AccountLogica;
-import logica.MD5Hashing;
-import util.JSONUtility;
+import logica.StaticDataGet;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class GetItemsByName
  */
-@WebServlet("/Account/Login")
-public class Login extends HttpServlet {
+@WebServlet(description = "Get items by their (partial) name", urlPatterns = { "/Item/GetByName" })
+public class GetItemsByName extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public GetItemsByName() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -44,24 +42,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		int status = AccountLogica.ERROR;
-		try {
-			AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
-			status = al.login(username, password);
-			if(status == AccountLogica.OK) {
-				MD5Hashing md = new MD5Hashing();
-				JSONObject json = new JSONObject();
-				json.put("session", md.getMD5Hash(username));
-				json.put("success", true);
-				JSONUtility.returnJSON(response, json);
-			} else {
-				JSONUtility.sendError(response, "Username/password incorrect");
-			}
-		} catch (ResponseException e) {
-			JSONUtility.sendError(response, "Something went wrong. Try again later.");
-		}
+		String name = request.getParameter("name");
+		StaticDataGet sdg = new StaticDataGet(new Hibernate(), new CouchDB());
+		JSONObject json = sdg.getItemByParselName(name);
+		if(json != null) 
+			JSONUtility.returnJSON(response, json);
+		else 
+			JSONUtility.sendError(response, "Item not found.");
 	}
 
 }
