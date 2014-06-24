@@ -8,11 +8,11 @@
         name="mappingHibernate.MasteryComment" 
         table="mastery_comment">             
         <id 
-            name="masteryid" 
-            column="masteryid">  
+            name="commentid" 
+            column="commentid">  
         </id>	
         <property 
-            name="commentid" 
-            column="commentid"/>
+            name="masteryid" 
+            column="masteryid"/>
     </class> 
 </hibernate-mapping> 

@@ -6,13 +6,15 @@
 <hibernate-mapping> 
     <class 
         name="mappingHibernate.BuildComment" 
-        table="build_comment">             
+        table="build_comment">  
         <id 
-            name="buildid" 
-            column="buildid">  
-        </id>	
-        <property 
             name="commentid" 
-            column="commentid"/>
+            column="commentid">
+        </id>           
+        <property
+            name="buildid" 
+            column="buildid"/>  
+        	
+        
     </class> 
 </hibernate-mapping> 
