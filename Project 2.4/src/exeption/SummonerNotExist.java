@@ -1,12 +1,12 @@
 package exeption;
 
-public class SummonorNotExist extends Exception{
+public class SummonerNotExist extends Exception{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2322389103966203969L;
 
-	public SummonorNotExist(String message)
+	public SummonerNotExist(String message)
     {
        super(message);
     }

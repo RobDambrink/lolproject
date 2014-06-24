@@ -18,7 +18,7 @@ import com.fourspaces.couchdb.Document;
 
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import exeption.SummonorNotExist;
+import exeption.SummonerNotExist;
 
 public class SummonerLogica {
 	private Hibernate hib;
@@ -52,13 +52,13 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			try{
 				if (ex.getMessage().contains("404 : Not Found")){
-					throw new SummonorNotExist("This summoner does not exist");
+					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
 					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
 				}
 			}
-			catch(SummonorNotExist ex2){
+			catch(SummonerNotExist ex2){
 				System.out.println(ex2.getMessage());
 			}
 			
@@ -89,13 +89,13 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			try{
 				if (ex.getMessage().contains("404 : Not Found")){
-					throw new SummonorNotExist("This summoner does not exist");
+					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
 					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
 				}
 			}
-			catch(SummonorNotExist ex2){
+			catch(SummonerNotExist ex2){
 				System.out.println(ex2.getMessage());
 			}
 		}
@@ -127,13 +127,13 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			try{
 				if (ex.getMessage().contains("404 : Not Found")){
-					throw new SummonorNotExist("This summoner does not exist");
+					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
 					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
 				}
 			}
-			catch(SummonorNotExist ex2){
+			catch(SummonerNotExist ex2){
 				System.out.println(ex2.getMessage());
 			}
 			
@@ -180,13 +180,13 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			try{
 				if (ex.getMessage().contains("404 : Not Found")){
-					throw new SummonorNotExist("This summoner does not exist");
+					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
 					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
 				}
 			}
-			catch(SummonorNotExist ex2){
+			catch(SummonerNotExist ex2){
 				System.out.println(ex2.getMessage());
 			}			
 		}
@@ -232,13 +232,13 @@ public class SummonerLogica {
 		catch(ResponseException ex){
 			try{
 				if (ex.getMessage().contains("404 : Not Found")){
-					throw new SummonorNotExist("This summoner does not exist");
+					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
 					getAllMatchesFromDatabase(id);
 				}
 			}
-			catch(SummonorNotExist ex2){
+			catch(SummonerNotExist ex2){
 				System.out.println(ex2.getMessage());
 			}
 			

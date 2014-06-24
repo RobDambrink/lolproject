@@ -7,6 +7,9 @@ import org.riot.ResponseException;
 
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
+import exeption.AccountNotExist;
+import exeption.NameNotExist;
+import exeption.SummonerNotExist;
 import mappingHibernate.Accounts;
 
 public class AccountLogica {
@@ -20,7 +23,6 @@ public class AccountLogica {
 		this.couch=couch;
 		//createAccount("bb", "b", null);
 		//edditAccount("bb", "bb", 23l);
-		// TODO profiel maken
 	}
 	
 	public int login(String name, String pass ){
@@ -32,11 +34,9 @@ public class AccountLogica {
 		
 		
 	}
-	public void createAccount(String name, String password, Long summonerID) throws ResponseException, IOException{
+	public void createAccount(String name, String password, Long summonerID) throws ResponseException, IOException, SummonerNotExist, NameNotExist{
 		if (checkAccountExist(name)){
-			System.out.println("This name already exist");
-			// TODO exeption van maken
-			return;
+			throw new NameNotExist("This name already exist");
 		}
 		Accounts account = new Accounts();
 		MD5Hashing md5 = new MD5Hashing();
@@ -47,8 +47,7 @@ public class AccountLogica {
 			if (sum.getSummonerByID(summonerID)!=null)
 				account.setSummonerID(summonerID);
 			else{
-				System.out.println("This summoner does not exist");
-				// TODO exeption van maken
+				throw new SummonerNotExist("This summoner does not exist");
 			}
 		}
 		hib.addToDatabase(account);
@@ -61,9 +60,11 @@ public class AccountLogica {
 	 * @param summonerID if null then not changed if -1 set to null
 	 * @throws IOException 
 	 * @throws ResponseException 
+	 * @throws SummonerNotExist 
+	 * @throws AccountNotExist 
 	 */
 	@SuppressWarnings("rawtypes")
-	public void edditAccount(String name,String password, Long summonerID) throws ResponseException, IOException{
+	public void edditAccount(String name,String password, Long summonerID) throws ResponseException, IOException, SummonerNotExist, AccountNotExist{
 		if (checkAccountExist(name)){
 			List list = hib.getDataFromDatabase("FROM Accounts WHERE name='" + name + "'");
 			if (!list.isEmpty()){
@@ -78,8 +79,7 @@ public class AccountLogica {
 						if (sum.getSummonerByID(summonerID)!=null)
 							account.setSummonerID(summonerID);
 						else{
-							System.out.println("This summoner does not exist");
-							// TODO exeption van maken
+							throw new SummonerNotExist("This summoner does not exist");
 						}
 					}
 					else{
@@ -89,18 +89,13 @@ public class AccountLogica {
 				hib.updateToDatabse(account);
 			}
 			else{
-				System.out.println("ERROR List is empty");
-				// TODO exeption van maken
+				throw new AccountNotExist("Account not found");
 			}
 		}
 		else{
-			System.out.println("This name does not exist");
-			// TODO exeption van maken
-			return;
+			throw new AccountNotExist("Account not found");
 		}		
 	}
-	
-	// TODO INLOG DING
 	
 	private boolean checkAccountExist(String name){
 		String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Accounts WHERE name='" + name + "'");
