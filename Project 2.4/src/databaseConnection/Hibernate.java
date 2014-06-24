@@ -65,6 +65,7 @@ public class Hibernate {
 	
 	@SuppressWarnings("rawtypes")
 	public List getDataFromDatabase(String queryIn){
+		System.out.println(queryIn);
 		List list = null;
 		try{
 			Query query = session.createQuery(queryIn);
