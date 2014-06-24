@@ -2,7 +2,9 @@ package logica;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import mappingHibernate.MasterypageSummoner;
 import mappingHibernate.MatchHistory;
@@ -37,11 +39,30 @@ public class SummonerLogica {
 		this.hib=hib;
 		this.couch=couch;
 		System.out.println("summoner by name"+getSummonerByName("demonswill"));
+		System.out.println("summoner by name"+getSummonerByNameFromDatabase("demonswill"));
 		System.out.println("summoner by id"+getSummonerByID(37268473L));
+		System.out.println("summoner by id"+getSummonerByIDFromDatabase(37268473L));
 		System.out.println("runes by id"+getRunesByID(37268473L));
+		System.out.println("runes by id"+getRunesByIDFromDatabase(37268473L));
 		System.out.println("masteries by id"+getMasteriesByID(37268473L));
+		System.out.println("masteries by id"+getMasteriesByIDFromDataBase(37268473L));
 		System.out.println("match by id"+getMatchHistory(37268473L));
 		System.out.println("match by id from db"+getAllMatchesFromDatabase(37268473L));
+	}
+	
+	private JSONObject getSummonerByNameFromDatabase(String sumName){
+		List<?> list = hib.getDataFromDatabase("FROM Summoner WHERE name = '" + sumName + "'");
+		if(list!=null && !list.isEmpty()){
+			JSONObject obj = new JSONObject();
+			Summoner sum = (Summoner) list.get(0);
+			obj.put(SUMMONERID, sum.getId());
+			obj.put(SUMMONERNAME, sum.getName());
+			obj.put(SUMMONERPROFIELICON, sum.getProfileIconId());
+			obj.put(SUMMONERREVDATE, sum.getRevisionDate());
+			obj.put(SUMMONESUMLEVEL, sum.getSummonerLevel());
+			return obj;
+		}
+		return null;
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -55,7 +76,7 @@ public class SummonerLogica {
 					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+					return getSummonerByNameFromDatabase(sumName);
 				}
 			}
 			catch(SummonerNotExist ex2){
@@ -80,6 +101,21 @@ public class SummonerLogica {
 		}
 		return summoner;
 	}
+
+	private JSONObject getSummonerByIDFromDatabase(Long id){
+		List<?> list = hib.getDataFromDatabase("FROM Summoner WHERE id = '" + id + "'");
+		if(list!=null && !list.isEmpty()){
+			JSONObject obj = new JSONObject();
+			Summoner sum = (Summoner) list.get(0);
+			obj.put(SUMMONERID, sum.getId());
+			obj.put(SUMMONERNAME, sum.getName());
+			obj.put(SUMMONERPROFIELICON, sum.getProfileIconId());
+			obj.put(SUMMONERREVDATE, sum.getRevisionDate());
+			obj.put(SUMMONESUMLEVEL, sum.getSummonerLevel());
+			return obj;
+		}
+		return null;
+	}
 	
 	public JSONObject getSummonerByID(Long id){
 		JSONObject j = null;
@@ -92,7 +128,7 @@ public class SummonerLogica {
 					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+					return getSummonerByIDFromDatabase(id);
 				}
 			}
 			catch(SummonerNotExist ex2){
@@ -117,6 +153,42 @@ public class SummonerLogica {
 		return summoner;
 	}
 	
+	@SuppressWarnings("unchecked")
+	private JSONObject getRunesByIDFromDatabase(Long id){
+		List<?> list = hib.getDataFromDatabase("FROM RunepageSummoner WHERE id = '" + id + "'");
+		if(list!=null && !list.isEmpty()){
+			RunepageSummoner runePageSum = (RunepageSummoner)list.get(0);
+			List<RunePage> listRunePages = new ArrayList<RunePage>();
+			listRunePages = (List<RunePage>)ObjectToByteConvert.ByteToObject(runePageSum.getPages());
+			JSONObject obj = new JSONObject();		
+			JSONArray ar = new JSONArray();
+			for (int i = 0; i < listRunePages.size(); i++) {
+				RunePage runePage = listRunePages.get(i);
+				JSONObject runePageJSON = new JSONObject();
+				JSONArray runesIdAndName = new JSONArray();
+				Long[] slot = runePage.getSlots();
+				for (int j = 0; j < 30; j++) {
+					if (slot[i+1]!=null){
+						JSONObject runeIdName = new JSONObject();
+						runeIdName.put(RunePage.RUNESLOTID, j+1);
+						runeIdName.put(RunePage.RUNEID, slot[j+1]);
+						runesIdAndName.put(runeIdName);
+					}
+				}
+				runePageJSON.put(RunePage.ID, runePage.getId());
+				runePageJSON.put(RunePage.CURRENT, runePage.isCurrent());
+				runePageJSON.put(RunePage.NAME, runePage.getName());
+				if (!runesIdAndName.isNull(0))
+					runePageJSON.put(RunePage.SLOT, runesIdAndName);
+				ar.put(runePageJSON);
+			}
+			obj.put(RUNESPAGES, ar);
+			obj.put("summonerId", id);
+			return obj;
+		}
+		return null;
+	}
+	
 	// http://stackoverflow.com/questions/2836646/java-serializable-object-to-byte-array
 	// dit voor object to byte array
 	public JSONObject getRunesByID(Long id) throws IOException{
@@ -130,7 +202,7 @@ public class SummonerLogica {
 					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+					return getRunesByIDFromDatabase(id);
 				}
 			}
 			catch(SummonerNotExist ex2){
@@ -145,11 +217,16 @@ public class SummonerLogica {
 				hib.deleteFromDatabase("FROM RunepageSummoner WHERE id=" + id + "");
 			}
 			runes = (JSONObject) j.get(id.toString());
-			JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
-			List<RunePage> listRunePages = new ArrayList<RunePage>();;			
+			// get all the pages
+			/*JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
 			for (int i = 0; i < runePages.length(); i++) {
 				JSONObject runePageJSON = (JSONObject)runePages.get(i);
-				for (int k = 0; k < runePageJSON.length(); k++) {
+			}*/
+			JSONArray runePages = (JSONArray) runes.get(RUNESPAGES);
+			List<RunePage> listRunePages = new ArrayList<RunePage>();		
+			for (int i = 0; i < runePages.length(); i++) {
+				JSONObject runePageJSON = (JSONObject)runePages.get(i);
+				//for (int k = 0; k < runePageJSON.length(); k++) {
 					RunePage runePage = new RunePage();
 					runePage.setId(Long.parseLong(runePageJSON.get(RunePage.ID).toString()));
 					runePage.setCurrent(Boolean.parseBoolean(runePageJSON.get(RunePage.CURRENT).toString()));
@@ -162,7 +239,7 @@ public class SummonerLogica {
 						}
 					}
 					listRunePages.add(runePage);
-				}
+				//}
 			}
 			RunepageSummoner rune = new RunepageSummoner();
 			rune.setId(id);
@@ -170,6 +247,46 @@ public class SummonerLogica {
 			hib.addToDatabase(rune);
 		}
 		return runes;
+	}
+
+	@SuppressWarnings("unchecked")
+	private JSONObject getMasteriesByIDFromDataBase(Long id){
+		List<?> list = hib.getDataFromDatabase("FROM MasterypageSummoner WHERE id = '" + id + "'");
+		if(list!=null && !list.isEmpty()){
+			JSONObject obj = new JSONObject();
+			MasterypageSummoner masterySummoner = (MasterypageSummoner) list.get(0);
+			List<MasteryPage> listMasteryPages = (List<MasteryPage>) ObjectToByteConvert.ByteToObject(masterySummoner.getPages());		
+			JSONArray masteryPages = new JSONArray();//(JSONArray) masterys.get(RUNESPAGES);
+			for (int i = 0; i < listMasteryPages.size(); i++) {
+				JSONObject masteryPageJSON = new JSONObject();
+				MasteryPage masteryPage = listMasteryPages.get(i);
+				JSONArray masteryIdAndName = new JSONArray();
+				for(Entry<Integer, Integer> entry : masteryPage.getMasteries().entrySet()) {
+					Integer masteryId = entry.getKey(); //MASTERYID
+					Integer masteryRank = entry.getValue(); //MASTERYRANK
+					JSONObject masteryIdName = new JSONObject();
+					masteryIdName.put(MasteryPage.MASTERYID, masteryId);
+					masteryIdName.put(MasteryPage.MASTERYRANK, masteryRank);
+					masteryIdAndName.put(masteryIdName);
+				}
+				masteryPageJSON.put(MasteryPage.ID,masteryPage.getId());
+				masteryPageJSON.put(MasteryPage.CURRENT,masteryPage.isCurrent());
+				masteryPageJSON.put(MasteryPage.NAME,masteryPage.getName());
+				masteryPage.setId(Long.parseLong(masteryPageJSON.get(MasteryPage.ID).toString()));
+				masteryPage.setCurrent(Boolean.parseBoolean(masteryPageJSON.get(MasteryPage.CURRENT).toString()));
+				masteryPage.setName(masteryPageJSON.get(MasteryPage.NAME).toString());
+				if (!masteryIdAndName.isNull(0))
+					masteryPageJSON.put(MasteryPage.MASTERIES, masteryIdAndName);
+				
+				masteryPages.put(masteryPageJSON);
+			}
+			
+			
+			obj.put(RUNESPAGES,masteryPages);
+			obj.put("summonerId",id);
+			return obj;
+		}
+		return null;
 	}
 	
 	public JSONObject getMasteriesByID(Long id){
@@ -183,7 +300,7 @@ public class SummonerLogica {
 					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+					return getMasteriesByIDFromDataBase(id);
 				}
 			}
 			catch(SummonerNotExist ex2){
@@ -198,10 +315,10 @@ public class SummonerLogica {
 			}
 			masterys = (JSONObject) j.get(id.toString());
 			JSONArray masteryPages = (JSONArray) masterys.get(RUNESPAGES);
-			List<MasteryPage> listMasteryPages = new ArrayList<MasteryPage>();;			
+			List<MasteryPage> listMasteryPages = new ArrayList<MasteryPage>();		
 			for (int i = 0; i < masteryPages.length(); i++) {
 				JSONObject masteryPageJSON = (JSONObject)masteryPages.get(i);
-				for (int k = 0; k < masteryPageJSON.length(); k++) {
+				//for (int k = 0; k < masteryPageJSON.length(); k++) {
 					MasteryPage masteryPage = new MasteryPage();
 					masteryPage.setId(Long.parseLong(masteryPageJSON.get(MasteryPage.ID).toString()));
 					masteryPage.setCurrent(Boolean.parseBoolean(masteryPageJSON.get(MasteryPage.CURRENT).toString()));
@@ -214,7 +331,7 @@ public class SummonerLogica {
 						}
 					}
 					listMasteryPages.add(masteryPage);
-				}
+				//}
 			}
 			MasterypageSummoner mastery = new MasterypageSummoner();
 			mastery.setId(id);
@@ -235,7 +352,7 @@ public class SummonerLogica {
 					throw new SummonerNotExist("This summoner does not exist");
 				}
 				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-					getAllMatchesFromDatabase(id);
+					return getAllMatchesFromDatabase(id);
 				}
 			}
 			catch(SummonerNotExist ex2){
