@@ -130,9 +130,10 @@ public class StaticDataGet {
 				ChampionNameId champ = (ChampionNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());		
 			}
-			obj.putAll(hm);	
+			obj.putAll(hm);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -144,12 +145,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				ItemNameId champ = (ItemNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -161,14 +161,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				MasteryNameId champ = (MasteryNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
-				
-				// TODO JSONObject maken
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -180,12 +177,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				RuneNameId champ = (RuneNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -197,12 +193,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				SummonerSpelNameId champ = (SummonerSpelNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	public JSONObject getChampionByName(String name){

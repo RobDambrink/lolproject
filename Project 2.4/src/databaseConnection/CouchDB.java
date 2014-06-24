@@ -48,6 +48,14 @@ public class CouchDB {
 	}
 	
 	public Document getDataFromDatabase(String id){
-		return lolStaticDB.getDocument(id);
+		try{
+			return lolStaticDB.getDocument(id);
+		}
+		catch(JSONException e){
+			if (e.getMessage().equals("JSONObject[\"error\"] is not a JSONObject.")){
+				return null;
+			}
+		}
+		return null;
 	}
 }

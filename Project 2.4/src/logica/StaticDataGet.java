@@ -23,13 +23,14 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		/*System.out.println(getAllChampionNameId());
+		/*System.out.println(getChampionByID(12323334l));
+		System.out.println(getAllChampionNameId());
 		System.out.println(getAllItemsNameId());
 		System.out.println(getAllMasteriesNameId());
 		System.out.println(getAllRunesNameId());
 		System.out.println(getAllSummonerSpelNameId());
-		//System.out.println(getChampionByParselName("ann"));
-		/*getItemByParselName("boot");
+		System.out.println(getChampionByParselName("ann"));
+		getItemByParselName("boot");
 		getMasteryByParselName("cer");
 		getRuneByParselName("lesser");
 		getSummonerSpelByParselName("ig");
@@ -130,9 +131,10 @@ public class StaticDataGet {
 				ChampionNameId champ = (ChampionNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());		
 			}
-			obj.putAll(hm);	
+			obj.putAll(hm);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -144,12 +146,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				ItemNameId champ = (ItemNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -161,14 +162,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				MasteryNameId champ = (MasteryNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
-				
-				// TODO JSONObject maken
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -180,12 +178,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				RuneNameId champ = (RuneNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -197,12 +194,11 @@ public class StaticDataGet {
 			for (int i = 0; i < list.size(); i++) {
 				SummonerSpelNameId champ = (SummonerSpelNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());
-				// TODO een array returnen met id/naam is misschien handiger voor web
 			}
 			obj.putAll(hm);
-			System.out.println(obj);
+			return obj;
 		}
-		return obj;
+		return null;
 	}
 	
 	public JSONObject getChampionByName(String name){
@@ -212,16 +208,22 @@ public class StaticDataGet {
 	
 	public JSONObject getChampionByID(Long id){
 		Document champion = couch.getDataFromDatabase(CouchDB.CHAMPION_ID+id.toString());
-		champion.remove("_id");
-		champion.remove("_rev");
-		return champion.getJSONObject();
+		if (champion!=null){
+			champion.remove("_id");
+			champion.remove("_rev");
+			return champion.getJSONObject();
+		}
+		return null;
 	}
 	
 	public JSONObject getItemByID(Long id){
 		Document item = couch.getDataFromDatabase(CouchDB.ITEM_ID+id.toString());
-		item.remove("_id");
-		item.remove("_rev");
-		return item.getJSONObject();
+		if (item!=null){
+			item.remove("_id");
+			item.remove("_rev");
+			return item.getJSONObject();
+		}
+		return null;
 	}
 	
 	public JSONObject getItemByName(String name){
@@ -231,9 +233,12 @@ public class StaticDataGet {
 	
 	public JSONObject getMasteryByID(Long id){
 		Document mastery = couch.getDataFromDatabase(CouchDB.MASTERY_ID+id.toString());
-		mastery.remove("_id");
-		mastery.remove("_rev");
-		return mastery.getJSONObject();
+		if (mastery!=null){
+			mastery.remove("_id");
+			mastery.remove("_rev");
+			return mastery.getJSONObject();
+		}
+		return null;
 	}
 	
 	public JSONObject getMasteryByName(String name){
@@ -243,9 +248,12 @@ public class StaticDataGet {
 	
 	public JSONObject getRuneByID(Long id){
 		Document rune = couch.getDataFromDatabase(CouchDB.RUNE_ID+id.toString());
-		rune.remove("_id");
-		rune.remove("_rev");
-		return rune.getJSONObject();
+		if (rune!=null){
+			rune.remove("_id");
+			rune.remove("_rev");
+			return rune.getJSONObject();
+		}
+		return null;
 	}
 	
 	public JSONObject getRuneByName(String name){
@@ -255,9 +263,12 @@ public class StaticDataGet {
 	
 	public JSONObject getSummonerSpelByID(Long id){
 		Document summonerSpel = couch.getDataFromDatabase(CouchDB.SUMMONER_SPEL_ID+id.toString());
-		summonerSpel.remove("_id");
-		summonerSpel.remove("_rev");
-		return summonerSpel.getJSONObject();
+		if (summonerSpel!=null){
+			summonerSpel.remove("_id");
+			summonerSpel.remove("_rev");
+			return summonerSpel.getJSONObject();
+		}
+		return null;
 	}
 	
 	public JSONObject getSummonerSpelByName(String name){
