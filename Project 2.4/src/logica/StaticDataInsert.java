@@ -24,12 +24,23 @@ public class StaticDataInsert {
 	public StaticDataInsert(Hibernate hib, CouchDB couch) throws ResponseException{
 		this.hib=hib;
 		this.couch=couch;
+		removeAllStaticData();
 		insertAllChampions();
 		insertAllItems();
 		insertAllMasterys();
 		insertAllRunes();
 		insertAllSummonerSpel();
 		System.out.println("all done");
+	}
+	
+	public void removeAllStaticData(){
+		hib.deleteFromDatabase("from ChampionNameId");
+		hib.deleteFromDatabase("from MasteryNameId");
+		hib.deleteFromDatabase("from RuneNameId");
+		hib.deleteFromDatabase("from SummonerSpelNameId");
+		hib.deleteFromDatabase("from ItemNameId");
+		couch.deleteAllDataExept(CouchDB.MATCH_HISTORY_ID);
+		System.out.println("all removed");
 	}
 	
 	public void insertAllSummonerSpel() throws ResponseException{

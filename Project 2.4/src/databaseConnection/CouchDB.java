@@ -1,11 +1,14 @@
 package databaseConnection;
 
 
+import java.util.List;
+
 import net.sf.json.JSONException;
 
 import com.fourspaces.couchdb.Database;
 import com.fourspaces.couchdb.Document;
 import com.fourspaces.couchdb.Session;
+import com.fourspaces.couchdb.ViewResults;
 
 public class CouchDB {
 	public static final String CHAMPION_ID = "CHID";
@@ -57,5 +60,24 @@ public class CouchDB {
 			}
 		}
 		return null;
+	}
+	
+	public void deleteAllDataExept(String exept){
+		/*Fetching all Document to ViewResult object*/
+		ViewResults couchViewResults = lolStaticDB.getAllDocuments();
+		
+		/*Retieving all document as result to a List*/
+		try{
+			List<Document> studentDocuments = couchViewResults.getResults();
+		
+			for(Document couchDocument: studentDocuments){
+				String id = couchDocument.getJSONObject().getString("id");
+				if (!id.contains(exept)){
+					Document lolStaticRow = lolStaticDB.getDocument(id);
+					lolStaticDB.deleteDocument(lolStaticRow);
+				}
+			}
+		}
+		catch(NullPointerException e){System.out.println("er is niks te verwijderen");}
 	}
 }

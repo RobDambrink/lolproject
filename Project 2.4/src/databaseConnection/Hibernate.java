@@ -82,10 +82,12 @@ public class Hibernate {
 		Query query = session.createQuery(queryIn);
 		List list = query.list();
 		if (!list.isEmpty()){
-			Object obj= list.get(0);
-			session.beginTransaction();
-			session.delete(obj);
-			session.getTransaction().commit();
+			for (int i = 0; i < list.size(); i++) {
+				Object obj= list.get(i);
+				session.beginTransaction();
+				session.delete(obj);
+				session.getTransaction().commit();
+			}
 		}
 	}
 	
