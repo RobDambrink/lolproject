@@ -2,7 +2,6 @@ package logica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import mappingHibernate.MasterypageSummoner;
@@ -19,6 +18,7 @@ import com.fourspaces.couchdb.Document;
 
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
+import exeption.SummonorNotExist;
 
 public class SummonerLogica {
 	private Hibernate hib;
@@ -32,16 +32,16 @@ public class SummonerLogica {
 	public static final String MASTERYPAGES="pages";
 	public static final String GAMES="games";
 	public static final String GAMEID="gameId";
+	public static final String GAMESSUMMONERID="summonerId";	
 	public SummonerLogica(Hibernate hib,CouchDB couch) throws ResponseException, IOException{
 		this.hib=hib;
 		this.couch=couch;
-		//getSummonerByName("demonswill");
-		//getSummonerByID(37268473L);
-		//getRunesByID(37268473L);
-		//getRunesByID(37268473L);
-		//getMasteriesByID(37268473L);
-		//getMatchHistory(37268473L);
-		getAllMatchesFromDatabase(37268473L);
+		System.out.println("summoner by name"+getSummonerByName("demonswill"));
+		System.out.println("summoner by id"+getSummonerByID(37268473L));
+		System.out.println("runes by id"+getRunesByID(37268473L));
+		System.out.println("masteries by id"+getMasteriesByID(37268473L));
+		System.out.println("match by id"+getMatchHistory(37268473L));
+		System.out.println("match by id from db"+getAllMatchesFromDatabase(37268473L));
 	}
 	
 	public JSONObject getSummonerByName(String sumName) throws ResponseException{		
@@ -50,12 +50,16 @@ public class SummonerLogica {
 			j = Main.api.getSummonersByNames(sumName);
 		}
 		catch(ResponseException ex){
-			if (ex.getMessage().contains("404 : Not Found")){
-				System.out.println("This summoner does not exist");
-				// TODO exeption van maken;
+			try{
+				if (ex.getMessage().contains("404 : Not Found")){
+					throw new SummonorNotExist("This summoner does not exist");
+				}
+				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+				}
 			}
-			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+			catch(SummonorNotExist ex2){
+				System.out.println(ex2.getMessage());
 			}
 			
 		}
@@ -83,15 +87,17 @@ public class SummonerLogica {
 			j = Main.api.getSummonersByIds(id.toString());
 		}
 		catch(ResponseException ex){
-			if (ex.getMessage().contains("404 : Not Found")){
-				System.out.println("This summoner does not exist");
-				return null;
-				// TODO exeption van maken;
+			try{
+				if (ex.getMessage().contains("404 : Not Found")){
+					throw new SummonorNotExist("This summoner does not exist");
+				}
+				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+				}
 			}
-			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+			catch(SummonorNotExist ex2){
+				System.out.println(ex2.getMessage());
 			}
-			
 		}
 		JSONObject summoner=null;
 		if (j!=null){
@@ -119,12 +125,16 @@ public class SummonerLogica {
 			j = Main.api.getSummonersRunes(id.toString());
 		}
 		catch(ResponseException ex){
-			if (ex.getMessage().contains("404 : Not Found")){
-				System.out.println("This summoner does not exist");
-				// TODO exeption van maken;
+			try{
+				if (ex.getMessage().contains("404 : Not Found")){
+					throw new SummonorNotExist("This summoner does not exist");
+				}
+				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+				}
 			}
-			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+			catch(SummonorNotExist ex2){
+				System.out.println(ex2.getMessage());
 			}
 			
 		}
@@ -168,14 +178,17 @@ public class SummonerLogica {
 			j = Main.api.getSummonersMasteries(id.toString());
 		}
 		catch(ResponseException ex){
-			if (ex.getMessage().contains("404 : Not Found")){
-				System.out.println("This summoner does not exist");
-				// TODO exeption van maken;
+			try{
+				if (ex.getMessage().contains("404 : Not Found")){
+					throw new SummonorNotExist("This summoner does not exist");
+				}
+				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+					// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
+				}
 			}
-			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				// TODO ALS RIOT DOWN IS NAAR EIGEN DATABASE KIJKEN				
-			}
-			
+			catch(SummonorNotExist ex2){
+				System.out.println(ex2.getMessage());
+			}			
 		}
 		JSONObject masterys = null;
 		if (j!=null){
@@ -217,12 +230,16 @@ public class SummonerLogica {
 			j = Main.api.getRecentGames(id);
 		}
 		catch(ResponseException ex){
-			if (ex.getMessage().contains("404 : Not Found")){
-				System.out.println("This summoner does not exist");
-				// TODO exeption van maken;
+			try{
+				if (ex.getMessage().contains("404 : Not Found")){
+					throw new SummonorNotExist("This summoner does not exist");
+				}
+				else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
+					getAllMatchesFromDatabase(id);
+				}
 			}
-			else if (ex.getMessage().contains("500 :")||ex.getMessage().contains("503 :")||ex.getMessage().contains("429 :")){
-				getAllMatchesFromDatabase(id);
+			catch(SummonorNotExist ex2){
+				System.out.println(ex2.getMessage());
 			}
 			
 		}
@@ -257,18 +274,19 @@ public class SummonerLogica {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public JSONObject getAllMatchesFromDatabase(Long id){
 		List list = hib.getDataFromDatabase("FROM MatchHistory WHERE summonerId = " + id + "");
-		HashMap hm = new HashMap();
+		JSONArray a = new JSONArray();
 		if (list!=null && !list.isEmpty()){
 			for (int i = 0; i < list.size(); i++) {
 				MatchHistory match = (MatchHistory)list.get(i);
 				Document matchData = couch.getDataFromDatabase(CouchDB.MATCH_HISTORY_ID+match.getGameId());
 				matchData.remove("_id");
 				matchData.remove("_rev");
-				hm.put(matchData.get(GAMEID).toString(), matchData.getJSONObject());
+				a.put(matchData);
 			}
 		}
 		JSONObject obj = new JSONObject();
-		obj.put(GAMES, hm);
+		obj.put(GAMES, a);
+		obj.put(GAMESSUMMONERID, id);
 		return obj;
 	}
 }

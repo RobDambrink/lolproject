@@ -23,13 +23,17 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		System.out.println(getAllChampionNameId());
+		/*System.out.println(getAllChampionNameId());
+		System.out.println(getAllItemsNameId());
+		System.out.println(getAllMasteriesNameId());
+		System.out.println(getAllRunesNameId());
+		System.out.println(getAllSummonerSpelNameId());
 		//System.out.println(getChampionByParselName("ann"));
-		//getItemByParselName("boot");
-		//getMasteryByParselName("cer");
-		//getRuneByParselName("lesser");
-		//getSummonerSpelByParselName("ig");
-		/*System.out.println(getChampionByName("AnnIe"));
+		/*getItemByParselName("boot");
+		getMasteryByParselName("cer");
+		getRuneByParselName("lesser");
+		getSummonerSpelByParselName("ig");
+		System.out.println(getChampionByName("AnnIe"));
 		System.out.println(getItemByName("Boots of Speed"));
 		System.out.println(getMasteryByName("Double-Edged Sword"));
 		System.out.println(getRuneByName("Lesser Mark of Attack Damage"));
@@ -49,6 +53,66 @@ public class StaticDataGet {
 			HashMap<Long,String> hm = new HashMap<Long,String>();
 			for (int i = 0; i < list.size(); i++) {
 				ChampionNameId champ = (ChampionNameId) list.get(i);
+				hm.put(champ.getId(), champ.getName());		
+			}
+			obj.putAll(hm);	
+		}
+		return obj;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public JSONObject getAllItemsNameId(){
+		List list = hib.getDataFromDatabase("FROM ItemNameId");
+		JSONObject obj = new JSONObject();
+		if (list!=null && !list.isEmpty()){
+			HashMap<Long,String> hm = new HashMap<Long,String>();
+			for (int i = 0; i < list.size(); i++) {
+				ItemNameId champ = (ItemNameId) list.get(i);
+				hm.put(champ.getId(), champ.getName());		
+			}
+			obj.putAll(hm);	
+		}
+		return obj;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public JSONObject getAllRunesNameId(){
+		List list = hib.getDataFromDatabase("FROM RuneNameId");
+		JSONObject obj = new JSONObject();
+		if (list!=null && !list.isEmpty()){
+			HashMap<Long,String> hm = new HashMap<Long,String>();
+			for (int i = 0; i < list.size(); i++) {
+				RuneNameId champ = (RuneNameId) list.get(i);
+				hm.put(champ.getId(), champ.getName());		
+			}
+			obj.putAll(hm);	
+		}
+		return obj;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public JSONObject getAllMasteriesNameId(){
+		List list = hib.getDataFromDatabase("FROM MasteryNameId");
+		JSONObject obj = new JSONObject();
+		if (list!=null && !list.isEmpty()){
+			HashMap<Long,String> hm = new HashMap<Long,String>();
+			for (int i = 0; i < list.size(); i++) {
+				MasteryNameId champ = (MasteryNameId) list.get(i);
+				hm.put(champ.getId(), champ.getName());		
+			}
+			obj.putAll(hm);	
+		}
+		return obj;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public JSONObject getAllSummonerSpelNameId(){
+		List list = hib.getDataFromDatabase("FROM SummonerSpelNameId");
+		JSONObject obj = new JSONObject();
+		if (list!=null && !list.isEmpty()){
+			HashMap<Long,String> hm = new HashMap<Long,String>();
+			for (int i = 0; i < list.size(); i++) {
+				SummonerSpelNameId champ = (SummonerSpelNameId) list.get(i);
 				hm.put(champ.getId(), champ.getName());		
 			}
 			obj.putAll(hm);	

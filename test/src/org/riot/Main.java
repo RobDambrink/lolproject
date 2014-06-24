@@ -24,12 +24,12 @@ public class Main {
 			CouchDB couch = new CouchDB();
 			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			//new StaticDataInsert(hib,couch);
-			//new StaticDataGet(hib, couch);
+			new StaticDataGet(hib, couch);
 			//new AccountLogica(hib,couch);
 			//new SummonerLogica(hib,couch);
 			//new CommentLogic(hib);
 			//new ItemBuldLogica(hib);
-			new RunePageLogic(hib);
+			//new RunePageLogic(hib);
 			//new MasteriesPageLogic(hib);
 			
 			

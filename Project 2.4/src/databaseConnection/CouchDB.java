@@ -42,7 +42,7 @@ public class CouchDB {
 		catch(JSONException e){
 			if (e.getMessage().equals("JSONObject[\"error\"] is not a JSONObject.")){
 				// TODO exeption van maken
-				System.out.println("ERROR!! THIS KEY PROBABLY EXISTED ALREADY");
+				System.out.println("ERROR!! THIS KEY PROBABLY EXISTED ALREADY(COUCH)");
 			}
 		}
 	}
