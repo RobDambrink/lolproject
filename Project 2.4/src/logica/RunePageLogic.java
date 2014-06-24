@@ -2,7 +2,8 @@ package logica;
 
 import java.util.List;
 
-import mappingHibernate.MasteryPageDatabase;
+import org.json.JSONObject;
+
 import mappingHibernate.RunePageDatabase;
 import databaseConnection.Hibernate;
 
@@ -10,8 +11,30 @@ public class RunePageLogic {
 	private Hibernate hib;
 	public RunePageLogic(Hibernate hib){
 		this.hib=hib;
-		makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
+		//makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
+		System.out.println(getRuneBuld(1l,1l));
 	}
+	
+	public JSONObject getRuneBuld(Long accoutId, Long championId){
+		List<?> list = hib.getDataFromDatabase("FROM RunePageDatabase WHERE accountId =" + accoutId +" AND championId = " + championId + "");
+		if (list!=null && !list.isEmpty()){
+			JSONObject obj = new JSONObject();
+			for (int i = 0; i < list.size(); i++) {
+				JSONObject obj2 = new JSONObject();
+				RunePageDatabase build = (RunePageDatabase)list.get(i);
+				obj2.put("name", build.getName());
+				obj2.put("accountId", build.getAccountId());
+				obj2.put("championId", build.getChampionId());
+				obj2.put("id", build.getId());
+				RunePage page = (RunePage)(ObjectToByteConvert.ByteToObject(build.getRunes()));
+				obj2.put("pages", page.getJSON());
+				obj.put("pages", obj2);
+			}
+			return obj;
+		}
+		return null;
+	}
+	
 	/**
 	 * 
 	 * @param name
@@ -44,7 +67,7 @@ public class RunePageLogic {
 	}
 	
 	public RunePageDatabase getRunePage(Long id){
-		List list = hib.getDataFromDatabase("FROM RunePageDatabase WHERE id=" + id + "");
+		List<?> list = hib.getDataFromDatabase("FROM RunePageDatabase WHERE id=" + id + "");
 		RunePageDatabase page=null;
 		if (list!=null && !list.isEmpty()){
 			page = (RunePageDatabase) list.get(0);

@@ -70,7 +70,6 @@ public class StaticDataInsert {
 	public void insertAllRunes() throws ResponseException{
 		JSONObject j = Main.api.getRuneList(RuneListData.all);
 		// name="data" that is all the data per rune
-		// name="basic" TODO uitzoeken wat dat precies is
 		JSONObject runes = (JSONObject) j.get("data");
 		for (int i = 0; i< runes.length(); i++) {
 			// get the rune key
@@ -122,7 +121,6 @@ public class StaticDataInsert {
 		// name="tree" that is the tree where lol orders the items
 		// name="data" that is all the data per item
 		// name="groups" that is how many items you can carry arround
-		// name="basic" TODO uitzoeken wat dat precies is
 		// get all the items of the champion
 		JSONObject items = (JSONObject) j.get("data");
 		for (int i = 0; i< items.length(); i++) {

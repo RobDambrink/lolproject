@@ -2,6 +2,8 @@ package logica;
 
 import java.io.Serializable;
 
+import org.json.JSONObject;
+
 public class RunePage implements Serializable {
 	
 	private static final long serialVersionUID = 34335489412165844L;
@@ -74,5 +76,21 @@ public class RunePage implements Serializable {
 	 */
 	public void setCurrent(boolean current) {
 		this.current = current;
+	}
+	
+	public JSONObject getJSON(){
+		JSONObject obj = new JSONObject();
+		obj.put(ID, id);
+		obj.put(CURRENT, current);
+		obj.put(NAME, name);
+		for (int i = 0; i < slots.length; i++) {
+			if (slots[i]!=null){
+				JSONObject obj2 = new JSONObject();
+				obj.put(RUNEID, slots[i]);
+				obj.put(RUNESLOTID, i);
+				obj.put("slots", obj2);
+			}
+		}		
+		return obj;
 	}
 }

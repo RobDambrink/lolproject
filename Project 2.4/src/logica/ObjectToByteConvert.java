@@ -18,7 +18,6 @@ public class ObjectToByteConvert {
 		  out.writeObject(obj);
 		  return bos.toByteArray();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 		  try {
@@ -44,10 +43,8 @@ public class ObjectToByteConvert {
 		  in = new ObjectInputStream(bis);
 		  return in.readObject(); 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 		  try {

@@ -44,7 +44,6 @@ public class MasteriesPageLogic {
 				obj2.put("pages", page.getJSON());
 				obj.put(build.getId().toString(), obj2);
 			}
-			System.out.println(obj);
 			return obj;
 		}
 		return null;

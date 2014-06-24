@@ -25,11 +25,11 @@ public class Main {
 			//new StaticDataInsert(hib,couch);
 			//new StaticDataGet(hib, couch);
 			//new AccountLogica(hib,couch);
-			//new SummonerLogica(hib,couch);
+			new SummonerLogica(hib,couch);
 			//new CommentLogic(hib);
 			//new ItemBuldLogica(hib);
-			//new RunePageLogic(hib);
-			new MasteriesPageLogic(hib);
+			new RunePageLogic(hib);
+			//new MasteriesPageLogic(hib);
 			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			
 			
