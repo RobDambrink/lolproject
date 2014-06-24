@@ -18,11 +18,11 @@ public class ItemBuldLogica {
 	
 	public ItemBuldLogica(Hibernate hib) throws ItemNotExist{
 		this.hib=hib;
-		//makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
-		//saveItemBuldPage();
-		//editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {1004L,1001L},1L);
-		//removeItemBuldPage(3L);
-		//getItemBuld(1l, 1l);
+		makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
+		saveItemBuldPage();
+		editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {1004L,1001L},1L);
+		removeItemBuldPage(3L);
+		getItemBuld(1l, 1l);
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -23,14 +23,13 @@ public class Main {
 			Hibernate hib = new Hibernate();
 			CouchDB couch = new CouchDB();
 			//new StaticDataInsert(hib,couch);
-			//new StaticDataGet(hib, couch);
-			//new AccountLogica(hib,couch);
-			new SummonerLogica(hib,couch);
-			//new CommentLogic(hib);
-			//new ItemBuldLogica(hib);
 			new RunePageLogic(hib);
-			//new MasteriesPageLogic(hib);
-			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
+			new MasteriesPageLogic(hib);
+			new ItemBuldLogica(hib);
+			new StaticDataGet(hib, couch);
+			new AccountLogica(hib,couch);
+			new SummonerLogica(hib,couch);
+			new CommentLogic(hib);
 			
 			
 			//tests

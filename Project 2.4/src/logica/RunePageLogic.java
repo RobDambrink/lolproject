@@ -11,7 +11,7 @@ public class RunePageLogic {
 	private Hibernate hib;
 	public RunePageLogic(Hibernate hib){
 		this.hib=hib;
-		//makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
+		makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
 		System.out.println(getRuneBuld(1l,1l));
 	}
 	

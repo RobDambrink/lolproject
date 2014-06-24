@@ -24,7 +24,7 @@ public class StaticDataGet {
 		this.hib=hib;
 		this.couch=couch;
 		
-		/*System.out.println(getChampionByID(12323334l));
+		System.out.println(getChampionByID(12323334l));
 		System.out.println(getAllChampionNameId());
 		System.out.println(getAllItemsNameId());
 		System.out.println(getAllMasteriesNameId());
@@ -44,7 +44,7 @@ public class StaticDataGet {
 		System.out.println(getItemByID(3105L));
 		System.out.println(getMasteryByID(4214L));
 		System.out.println(getRuneByID(5063L));
-		System.out.println(getSummonerSpelByID(7L));*/
+		System.out.println(getSummonerSpelByID(7L));
 	}
 	
 	@SuppressWarnings("rawtypes")

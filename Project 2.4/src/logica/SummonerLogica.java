@@ -251,15 +251,11 @@ public class SummonerLogica {
 				Long gameId = Long.parseLong(games.get(GAMEID).toString());
 				Long check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MatchHistory WHERE summonerId=" + id + " AND gameId=" + gameId + "");
 				if (check == null){
-					// check if game exist
-					check = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM MatchHistory WHERE gameId=" + gameId + "");
-					if (check == null){
-						// add to couch
-						Document doc = new Document();
-						doc.putAll(ConvertJSONToMap.toMap(games));
-						// add the document to the couchdb
-						couch.addDataToDatabase(doc, CouchDB.MATCH_HISTORY_ID+gameId);
-					}
+					// add to couch
+					Document doc = new Document();
+					doc.putAll(ConvertJSONToMap.toMap(games));
+					// add the document to the couchdb
+					couch.addDataToDatabase(doc, CouchDB.MATCH_HISTORY_ID+gameId);
 					// add to mysql
 					MatchHistory match = new MatchHistory();
 					match.setGameId(gameId);
