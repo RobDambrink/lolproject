@@ -23,6 +23,7 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
+		
 		/*System.out.println(getChampionByID(12323334l));
 		System.out.println(getAllChampionNameId());
 		System.out.println(getAllItemsNameId());
