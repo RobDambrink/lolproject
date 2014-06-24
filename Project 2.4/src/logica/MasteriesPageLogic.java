@@ -1,25 +1,56 @@
 package logica;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
+
+import org.json.JSONObject;
 
 import mappingHibernate.MasteryPageDatabase;
 import databaseConnection.Hibernate;
+import exeption.MasteryNotExist;
 
 public class MasteriesPageLogic {
 	private Hibernate hib;
 	private String name;
 	private MasteryPage masteryPage = new MasteryPage();
 	
-	public MasteriesPageLogic(Hibernate hib){
+	public MasteriesPageLogic(Hibernate hib) throws MasteryNotExist{
 		this.hib=hib;
-		makeMasteryPage("testPage",null);
-		//addMasteryToMasteryPage(1234, 1);
+		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+		hm.put(4111, 1);
+		hm.put(4112, 2);
+		hm.put(4113, 3);
+		makeMasteryPage("testPage",hm);
+		addMasteryToMasteryPage(4141, 1);
 		saveMasteryPage(1L,1L);
-		editMasteryPage(1L, "testPageEdit2", new Integer[] {1234,2},1L);
+		editMasteryPage(1L, "testPageEdit2", hm,1L);
 		removeMasteryPage(2L);
+		getMasteryBuld(1l,1l);
 	}
 	
-	public void editMasteryPage(Long id, String name, Integer[] masteries, Long championId){
+	public JSONObject getMasteryBuld(Long accoutId, Long championId){
+		List<?> list = hib.getDataFromDatabase("FROM MasteryPageDatabase WHERE accountId =" + accoutId +" AND championId = " + championId + "");
+		if (list!=null && !list.isEmpty()){
+			JSONObject obj = new JSONObject();
+			for (int i = 0; i < list.size(); i++) {
+				JSONObject obj2 = new JSONObject();
+				MasteryPageDatabase build = (MasteryPageDatabase)list.get(i);
+				obj2.put("name", build.getName());
+				obj2.put("accountId", build.getAccountId());
+				obj2.put("championId", build.getChampionId());
+				obj2.put("id", build.getId());
+				MasteryPage page = (MasteryPage)(ObjectToByteConvert.ByteToObject(build.getMasteriesPages()));
+				obj2.put("pages", page.getJSON());
+				obj.put(build.getId().toString(), obj2);
+			}
+			System.out.println(obj);
+			return obj;
+		}
+		return null;
+	}
+	
+	public void editMasteryPage(Long id, String name, HashMap<Integer,Integer> masteries, Long championId){
 		MasteryPageDatabase page=  getMasteryPage(id);
 		page.setName(name);
 		MasteryPage page2= new MasteryPage();
@@ -43,18 +74,26 @@ public class MasteriesPageLogic {
 	/**
 	 * Make a new MasteryPage
 	 * @param name
-	 * @param masteries
+	 * @param masteries <id,rank>
+	 * @throws MasteryNotExist 
 	 */
-	public void makeMasteryPage(String name, Integer[] masteries){
+	public void makeMasteryPage(String name, HashMap<Integer,Integer> masteries) throws MasteryNotExist{
 		this.name=name;
+		
 		masteryPage.setName(name);
-		masteryPage.setMasteries(masteries);		
+		for(Entry<Integer, Integer> entry : masteries.entrySet()) {
+			Integer id = entry.getKey();
+			Integer rank = entry.getValue();
+			addMasteryToMasteryPage(id,rank);
+		}
 	}
 
 	
-	/*public void addMasteryToMasteryPage(Integer MasteryId, Integer MasteryRank){
+	public void addMasteryToMasteryPage(Integer MasteryId, Integer MasteryRank) throws MasteryNotExist{
+		if (hib.getOneValueFromTheDatabase("SELECT id FROM MasteryNameId WHERE id = " + MasteryId + ")")==null)
+			throw new MasteryNotExist("This item does not exist");
 		masteryPage.addItemToMastery(MasteryId, MasteryRank);
-	}*/
+	}
 	
 	public void saveMasteryPage(Long accountId, Long championId){
 		MasteryPageDatabase mastery = new MasteryPageDatabase();

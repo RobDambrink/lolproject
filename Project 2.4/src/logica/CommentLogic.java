@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.json.JSONObject;
 import databaseConnection.Hibernate;
 import exeption.ItemNotExist;
+import exeption.MasteryNotExist;
 import exeption.PageNotExist;
 import mappingHibernate.BuildComment;
 import mappingHibernate.Comments;
@@ -18,7 +19,7 @@ public class CommentLogic {
 	public static final String MASTERYBULD ="mastery";
 	
 	private Hibernate hib;
-	public CommentLogic(Hibernate hib) throws PageNotExist, ItemNotExist{
+	public CommentLogic(Hibernate hib) throws PageNotExist, ItemNotExist, MasteryNotExist{
 		this.hib=hib;
 		addComment(ITEMBULD, "bla bla test item", 1L, 1L);
 		addComment(RUNESBULD, "bla bla test rune", 1L, 2L);
@@ -36,8 +37,9 @@ public class CommentLogic {
 	 * @param comment the comment
 	 * @throws PageNotExist 
 	 * @throws ItemNotExist 
+	 * @throws MasteryNotExist 
 	 */
-	public void addComment(String kind, String comment, Long accountId, Long id) throws PageNotExist, ItemNotExist{
+	public void addComment(String kind, String comment, Long accountId, Long id) throws PageNotExist, ItemNotExist, MasteryNotExist{
 		 switch (kind) {
          case ITEMBULD:	
         	 ItemBuldLogica itemBuld = new ItemBuldLogica(hib);

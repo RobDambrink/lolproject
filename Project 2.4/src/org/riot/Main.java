@@ -27,9 +27,9 @@ public class Main {
 			//new AccountLogica(hib,couch);
 			//new SummonerLogica(hib,couch);
 			//new CommentLogic(hib);
-			new ItemBuldLogica(hib);
+			//new ItemBuldLogica(hib);
 			//new RunePageLogic(hib);
-			//new MasteriesPageLogic(hib);
+			new MasteriesPageLogic(hib);
 			//ItemBuldLogica itemBuld = new ItemBuldLogica(hib);
 			
 			

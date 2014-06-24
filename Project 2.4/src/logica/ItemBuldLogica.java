@@ -40,6 +40,7 @@ public class ItemBuldLogica {
 				obj2.put("pages", (HashMap<String,Long[]>)ObjectToByteConvert.ByteToObject(build.getItemPages()));
 				obj.put(build.getId().toString(), obj2);
 			}
+			return obj;
 		}
 		return null;
 	}

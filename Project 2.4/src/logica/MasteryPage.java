@@ -1,6 +1,10 @@
 package logica;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import org.json.JSONObject;
 
 public class MasteryPage implements Serializable{
 
@@ -13,7 +17,7 @@ public class MasteryPage implements Serializable{
 	public static final String MASTERYRANK="rank";
 	
 	private Long id;
-	private Integer[] masteries = new Integer[9999];
+	private HashMap<Integer,Integer> masteries = new HashMap<Integer,Integer>();
 	private String name;
 	private boolean current=false;
 	
@@ -32,17 +36,14 @@ public class MasteryPage implements Serializable{
 	/**
 	 * @return the masteries
 	 */
-	public Integer[] getMasteries() {
+	public HashMap<Integer, Integer> getMasteries() {
 		return masteries;
 	}
 	/**
 	 * @param masteries the masteries to set
 	 */
-	public void setMasteries(Integer[] masteries) {
-		if (masteries==null)
-			this.masteries = new Integer[9999];
-		else
-			this.masteries = masteries;
+	public void setMasteries(HashMap<Integer,Integer> masteries) {
+		this.masteries = masteries;
 	}
 	/**
 	 * @return the name
@@ -69,7 +70,22 @@ public class MasteryPage implements Serializable{
 		this.current = current;
 	}
 	public void addItemToMastery(int id, int rank) {
-		masteries[id] = rank;
-		
+		masteries.put(id, rank);
+	}
+	
+	public JSONObject getJSON(){
+		JSONObject obj = new JSONObject();
+		for(Entry<Integer, Integer> entry : masteries.entrySet()) {
+			Integer id = entry.getKey();
+			Integer rank = entry.getValue();
+			JSONObject obj2 = new JSONObject();
+			obj2.put(MASTERYID, id);
+			obj2.put(MASTERYRANK, rank);
+			obj.put(MASTERIES, obj2);
+		}
+		obj.put(ID, id);
+		obj.put(NAME, name);
+		obj.put(CURRENT, current);
+		return obj;
 	}
 }
