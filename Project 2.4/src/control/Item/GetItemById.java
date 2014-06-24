@@ -1,4 +1,4 @@
-package control.Account;
+package control.Item;
 
 import java.io.IOException;
 
@@ -8,29 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import databaseConnection.CouchDB;
+import databaseConnection.Hibernate;
+import logica.StaticDataGet;
+import util.JSONUtility;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
-import org.riot.ResponseException;
-
-import databaseConnection.CouchDB;
-import databaseConnection.Hibernate;
-import logica.AccountLogica;
-import logica.MD5Hashing;
-import util.JSONUtility;
-
 /**
- * Servlet implementation class Login
+ * Servlet implementation class GetItemById
  */
-@WebServlet("/Account/Login")
-public class Login extends HttpServlet {
+@WebServlet(description = "Get an item by id", urlPatterns = { "/Item/GetById" })
+public class GetItemById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public GetItemById() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -44,24 +41,18 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		int status = AccountLogica.ERROR;
 		try {
-			AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
-			status = al.login(username, password);
-			if(status == AccountLogica.OK) {
-				MD5Hashing md = new MD5Hashing();
-				JSONObject json = new JSONObject();
-				json.put("session", md.getMD5Hash(username));
-				json.put("success", true);
+			long id = Long.parseLong(request.getParameter("id"));
+			StaticDataGet sdg = new StaticDataGet(new Hibernate(), new CouchDB());
+			JSONObject json = sdg.getItemByID(id);
+			if(json != null) 
 				JSONUtility.returnJSON(response, json);
-			} else {
-				JSONUtility.sendError(response, "Username/password incorrect");
-			}
-		} catch (ResponseException e) {
-			JSONUtility.sendError(response, "Something went wrong. Try again later.");
+			else 
+				JSONUtility.sendError(response, "Item not found.");
+		} catch (NumberFormatException e) {
+			JSONUtility.sendError(response, "Id not in correct format.");
 		}
+		
 	}
 
 }
