@@ -43,7 +43,7 @@ public class GetRuneById extends HttpServlet {
 			long id = Long.parseLong(request.getParameter("id"));
 			JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getRuneByID(id);
 			if(json != null) 
-				JSONUtility.returnJSON(response, json);
+				JSONUtility.sendJSON(response, json);
 			else
 				JSONUtility.sendError(response, "Rune not found.");
 		} catch (NumberFormatException e) {

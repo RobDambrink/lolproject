@@ -46,7 +46,7 @@ public class GetItemById extends HttpServlet {
 			StaticDataGet sdg = new StaticDataGet(new Hibernate(), new CouchDB());
 			JSONObject json = sdg.getItemByID(id);
 			if(json != null) 
-				JSONUtility.returnJSON(response, json);
+				JSONUtility.sendJSON(response, json);
 			else 
 				JSONUtility.sendError(response, "Item not found.");
 		} catch (NumberFormatException e) {

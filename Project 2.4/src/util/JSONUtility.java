@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class JSONUtility {
 
-	public static void returnJSON(HttpServletResponse response, net.sf.json.JSONObject json)
+	public static void sendJSON(HttpServletResponse response, net.sf.json.JSONObject json)
 			throws IOException {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
@@ -17,7 +17,7 @@ public class JSONUtility {
 		out.flush();
 	}
 	
-	public static void returnJSON(HttpServletResponse response, JSONObject json)
+	public static void sendJSON(HttpServletResponse response, JSONObject json)
 			throws IOException {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
@@ -29,14 +29,14 @@ public class JSONUtility {
 		JSONObject json = new JSONObject();
 		json.put("error", message);
 		json.put("success", false);
-		returnJSON(response, json);
+		sendJSON(response, json);
 	}
 	
 	public static void sendOK(HttpServletResponse response, boolean ok) throws IOException {
 		JSONObject json = new JSONObject();
 		json.put("success", ok);
 		if(!ok) json.put("error", "Something went wrong! Try again later.");
-		returnJSON(response, json);
+		sendJSON(response, json);
 		
 	}
 }

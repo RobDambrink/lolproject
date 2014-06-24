@@ -46,7 +46,7 @@ public class GetSummonerById extends HttpServlet {
 			long id = Long.parseLong(request.getParameter("id"));
 			JSONObject json = new SummonerLogica(new Hibernate(), new CouchDB()).getSummonerByID(id);
 			if(json != null) 
-				JSONUtility.returnJSON(response, json);
+				JSONUtility.sendJSON(response, json);
 			else
 				JSONUtility.sendError(response, "Summoner not found.");
 		} catch (NumberFormatException e) {

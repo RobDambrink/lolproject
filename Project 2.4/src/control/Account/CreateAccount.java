@@ -14,6 +14,8 @@ import org.riot.ResponseException;
 import util.JSONUtility;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
+import exeption.NameNotExist;
+import exeption.SummonerNotExist;
 import logica.AccountLogica;
 import logica.SummonerLogica;
 
@@ -55,13 +57,15 @@ public class CreateAccount extends HttpServlet {
 			JSONObject json = new JSONObject();
 			json.put("username", username);
 			json.put("success", true);
-			JSONUtility.returnJSON(response, json);
+			JSONUtility.sendJSON(response, json);
 		} catch (ResponseException | NumberFormatException e) {
 			JSONObject json = new JSONObject();
 			json.put("success", false);
 			json.put("error", e.getMessage());
-			JSONUtility.returnJSON(response, json);
-		} 
+			JSONUtility.sendJSON(response, json);
+		} catch(NameNotExist | SummonerNotExist e) {
+			JSONUtility.sendError(response, "Summoner not found.");
+		}
 	}
 
 }
