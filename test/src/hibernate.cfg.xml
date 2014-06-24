@@ -39,5 +39,6 @@
 		<mapping resource="mappingHibernate/MasteryComment.hbm.xml"/>
 		<mapping resource="mappingHibernate/Build.hbm.xml"/>
 		<mapping resource="mappingHibernate/MasteryPageDatabase.hbm.xml"/>
+		<mapping resource="mappingHibernate/RunePageDatabase.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

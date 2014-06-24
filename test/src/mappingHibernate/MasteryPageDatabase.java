@@ -7,6 +7,7 @@ public class MasteryPageDatabase {
 	private String name;
 	private byte[] masteriesPages;
 	private Long accountId;
+	private Long championId;
 	
 	/**
 	 * @return the name
@@ -84,6 +85,20 @@ public class MasteryPageDatabase {
 	 */
 	public void setMasteriesPages(byte[] masteriesPages) {
 		this.masteriesPages = masteriesPages;
+	}
+
+	/**
+	 * @return the championId
+	 */
+	public Long getChampionId() {
+		return championId;
+	}
+
+	/**
+	 * @param championId the championId to set
+	 */
+	public void setChampionId(Long championId) {
+		this.championId = championId;
 	}
 	
 }

@@ -4,6 +4,7 @@ import logica.AccountLogica;
 import logica.CommentLogic;
 import logica.ItemBuldLogica;
 import logica.MasteriesPageLogic;
+import logica.RunePageLogic;
 import logica.StaticDataGet;
 import logica.StaticDataInsert;
 import logica.SummonerLogica;
@@ -28,7 +29,8 @@ public class Main {
 			//new SummonerLogica(hib,couch);
 			//new CommentLogic(hib);
 			//new ItemBuldLogica(hib);
-			new MasteriesPageLogic(hib);
+			new RunePageLogic(hib);
+			//new MasteriesPageLogic(hib);
 			
 			
 			//tests

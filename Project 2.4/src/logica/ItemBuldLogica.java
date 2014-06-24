@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.HashMap;
+import java.util.List;
 
 import mappingHibernate.Build;
 import databaseConnection.Hibernate;
@@ -16,7 +17,28 @@ public class ItemBuldLogica {
 		this.hib=hib;
 		makeItemBuldPage("testName", "itemName", new Long[] {12L,11L},1L,1L);
 		saveItemBuldPage();
+		editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {12L,11L},1L);
+		removeItemBuldPage(3L);
 		// TODO edit itembuld
+	}
+	
+	public void editItemBuldPage(Long id, String name, String itemName, Long[] items, Long championId){
+		Build build = getBuild(id);
+		addItemBlok(namePage, items);
+		build.setItemPages(ObjectToByteConvert.ObjectToByteArray(hm));
+		build.setChampionId(championId);
+		build.setName(name);
+		hib.updateToDatabse(build);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Build getBuild(Long id){
+		List list = hib.getDataFromDatabase("FROM Build WHERE id=" + id + "");
+		Build page=null;
+		if (list!=null && !list.isEmpty()){
+			page = (Build) list.get(0);
+		}
+		return page;
 	}
 	
 	public void makeItemBuldPage(String namePage, String itemName, Long[] items, Long accountId, Long championId){
@@ -33,6 +55,11 @@ public class ItemBuldLogica {
 		build.setItemPages(ObjectToByteConvert.ObjectToByteArray(hm));
 		build.setChampionId(championId);
 		hib.addToDatabase(build);
+	}
+	
+	public void removeItemBuldPage(Long id){
+		hib.deleteFromDatabase("FROM Build WHERE id =" + id + "");
+		
 	}
 	
 	/**
