@@ -36,5 +36,7 @@
 	<classpathentry kind="lib" path="view/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="view/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="view/WEB-INF/lib/slf4j-simple-1.7.7.jar"/>
+	<classpathentry kind="lib" path="view/WEB-INF/lib/cors-filter-1.9.jar"/>
+	<classpathentry kind="lib" path="view/WEB-INF/lib/java-property-utils-1.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
