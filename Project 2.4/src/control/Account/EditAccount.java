@@ -46,10 +46,7 @@ public class EditAccount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Long username = new AccountLogica(new Hibernate(), new CouchDB()).getIdByName(request.getParameter("username"));
-			if(username == null) {
-				JSONUtility.sendError(response, "No valid id");
-			}
+			Long username = Long.parseLong(request.getParameter("username"));
 			String password = request.getParameter("password");
 			Long summoner = new SummonerLogica(new Hibernate(), new CouchDB()).getSummonerByName(request.getParameter("summoner")).getLong("id");
 			Hibernate h = new Hibernate();
