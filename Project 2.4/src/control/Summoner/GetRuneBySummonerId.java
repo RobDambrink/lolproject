@@ -1,4 +1,4 @@
-package control.Rune;
+package control.Summoner;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ import util.JSONUtility;
 /**
  * Servlet implementation class GetRuneBySummonerId
  */
-@WebServlet("/Rune/GetBySummonerId")
+@WebServlet("/Summoner/GetRunes")
 public class GetRuneBySummonerId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
