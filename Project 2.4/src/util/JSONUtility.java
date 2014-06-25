@@ -28,7 +28,7 @@ public class JSONUtility {
 		} catch (JSONException e) {
 			hasSuccess = false;
 		}
-		if(!hasSuccess) json.put("success", false);
+		if(!hasSuccess) json.put("success", true);
 		
 		PrintWriter out = response.getWriter();
 		out.print(json);
