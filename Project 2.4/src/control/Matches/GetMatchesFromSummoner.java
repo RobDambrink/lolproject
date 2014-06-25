@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import org.riot.ResponseException;
 
 import databaseConnection.CouchDB;
@@ -44,8 +46,11 @@ public class GetMatchesFromSummoner extends HttpServlet {
 		try {
 			long id = Long.parseLong(request.getParameter("id"));
 			SummonerLogica sl = new SummonerLogica(new Hibernate(), new CouchDB());
-			sl.getMatchHistory(id);
-			JSONUtility.sendJSON(response, sl.getAllMatchesFromDatabase(id));
+			JSONObject json = sl.getMatchHistory(id);
+			if(json != null)
+				JSONUtility.sendJSON(response,json);
+			else 
+				JSONUtility.sendError(response, "No matches found.");
 		} catch(NumberFormatException e) {
 			JSONUtility.sendError(response, "Invalid format.");
 		} catch (ResponseException e) {
