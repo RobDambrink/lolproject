@@ -14,9 +14,9 @@ public class ItemBuldLogica {
 	private List<ItemBuldBlock> itemBlockList = new ArrayList<ItemBuldBlock>();
 	private Hibernate hib;
 	
-	public ItemBuldLogica(Hibernate hib) throws ItemNotExist{
+	public ItemBuldLogica(Hibernate hib){
 		this.hib=hib;
-		itemBlockList.add(new ItemBuldBlock("test", new Long[] {1001l,1002l}));
+		/*itemBlockList.add(new ItemBuldBlock("test", new Long[] {1001l,1002l}));
 		makeItemBuldPage("Namepage", 1l, 1l, itemBlockList);
 		editItemBuldPage(1l, "NamepageEdit", itemBlockList);
 		/*System.out.println(getItemBuldByItemBuldId(1l));
@@ -61,7 +61,7 @@ public class ItemBuldLogica {
 		return null;
 	}
 	
-	public void makeItemBuldPage(String namePage, Long accountId, Long championId, List<ItemBuldBlock> itemBuldBlock) throws ItemNotExist{
+	public void makeItemBuldPage(String namePage, Long accountId, Long championId, List<ItemBuldBlock> itemBuldBlock){
 		this.itemBlockList=itemBuldBlock;
 		Build build = new Build();
 		build.setAccountId(accountId);
@@ -80,7 +80,7 @@ public class ItemBuldLogica {
 	 * @param championId
 	 * @throws ItemNotExist
 	 */
-	public void editItemBuldPage(Long id, String name, List<ItemBuldBlock> itemBuldBlock) throws ItemNotExist{
+	public void editItemBuldPage(Long id, String name, List<ItemBuldBlock> itemBuldBlock){
 		Build build = getBuild(id);
 		if (build!=null){
 			build.setItemPages(ObjectToByteConvert.ObjectToByteArray(itemBuldBlock));
