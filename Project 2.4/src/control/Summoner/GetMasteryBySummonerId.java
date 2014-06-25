@@ -1,4 +1,4 @@
-package control.Mastery;
+package control.Summoner;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ import util.JSONUtility;
 /**
  * Servlet implementation class GetRuneBySummonerId
  */
-@WebServlet("/Mastery/GetBySummonerId")
+@WebServlet("/Summoner/GetMasteries")
 public class GetMasteryBySummonerId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
