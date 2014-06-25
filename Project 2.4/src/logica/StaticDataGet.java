@@ -24,7 +24,7 @@ public class StaticDataGet {
 		this.hib=hib;
 		this.couch=couch;
 
-		System.out.println(getAllChampionNameId());
+		/*System.out.println(getAllChampionNameId());
 		/*System.out.println(getChampionByID(12323334l));
 		
 		System.out.println(getAllItemsNameId());

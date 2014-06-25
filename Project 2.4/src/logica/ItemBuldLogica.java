@@ -16,17 +16,17 @@ public class ItemBuldLogica {
 	private HashMap<String,Long[]> hm = new HashMap<String, Long[]>();
 	private Hibernate hib;
 	
-	public ItemBuldLogica(Hibernate hib) throws ItemNotExist{
+	public ItemBuldLogica(Hibernate hib){
 		this.hib=hib;
 		/*makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
 		saveItemBuldPage();
 		editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {1004L,1001L},1L);
 		removeItemBuldPage(3L);
 		getItemBuldByAccountIdChampionId(1l, 1l);*/
-		System.out.println(getItemBuldByItemBuldId(1l));
+		/*System.out.println(getItemBuldByItemBuldId(1l));
 		System.out.println(getItemBuldByChampionId(1l));
 		System.out.println(getItemBuldByAccountId(1l));
-		System.out.println(getItemBuldByAccountIdChampionId(1l,1L));
+		System.out.println(getItemBuldByAccountIdChampionId(1l,1L));*/
 	}
 
 	public JSONObject getItemBuldByItemBuldId(Long id){

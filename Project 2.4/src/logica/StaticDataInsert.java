@@ -21,16 +21,16 @@ public class StaticDataInsert {
 	private Hibernate hib;
 	private CouchDB couch;
 	
-	public StaticDataInsert(Hibernate hib, CouchDB couch) throws ResponseException{
+	public StaticDataInsert(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		removeAllStaticData();
+		/*removeAllStaticData();
 		insertAllChampions();
 		insertAllItems();
 		insertAllMasterys();
 		insertAllRunes();
 		insertAllSummonerSpel();
-		System.out.println("all done");
+		System.out.println("all done");*/
 	}
 	
 	public void removeAllStaticData(){

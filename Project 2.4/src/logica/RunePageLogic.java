@@ -11,11 +11,11 @@ public class RunePageLogic {
 	private Hibernate hib;
 	public RunePageLogic(Hibernate hib){
 		this.hib=hib;
-		makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
+		/*makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
 		System.out.println(getMasteryBuldByItemBuldId(1l));
 		System.out.println(getMasteryBuldByChampionId(1l));
 		System.out.println(getMasteryBuldByAccountId(1l));
-		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1L));
+		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1L));*/
 	}
 	
 	public JSONObject getMasteryBuldByItemBuldId(Long id){

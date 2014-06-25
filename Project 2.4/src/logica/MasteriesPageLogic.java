@@ -15,7 +15,7 @@ public class MasteriesPageLogic {
 	private String name;
 	private MasteryPage masteryPage = new MasteryPage();
 	
-	public MasteriesPageLogic(Hibernate hib) throws MasteryNotExist{
+	public MasteriesPageLogic(Hibernate hib){
 		this.hib=hib;
 		/*HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
 		hm.put(4111, 1);
@@ -26,10 +26,10 @@ public class MasteriesPageLogic {
 		saveMasteryPage(1L,1L);
 		editMasteryPage(1L, "testPageEdit2", hm,1L);
 		removeMasteryPage(2L);*/
-		System.out.println(getMasteryBuldByItemBuldId(1l));
+		/*System.out.println(getMasteryBuldByItemBuldId(1l));
 		System.out.println(getMasteryBuldByChampionId(1l));
 		System.out.println(getMasteryBuldByAccountId(1l));
-		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1l));
+		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1l));*/
 	}
 	
 	public JSONObject getMasteryBuldByItemBuldId(Long id){

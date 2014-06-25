@@ -2,7 +2,6 @@ package logica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -35,10 +34,10 @@ public class SummonerLogica {
 	public static final String GAMES="games";
 	public static final String GAMEID="gameId";
 	public static final String GAMESSUMMONERID="summonerId";	
-	public SummonerLogica(Hibernate hib,CouchDB couch) throws ResponseException, IOException{
+	public SummonerLogica(Hibernate hib,CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		System.out.println("summoner by name"+getSummonerByName("DemonsWill"));
+		/*System.out.println("summoner by name"+getSummonerByName("DemonsWill"));
 		/*System.out.println("summoner by name"+getSummonerByNameFromDatabase("demonswill"));
 		System.out.println("summoner by id"+getSummonerByID(37268473L));
 		System.out.println("summoner by id"+getSummonerByIDFromDatabase(37268473L));

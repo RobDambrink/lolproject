@@ -19,14 +19,14 @@ public class CommentLogic {
 	public static final String MASTERYBULD ="mastery";
 	
 	private Hibernate hib;
-	public CommentLogic(Hibernate hib) throws PageNotExist, ItemNotExist, MasteryNotExist{
+	public CommentLogic(Hibernate hib){
 		this.hib=hib;
-		addComment(ITEMBULD, "bla bla test item", 1L, 1L);
+		/*addComment(ITEMBULD, "bla bla test item", 1L, 1L);
 		addComment(RUNESBULD, "bla bla test rune", 1L, 1L);
 		addComment(MASTERYBULD, "bla bla test mastery", 1L, 1L);
 		System.out.println(getComments(1l,ITEMBULD));
 		System.out.println(getComments(2l,RUNESBULD));
-		System.out.println(getComments(3l,MASTERYBULD));
+		System.out.println(getComments(3l,MASTERYBULD));*/
 	}
 	
 	/**
