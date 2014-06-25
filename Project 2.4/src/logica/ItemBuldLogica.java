@@ -18,16 +18,37 @@ public class ItemBuldLogica {
 	
 	public ItemBuldLogica(Hibernate hib) throws ItemNotExist{
 		this.hib=hib;
-		makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
+		/*makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
 		saveItemBuldPage();
 		editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {1004L,1001L},1L);
 		removeItemBuldPage(3L);
-		getItemBuld(1l, 1l);
+		getItemBuldByAccountIdChampionId(1l, 1l);*/
+		System.out.println(getItemBuldByItemBuldId(1l));
+		System.out.println(getItemBuldByChampionId(1l));
+		System.out.println(getItemBuldByAccountId(1l));
+		System.out.println(getItemBuldByAccountIdChampionId(1l,1L));
+	}
+
+	public JSONObject getItemBuldByItemBuldId(Long id){
+		return getItemBuldByQuery("FROM Build WHERE id = " + id + "");
+	}
+	
+	
+	public JSONObject getItemBuldByChampionId(Long championId){
+		return getItemBuldByQuery("FROM Build WHERE championId = " + championId + "");
+	}
+	
+	public JSONObject getItemBuldByAccountId(Long accountId){
+		return getItemBuldByQuery("FROM Build WHERE accountId =" + accountId +"");
+	}
+	
+	public JSONObject getItemBuldByAccountIdChampionId(Long accountId, Long championId){
+		return getItemBuldByQuery("FROM Build WHERE accountId =" + accountId +" AND championId = " + championId + "");
 	}
 	
 	@SuppressWarnings("unchecked")
-	public JSONObject getItemBuld(Long accoutId, Long championId){
-		List<?> list = hib.getDataFromDatabase("FROM Build WHERE accountId =" + accoutId +" AND championId = " + championId + "");
+	public JSONObject getItemBuldByQuery(String query){
+		List<?> list = hib.getDataFromDatabase(query);
 		if (list!=null && !list.isEmpty()){
 			JSONObject obj = new JSONObject();
 			for (int i = 0; i < list.size(); i++) {

@@ -38,8 +38,8 @@ public class SummonerLogica {
 	public SummonerLogica(Hibernate hib,CouchDB couch) throws ResponseException, IOException{
 		this.hib=hib;
 		this.couch=couch;
-		System.out.println("summoner by name"+getSummonerByName("demonswill"));
-		System.out.println("summoner by name"+getSummonerByNameFromDatabase("demonswill"));
+		System.out.println("summoner by name"+getSummonerByName("DemonsWill"));
+		/*System.out.println("summoner by name"+getSummonerByNameFromDatabase("demonswill"));
 		System.out.println("summoner by id"+getSummonerByID(37268473L));
 		System.out.println("summoner by id"+getSummonerByIDFromDatabase(37268473L));
 		System.out.println("runes by id"+getRunesByID(37268473L));
@@ -47,7 +47,7 @@ public class SummonerLogica {
 		System.out.println("masteries by id"+getMasteriesByID(37268473L));
 		System.out.println("masteries by id"+getMasteriesByIDFromDataBase(37268473L));
 		System.out.println("match by id"+getMatchHistory(37268473L));
-		System.out.println("match by id from db"+getAllMatchesFromDatabase(37268473L));
+		System.out.println("match by id from db"+getAllMatchesFromDatabase(37268473L));*/
 	}
 	
 	private JSONObject getSummonerByNameFromDatabase(String sumName){
@@ -86,7 +86,7 @@ public class SummonerLogica {
 		}
 		JSONObject summoner=null;
 		if (j!=null){
-			summoner = (JSONObject) j.get(sumName);
+			summoner = (JSONObject) j.get(sumName.toLowerCase());
 			Summoner sum = new Summoner();
 			String check = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Summoner WHERE id=" + Long.parseLong(summoner.get(SUMMONERID).toString()) + "");
 			if (check!=null){
