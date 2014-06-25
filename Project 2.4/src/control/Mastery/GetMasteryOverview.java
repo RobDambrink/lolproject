@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import logica.StaticDataGet;
 import util.JSONUtility;
 import databaseConnection.CouchDB;
@@ -25,21 +26,24 @@ public class GetMasteryOverview extends HttpServlet {
      */
     public GetMasteryOverview() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		this.doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONUtility.sendJSON(response, new StaticDataGet(new Hibernate(), new CouchDB()).getAllMasteriesNameId());
+		JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getAllMasteriesNameId();
+		if(json != null)
+			JSONUtility.sendJSON(response, json);
+		else 
+			JSONUtility.sendError(response, "Something went wrong while loading masteries.");
 	}
 
 }
