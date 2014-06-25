@@ -68,8 +68,10 @@ public class CreateAccount extends HttpServlet {
 			json.put("success", false);
 			json.put("error", e.getMessage());
 			JSONUtility.sendJSON(response, json);
-		} catch(NameNotExist | SummonerNotExist e) {
+		} catch(SummonerNotExist e) {
 			JSONUtility.sendError(response, "Summoner not found.");
+		} catch(NameNotExist e) {
+			JSONUtility.sendError(response, "Name all ready exist.");
 		}
 	}
 
