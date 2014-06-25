@@ -340,6 +340,17 @@ public class SummonerLogica {
 		return masterys;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public JSONObject getMatchById(Long id){
+		Document matchData = couch.getDataFromDatabase(CouchDB.MATCH_HISTORY_ID+id);
+		if (matchData!=null){
+			matchData.remove("_id");
+			matchData.remove("_rev");
+		}
+		JSONObject obj = new JSONObject().put(GAMES,matchData.getJSONObject());
+		return obj;
+	}
+	
 	public JSONObject getMatchHistory(Long id){
 		JSONObject j = null;
 		try{
