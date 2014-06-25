@@ -27,6 +27,7 @@ public class JSONUtility {
 	
 	public static void sendError(HttpServletResponse response, String message) throws IOException {
 		JSONObject json = new JSONObject();
+		response.setContentType("application/json");
 		json.put("error", message);
 		json.put("success", false);
 		sendJSON(response, json);
@@ -34,6 +35,7 @@ public class JSONUtility {
 	
 	public static void sendOK(HttpServletResponse response, boolean ok) throws IOException {
 		JSONObject json = new JSONObject();
+		response.setContentType("application/json");
 		json.put("success", ok);
 		if(!ok) json.put("error", "Something went wrong! Try again later.");
 		sendJSON(response, json);

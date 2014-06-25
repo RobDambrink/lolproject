@@ -51,9 +51,7 @@ public class GetSummonerById extends HttpServlet {
 				JSONUtility.sendError(response, "Summoner not found.");
 		} catch (NumberFormatException e) {
 			JSONUtility.sendError(response, "Id not in correct format.");
-		} catch (ResponseException e) {
-			JSONUtility.sendError(response, "Something went wrong.");
-		}
+		} 
 	}
 
 }

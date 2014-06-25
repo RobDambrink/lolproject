@@ -1,4 +1,4 @@
-package control.Matches;
+package control.Custom.Build;
 
 import java.io.IOException;
 
@@ -9,27 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
-
-import org.riot.ResponseException;
-
-import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.SummonerLogica;
+import logica.ItemBuldLogica;
 import util.JSONUtility;
 
 /**
- * Servlet implementation class GetMatchesFromSummoner
+ * Servlet implementation class GetBuildById
  */
-@WebServlet(description = "Get all matches from a summoner", urlPatterns = { "/Summoner/GetMatchesBySummonerId" })
-public class GetMatchesFromSummoner extends HttpServlet {
+@WebServlet("/Custom/Build/GetById")
+public class GetBuildById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetMatchesFromSummoner() {
+    public GetBuildById() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -45,15 +40,14 @@ public class GetMatchesFromSummoner extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			long id = Long.parseLong(request.getParameter("id"));
-			SummonerLogica sl = new SummonerLogica(new Hibernate(), new CouchDB());
-			JSONObject json = sl.getMatchHistory(id);
-			if(json != null)
-				JSONUtility.sendJSON(response,json);
+			JSONObject json = new ItemBuldLogica(new Hibernate()).getItemBuldByItemBuldId(id);
+			if(json != null) 
+				JSONUtility.sendJSON(response, json);
 			else 
-				JSONUtility.sendError(response, "No matches found.");
+				JSONUtility.sendError(response, "Build not found.");
 		} catch(NumberFormatException e) {
-			JSONUtility.sendError(response, "Invalid format.");
-		} 
+			JSONUtility.sendError(response, "Invalid id format.");
+		}
 	}
 
 }
