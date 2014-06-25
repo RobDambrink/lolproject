@@ -10,8 +10,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <filter>
-	<filter-name>CORS</filter-name>
-	<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+    <filter-name>CORS</filter-name>
+    <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>CORS</filter-name>
