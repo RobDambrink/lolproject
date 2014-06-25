@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,19 +11,14 @@ import databaseConnection.Hibernate;
 import exeption.ItemNotExist;
 
 public class ItemBuldLogica {
-	private String namePage;
-	private Long accountId;
-	private Long championId;
-	private HashMap<String,Long[]> hm = new HashMap<String, Long[]>();
+	private List<ItemBuldBlock> itemBlockList = new ArrayList<ItemBuldBlock>();
 	private Hibernate hib;
 	
-	public ItemBuldLogica(Hibernate hib){
+	public ItemBuldLogica(Hibernate hib) throws ItemNotExist{
 		this.hib=hib;
-		/*makeItemBuldPage("testName", "itemName", new Long[] {1004L,1001L},1L,1L);
-		saveItemBuldPage();
-		editItemBuldPage(1l, "testNaamm", "itemName", new Long[] {1004L,1001L},1L);
-		removeItemBuldPage(3L);
-		getItemBuldByAccountIdChampionId(1l, 1l);*/
+		itemBlockList.add(new ItemBuldBlock("test", new Long[] {1001l,1002l}));
+		makeItemBuldPage("Namepage", 1l, 1l, itemBlockList);
+		editItemBuldPage(1l, "NamepageEdit", itemBlockList);
 		/*System.out.println(getItemBuldByItemBuldId(1l));
 		System.out.println(getItemBuldByChampionId(1l));
 		System.out.println(getItemBuldByAccountId(1l));
@@ -32,7 +28,6 @@ public class ItemBuldLogica {
 	public JSONObject getItemBuldByItemBuldId(Long id){
 		return getItemBuldByQuery("FROM Build WHERE id = " + id + "");
 	}
-	
 	
 	public JSONObject getItemBuldByChampionId(Long championId){
 		return getItemBuldByQuery("FROM Build WHERE championId = " + championId + "");
@@ -66,48 +61,36 @@ public class ItemBuldLogica {
 		return null;
 	}
 	
-	public void editItemBuldPage(Long id, String name, String itemName, Long[] items, Long championId) throws ItemNotExist{
-		Build build = getBuild(id);
-		addItemBlok(namePage, items);
-		build.setItemPages(ObjectToByteConvert.ObjectToByteArray(hm));
-		build.setChampionId(championId);
-		build.setName(name);
-		hib.updateToDatabse(build);
-	}	
-	
-	public void makeItemBuldPage(String namePage, String itemName, Long[] items, Long accountId, Long championId) throws ItemNotExist{
-		this.namePage=namePage;
-		this.accountId=accountId;
-		this.championId=championId;
-		addItemBlok(namePage, items);
-	}
-	
-	public void saveItemBuldPage(){
+	public void makeItemBuldPage(String namePage, Long accountId, Long championId, List<ItemBuldBlock> itemBuldBlock) throws ItemNotExist{
+		this.itemBlockList=itemBuldBlock;
 		Build build = new Build();
 		build.setAccountId(accountId);
-		build.setName(namePage);
-		build.setItemPages(ObjectToByteConvert.ObjectToByteArray(hm));
 		build.setChampionId(championId);
+		build.setName(namePage);
+		build.setItemPages(ObjectToByteConvert.ObjectToByteArray(itemBlockList));
 		hib.addToDatabase(build);
-	}
-	
-	public void removeItemBuldPage(Long id){
-		hib.deleteFromDatabase("FROM Build WHERE id =" + id + "");
-		
 	}
 	
 	/**
 	 * 
-	 * @param name The name is the name of the item block, like Startup, def etc
-	 * @param items This is a long array with the id of the items
-	 * @throws ItemNotExist 
+	 * @param id
+	 * @param name
+	 * @param itemName
+	 * @param items
+	 * @param championId
+	 * @throws ItemNotExist
 	 */
-	public void addItemBlok(String name, Long[] items) throws ItemNotExist{
-		for (int i = 0; i < items.length; i++) {
-			if (hib.getOneValueFromTheDatabase("SELECT id FROM ItemNameId WHERE id = " + items[i] + ")")==null)
-				throw new ItemNotExist("This item does not exist");
+	public void editItemBuldPage(Long id, String name, List<ItemBuldBlock> itemBuldBlock) throws ItemNotExist{
+		Build build = getBuild(id);
+		if (build!=null){
+			build.setItemPages(ObjectToByteConvert.ObjectToByteArray(itemBuldBlock));
+			build.setName(name);
+			hib.updateToDatabse(build);
 		}
-		hm.put(name, items);
+	}	
+	
+	public void removeItemBuldPage(Long id){
+		hib.deleteFromDatabase("FROM Build WHERE id =" + id + "");
 	}
 	
 	@SuppressWarnings("rawtypes") 
