@@ -94,6 +94,18 @@ public class StaticDataGet {
 		return obj;
 	}
 	
+	public JSONObject getAllRunesInfo(){
+		List<?> list = hib.getDataFromDatabase("FROM RuneNameId");
+		JSONObject obj = new JSONObject();
+		if (list!=null && !list.isEmpty()){
+			for (int i = 0; i < list.size(); i++) {
+				RuneNameId champ = (RuneNameId) list.get(i);
+				obj.put(champ.getId(), getRuneByID(champ.getId()));
+			}				
+		}
+		return obj;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public JSONObject getAllMasteriesNameId(){
 		List list = hib.getDataFromDatabase("FROM MasteryNameId");
