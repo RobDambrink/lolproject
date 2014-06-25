@@ -54,11 +54,11 @@ public class CreateAccount extends HttpServlet {
 			SummonerLogica sl = new SummonerLogica(h,c);
 			if (summoner!=null){
 				JSONObject tmp = sl.getSummonerByName(summoner);
-				al.createAccount(username, password, tmp.getLong(SummonerLogica.SUMMONERID));
-			}
-			else{
-				al.createAccount(username, password, null);
-			}
+ 				al.createAccount(username, password, tmp.getLong(SummonerLogica.SUMMONERID));
+ 			}
+ 			else{
+ 				al.createAccount(username, password, null);
+ 			}
 			JSONObject json = new JSONObject();
 			json.put("username", username);
 			json.put("success", true);
@@ -70,8 +70,8 @@ public class CreateAccount extends HttpServlet {
 			JSONUtility.sendJSON(response, json);
 		} catch(SummonerNotExist e) {
 			JSONUtility.sendError(response, "Summoner not found.");
-		} catch(NameNotExist e) {
-			JSONUtility.sendError(response, "Name all ready exist.");
+		} catch(NameNotExist e){
+			JSONUtility.sendError(response, "Name allready exist.");
 		}
 	}
 
