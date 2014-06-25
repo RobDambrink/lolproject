@@ -12,11 +12,30 @@ public class RunePageLogic {
 	public RunePageLogic(Hibernate hib){
 		this.hib=hib;
 		makeNewRunePage("testNaam",1L,1L,new Long[] {1l,22l});
-		System.out.println(getRuneBuld(1l,1l));
+		System.out.println(getMasteryBuldByItemBuldId(1l));
+		System.out.println(getMasteryBuldByChampionId(1l));
+		System.out.println(getMasteryBuldByAccountId(1l));
+		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1L));
 	}
 	
-	public JSONObject getRuneBuld(Long accoutId, Long championId){
-		List<?> list = hib.getDataFromDatabase("FROM RunePageDatabase WHERE accountId =" + accoutId +" AND championId = " + championId + "");
+	public JSONObject getMasteryBuldByItemBuldId(Long id){
+		return getRuneBuldByQuery("FROM RunePageDatabase WHERE id = " + id + "");
+	}	
+	
+	public JSONObject getMasteryBuldByChampionId(Long championId){
+		return getRuneBuldByQuery("FROM RunePageDatabase WHERE championId = " + championId + "");
+	}
+	
+	public JSONObject getMasteryBuldByAccountId(Long accountId){
+		return getRuneBuldByQuery("FROM RunePageDatabase WHERE accountId =" + accountId +"");
+	}
+	
+	public JSONObject getMasteryBuldByAccountIdChampionId(Long accountId, Long championId){
+		return getRuneBuldByQuery("FROM RunePageDatabase WHERE accountId =" + accountId +" AND championId = " + championId + "");
+	}
+	
+	public JSONObject getRuneBuldByQuery(String query){
+		List<?> list = hib.getDataFromDatabase(query);
 		if (list!=null && !list.isEmpty()){
 			JSONObject obj = new JSONObject();
 			for (int i = 0; i < list.size(); i++) {
@@ -28,7 +47,7 @@ public class RunePageLogic {
 				obj2.put("id", build.getId());
 				RunePage page = (RunePage)(ObjectToByteConvert.ByteToObject(build.getRunes()));
 				obj2.put("pages", page.getJSON());
-				obj.put("pages", obj2);
+				obj.put(build.getId().toString(), obj2);
 			}
 			return obj;
 		}

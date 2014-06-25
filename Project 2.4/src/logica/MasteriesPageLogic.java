@@ -17,7 +17,7 @@ public class MasteriesPageLogic {
 	
 	public MasteriesPageLogic(Hibernate hib) throws MasteryNotExist{
 		this.hib=hib;
-		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+		/*HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
 		hm.put(4111, 1);
 		hm.put(4112, 2);
 		hm.put(4113, 3);
@@ -25,12 +25,32 @@ public class MasteriesPageLogic {
 		addMasteryToMasteryPage(4141, 1);
 		saveMasteryPage(1L,1L);
 		editMasteryPage(1L, "testPageEdit2", hm,1L);
-		removeMasteryPage(2L);
-		getMasteryBuld(1l,1l);
+		removeMasteryPage(2L);*/
+		System.out.println(getMasteryBuldByItemBuldId(1l));
+		System.out.println(getMasteryBuldByChampionId(1l));
+		System.out.println(getMasteryBuldByAccountId(1l));
+		System.out.println(getMasteryBuldByAccountIdChampionId(1l,1l));
 	}
 	
-	public JSONObject getMasteryBuld(Long accoutId, Long championId){
-		List<?> list = hib.getDataFromDatabase("FROM MasteryPageDatabase WHERE accountId =" + accoutId +" AND championId = " + championId + "");
+	public JSONObject getMasteryBuldByItemBuldId(Long id){
+		return getMasteryBuldByQuery("FROM MasteryPageDatabase WHERE id = " + id + "");
+	}
+	
+	
+	public JSONObject getMasteryBuldByChampionId(Long championId){
+		return getMasteryBuldByQuery("FROM MasteryPageDatabase WHERE championId = " + championId + "");
+	}
+	
+	public JSONObject getMasteryBuldByAccountId(Long accountId){
+		return getMasteryBuldByQuery("FROM MasteryPageDatabase WHERE accountId =" + accountId +"");
+	}
+	
+	public JSONObject getMasteryBuldByAccountIdChampionId(Long accountId, Long championId){
+		return getMasteryBuldByQuery("FROM MasteryPageDatabase WHERE accountId =" + accountId +" AND championId = " + championId + "");
+	}
+	
+	public JSONObject getMasteryBuldByQuery(String query){
+		List<?> list = hib.getDataFromDatabase(query);
 		if (list!=null && !list.isEmpty()){
 			JSONObject obj = new JSONObject();
 			for (int i = 0; i < list.size(); i++) {
