@@ -1,4 +1,4 @@
-package control.Rune;
+package control.Matches;
 
 import java.io.IOException;
 
@@ -8,25 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.JSONUtility;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.StaticDataGet;
-import net.sf.json.JSONObject;
+import logica.SummonerLogica;
+
+import org.json.JSONObject;
+
+import util.JSONUtility;
 
 /**
- * Servlet implementation class GetAllRunes
+ * Servlet implementation class GetMatchById
  */
-@WebServlet("/Rune/All")
-public class GetAllRunes extends HttpServlet {
+@WebServlet("/Match/GetById")
+public class GetMatchById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetAllRunes() {
+    public GetMatchById() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -40,11 +41,15 @@ public class GetAllRunes extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getAllRunesInfo();
-		if(json != null)
-			JSONUtility.sendJSON(response, json);
-		else 
-			JSONUtility.sendError(response, "Error while rendering runes.");
+		try {
+			JSONObject json = new SummonerLogica(new Hibernate(), new CouchDB()).getMatchById(Long.parseLong(request.getParameter("id")));
+			if(json != null)
+				JSONUtility.sendJSON(response, json);
+			else 
+				JSONUtility.sendError(response, "Match not found.");
+		} catch(NumberFormatException e) {
+			JSONUtility.sendError(response,"Match ID not in correct format.");
+		}
 	}
 
 }
