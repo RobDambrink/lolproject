@@ -12,7 +12,7 @@ import util.HibernateUtil;
 
 public class Hibernate {
 	
-	private static Session session = HibernateUtil.getSessionFactory().openSession();;
+	//private static Session session = HibernateUtil.getSessionFactory().openSession();;
 	
 	public Hibernate(){
 		Configuration cfg = new Configuration().configure();
@@ -29,6 +29,7 @@ public class Hibernate {
 	}
 	
 	public void addToDatabase(Object obj){
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		try{ 
 			session.beginTransaction();
 			session.save(obj);
@@ -47,13 +48,15 @@ public class Hibernate {
 	}
 	
 	public void updateToDatabse(Object obj){
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.update(obj);
 		session.getTransaction().commit();
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings("rawtypes")	
 	public Object getOneValueFromTheDatabase(String queryIn){
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Object val=null;
 		Query query = session.createQuery(queryIn);
 		List list = query.list();
@@ -65,6 +68,7 @@ public class Hibernate {
 	
 	@SuppressWarnings("rawtypes")
 	public List getDataFromDatabase(String queryIn){
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		List list = null;
 		try{
 			Query query = session.createQuery(queryIn);
@@ -79,6 +83,7 @@ public class Hibernate {
 	
 	@SuppressWarnings("rawtypes")
 	public void deleteFromDatabase(String queryIn){
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createQuery(queryIn);
 		List list = query.list();
 		if (!list.isEmpty()){
