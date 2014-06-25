@@ -18,11 +18,11 @@ public class AccountLogica {
 	private CouchDB couch;
 	public static final int ERROR =403;
 	public static final int OK =200;
-	public AccountLogica(Hibernate hib, CouchDB couch) throws ResponseException, IOException, SummonerNotExist, NameNotExist, AccountNotExist{
+	public AccountLogica(Hibernate hib, CouchDB couch) {
 		this.hib=hib;
 		this.couch=couch;
-		createAccount("bbdc", "b", null);
-		edditAccount("bbdc", "bb", 37268473l);
+		//createAccount("bbdc", "b", null);
+		//edditAccount("bbdc", "bb", 37268473l);
 	}
 	
 	public int login(String name, String pass ){

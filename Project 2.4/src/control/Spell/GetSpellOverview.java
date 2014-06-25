@@ -1,4 +1,4 @@
-package control.Account;
+package control.Spell;
 
 import java.io.IOException;
 
@@ -8,28 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONObject;
-
-import org.riot.ResponseException;
-
+import logica.StaticDataGet;
+import util.JSONUtility;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.AccountLogica;
-import logica.MD5Hashing;
-import util.JSONUtility;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class GetSpellOverview
  */
-@WebServlet("/Account/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Spell/Overview")
+public class GetSpellOverview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public GetSpellOverview() {
         super();
     }
 
@@ -44,21 +38,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		int status = AccountLogica.ERROR;
-		
-		AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
-		status = al.login(username, password);
-		if(status == AccountLogica.OK) {
-			MD5Hashing md = new MD5Hashing();
-			JSONObject json = new JSONObject();
-			json.put("session", md.getMD5Hash(username));
-			json.put("success", true);
-			JSONUtility.sendJSON(response, json);
-		} else {
-			JSONUtility.sendError(response, "Username/password incorrect");
-		}
+		JSONUtility.sendJSON(response, new StaticDataGet(new Hibernate(), new CouchDB()).getAllSummonerSpelNameId());
 	}
 
 }

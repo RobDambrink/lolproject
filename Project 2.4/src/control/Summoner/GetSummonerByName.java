@@ -1,4 +1,4 @@
-package control.Account;
+package control.Summoner;
 
 import java.io.IOException;
 
@@ -8,28 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONObject;
-
 import org.riot.ResponseException;
 
+import util.JSONUtility;
+import org.json.JSONObject;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
-import logica.AccountLogica;
-import logica.MD5Hashing;
-import util.JSONUtility;
+import logica.SummonerLogica;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class GetSummonerByName
  */
-@WebServlet("/Account/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Summoner/GetByName")
+public class GetSummonerByName extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public GetSummonerByName() {
         super();
     }
 
@@ -44,20 +41,15 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		int status = AccountLogica.ERROR;
-		
-		AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
-		status = al.login(username, password);
-		if(status == AccountLogica.OK) {
-			MD5Hashing md = new MD5Hashing();
-			JSONObject json = new JSONObject();
-			json.put("session", md.getMD5Hash(username));
-			json.put("success", true);
-			JSONUtility.sendJSON(response, json);
-		} else {
-			JSONUtility.sendError(response, "Username/password incorrect");
+		String name = request.getParameter("name");
+		try {
+			JSONObject json = new SummonerLogica(new Hibernate(), new CouchDB()).getSummonerByName(name);
+			if(json != null)
+				JSONUtility.sendJSON(response, json);
+			else 
+				JSONUtility.sendError(response, "Sommoner " + name + " not found.");
+		} catch(ResponseException e) {
+			JSONUtility.sendError(response, "Something went wrong.");
 		}
 	}
 
