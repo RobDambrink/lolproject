@@ -64,9 +64,9 @@ public class AccountLogica {
 	 * @throws AccountNotExist 
 	 */
 	@SuppressWarnings("rawtypes")
-	public void edditAccount(String name,String password, Long summonerID) throws ResponseException, IOException, SummonerNotExist, AccountNotExist{
-		if (checkAccountExist(name)){
-			List list = hib.getDataFromDatabase("FROM Accounts WHERE name='" + name + "'");
+	public void edditAccount(Long id,String password, Long summonerID) throws ResponseException, IOException, SummonerNotExist, AccountNotExist{
+		if (checkAccountExist(getNameById(id))){
+			List list = hib.getDataFromDatabase("FROM Accounts WHERE name='" + getNameById(id) + "'");
 			if (!list.isEmpty()){
 				Accounts account = (Accounts) list.get(0);
 				if (password!=null){
@@ -95,6 +95,16 @@ public class AccountLogica {
 		else{
 			throw new AccountNotExist("Account not found");
 		}		
+	}
+	
+	public Long getIdByName(String name){
+		Long id = (Long) hib.getOneValueFromTheDatabase("SELECT id FROM Accounts WHERE name='" + name + "'");
+		return id;
+	}
+	
+	private String getNameById(Long id){
+		String name = (String) hib.getOneValueFromTheDatabase("SELECT name FROM Accounts WHERE id='" + id + "'");
+		return name;
 	}
 	
 	private boolean checkAccountExist(String name){
