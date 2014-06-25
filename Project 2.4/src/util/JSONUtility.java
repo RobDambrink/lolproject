@@ -12,7 +12,7 @@ public class JSONUtility {
 	public static void sendJSON(HttpServletResponse response, net.sf.json.JSONObject json)
 			throws IOException {
 		response.setContentType("application/json");
-		json.put("success", true);
+		if(!json.containsKey("success")) json.put("success", true);
 		PrintWriter out = response.getWriter();
 		out.print(json);
 		out.flush();
@@ -21,7 +21,7 @@ public class JSONUtility {
 	public static void sendJSON(HttpServletResponse response, JSONObject json)
 			throws IOException {
 		response.setContentType("application/json");
-		json.put("success", true);
+		if(json.get("success") == null) json.put("success", true);
 		PrintWriter out = response.getWriter();
 		out.print(json);
 		out.flush();

@@ -17,6 +17,7 @@ import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import logica.AccountLogica;
 import logica.MD5Hashing;
+import logica.SummonerLogica;
 import util.JSONUtility;
 
 /**
@@ -47,13 +48,12 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		int status = AccountLogica.ERROR;
-		
 		AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
 		status = al.login(username, password);
 		if(status == AccountLogica.OK) {
-			MD5Hashing md = new MD5Hashing();
+			
 			JSONObject json = new JSONObject();
-			json.put("session", md.getMD5Hash(username));
+			json.put("session", username);
 			json.put("success", true);
 			JSONUtility.sendJSON(response, json);
 		} else {

@@ -47,7 +47,7 @@ public class GetSummonerByName extends HttpServlet {
 			if(json != null)
 				JSONUtility.sendJSON(response, json);
 			else 
-				JSONUtility.sendError(response, "Sommoner " + name + " not found.");
+				JSONUtility.sendError(response, "Summoner " + name + " not found.");
 		} catch(ResponseException e) {
 			JSONUtility.sendError(response, "Something went wrong.");
 		}

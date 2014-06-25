@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSON;
+
 import org.riot.ResponseException;
 
 import util.JSONUtility;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
+import exeption.AccountNotExist;
+import exeption.SummonerNotExist;
 import logica.AccountLogica;
 import logica.SummonerLogica;
 
@@ -41,18 +45,21 @@ public class EditAccount extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String summoner = request.getParameter("summonername");
 		try {
+			Long username = new AccountLogica(new Hibernate(), new CouchDB()).getIdByName(request.getParameter("username"));
+			if(username == null) {
+				JSONUtility.sendError(response, "No valid id");
+			}
+			String password = request.getParameter("password");
+			Long summoner = new SummonerLogica(new Hibernate(), new CouchDB()).getSummonerByName(request.getParameter("summoner")).getLong("id");
 			Hibernate h = new Hibernate();
 			CouchDB c = new CouchDB();
 			AccountLogica al = new AccountLogica(h,c);
-			SummonerLogica sl = new SummonerLogica(h,c);
-			sl.getSummonerByName(summoner);
-			
+			al.edditAccount(username, password, summoner);
 		} catch (ResponseException e) {
 			JSONUtility.sendError(response, "Time out while retrieving data... Try again later.");
+		} catch (AccountNotExist | SummonerNotExist e) {
+			JSONUtility.sendError(response, "Account or summoner not found.");
 		}
 		
 	}
