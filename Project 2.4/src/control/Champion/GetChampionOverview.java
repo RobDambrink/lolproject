@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import databaseConnection.CouchDB;
 import databaseConnection.Hibernate;
 import logica.StaticDataGet;
@@ -39,7 +40,11 @@ public class GetChampionOverview extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONUtility.sendJSON(response, new StaticDataGet(new Hibernate(), new CouchDB()).getAllChampionNameId());
+		JSONObject json = new StaticDataGet(new Hibernate(), new CouchDB()).getAllChampionNameId();
+		if(json != null)
+			JSONUtility.sendJSON(response, json);
+		else 
+			JSONUtility.sendError(response, "Something went wrong while loading champions");
 	}
 
 }

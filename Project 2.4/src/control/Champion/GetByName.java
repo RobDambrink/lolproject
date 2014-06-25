@@ -50,9 +50,7 @@ public class GetByName extends HttpServlet {
 		if (obj != null)
 			JSONUtility.sendJSON(response, obj);
 		else {
-			obj = new JSONObject();
-			obj.put("error", "Champion not found.");
-			JSONUtility.sendJSON(response, obj);
+			JSONUtility.sendError(response, "Champion not found.");
 		}
 	}
 
