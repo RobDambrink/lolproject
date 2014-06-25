@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JSONUtility {
@@ -21,7 +22,14 @@ public class JSONUtility {
 	public static void sendJSON(HttpServletResponse response, JSONObject json)
 			throws IOException {
 		response.setContentType("application/json");
-		if(json.get("success") == null) json.put("success", true);
+		boolean hasSuccess = false;
+		try { 
+			hasSuccess = json.get("success") != null;
+		} catch (JSONException e) {
+			hasSuccess = false;
+		}
+		if(!hasSuccess) json.put("success", false);
+		
 		PrintWriter out = response.getWriter();
 		out.print(json);
 		out.flush();

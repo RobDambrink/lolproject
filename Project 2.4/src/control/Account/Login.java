@@ -51,9 +51,8 @@ public class Login extends HttpServlet {
 		AccountLogica al = new AccountLogica(new Hibernate(), new CouchDB());
 		status = al.login(username, password);
 		if(status == AccountLogica.OK) {
-			
 			JSONObject json = new JSONObject();
-			json.put("session", username);
+			json.put("session", al.getIdByName(username));
 			json.put("success", true);
 			JSONUtility.sendJSON(response, json);
 		} else {
