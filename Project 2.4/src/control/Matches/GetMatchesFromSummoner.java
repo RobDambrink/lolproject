@@ -20,7 +20,7 @@ import util.JSONUtility;
 /**
  * Servlet implementation class GetMatchesFromSummoner
  */
-@WebServlet(description = "Get all matches from a summoner", urlPatterns = { "/Summoner/GetMatchesBySummonerId" })
+@WebServlet(description = "Get all matches from a summoner", urlPatterns = { "/Summoner/GetMatches" })
 public class GetMatchesFromSummoner extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
