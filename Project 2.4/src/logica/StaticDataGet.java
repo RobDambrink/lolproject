@@ -23,9 +23,10 @@ public class StaticDataGet {
 	public StaticDataGet(Hibernate hib, CouchDB couch){
 		this.hib=hib;
 		this.couch=couch;
-		
-		System.out.println(getChampionByID(12323334l));
+
 		System.out.println(getAllChampionNameId());
+		/*System.out.println(getChampionByID(12323334l));
+		
 		System.out.println(getAllItemsNameId());
 		System.out.println(getAllMasteriesNameId());
 		System.out.println(getAllRunesNameId());
@@ -44,12 +45,13 @@ public class StaticDataGet {
 		System.out.println(getItemByID(3105L));
 		System.out.println(getMasteryByID(4214L));
 		System.out.println(getRuneByID(5063L));
-		System.out.println(getSummonerSpelByID(7L));
+		System.out.println(getSummonerSpelByID(7L));*/
 	}
 	
 	@SuppressWarnings("rawtypes")
 	public JSONObject getAllChampionNameId(){
 		List list = hib.getDataFromDatabase("FROM ChampionNameId");
+		// TODO order by name
 		JSONObject obj = new JSONObject();
 		if (list!=null && !list.isEmpty()){
 			HashMap<Long,String> hm = new HashMap<Long,String>();
@@ -204,7 +206,9 @@ public class StaticDataGet {
 	
 	public JSONObject getChampionByName(String name){
 		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM ChampionNameId WHERE LOWER(name) = LOWER('" + name + "')");
-		return getChampionByID(id);
+		if (id!=null)
+			return getChampionByID(id);
+		return null;
 	}
 	
 	public JSONObject getChampionByID(Long id){
@@ -229,7 +233,9 @@ public class StaticDataGet {
 	
 	public JSONObject getItemByName(String name){
 		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM ItemNameId WHERE LOWER(name) = LOWER('" + name + "')");
-		return getItemByID(id);
+		if (id!=null)
+			return getItemByID(id);
+		return null;
 	}
 	
 	public JSONObject getMasteryByID(Long id){
@@ -244,7 +250,9 @@ public class StaticDataGet {
 	
 	public JSONObject getMasteryByName(String name){
 		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM MasteryNameId WHERE LOWER(name) = LOWER('" + name + "')");
-		return getMasteryByID(id);
+		if (id!=null)
+			return getMasteryByID(id);
+		return null;
 	}
 	
 	public JSONObject getRuneByID(Long id){
@@ -259,7 +267,9 @@ public class StaticDataGet {
 	
 	public JSONObject getRuneByName(String name){
 		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM RuneNameId WHERE LOWER(name) = LOWER('" + name + "')");
-		return getRuneByID(id);
+		if (id!=null)
+			return getRuneByID(id);
+		return null;
 	}
 	
 	public JSONObject getSummonerSpelByID(Long id){
@@ -274,6 +284,8 @@ public class StaticDataGet {
 	
 	public JSONObject getSummonerSpelByName(String name){
 		Long id = (Long)hib.getOneValueFromTheDatabase("SELECT id FROM SummonerSpelNameId WHERE LOWER(name) = LOWER('" + name + "')");
-		return getSummonerSpelByID(id);
+		if (id!=null)
+			return getSummonerSpelByID(id);
+		return null;
 	}
 }
