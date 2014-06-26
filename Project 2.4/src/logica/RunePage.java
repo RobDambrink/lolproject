@@ -2,6 +2,7 @@ package logica;
 
 import java.io.Serializable;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class RunePage implements Serializable {
@@ -83,14 +84,16 @@ public class RunePage implements Serializable {
 		obj.put(ID, id);
 		obj.put(CURRENT, current);
 		obj.put(NAME, name);
+		JSONArray ar = new JSONArray();
 		for (int i = 0; i < slots.length; i++) {
 			if (slots[i]!=null){
 				JSONObject obj2 = new JSONObject();
-				obj.put(RUNEID, slots[i]);
-				obj.put(RUNESLOTID, i);
-				obj.put("slots", obj2);
+				obj2.put(RUNEID, slots[i]);
+				obj2.put(RUNESLOTID, i);
+				ar.put(obj2);
 			}
-		}		
+		}	
+		obj.put("slots", ar);
 		return obj;
 	}
 }
