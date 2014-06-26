@@ -8,21 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import databaseConnection.Hibernate;
 import logica.RunePageLogic;
 import util.JSONUtility;
 
 /**
- * Servlet implementation class CreateCustomRunepage
+ * Servlet implementation class GetCustomRunePageById
  */
-@WebServlet("/Custom/Runepage/Create")
-public class CreateCustomRunepage extends HttpServlet {
+@WebServlet("/Custom/Runepage/GetById")
+public class GetCustomRunePageById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /** 
+    /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateCustomRunepage() {
+    public GetCustomRunePageById() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,22 +40,16 @@ public class CreateCustomRunepage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String name = request.getParameter("name");
-			Long account= Long.parseLong(request.getParameter("account"));
-			Long champion = Long.parseLong(request.getParameter("champion"));
-			String[] runes = request.getParameter("runes").split(",");
-			Long[] runeId = new Long[runes.length];
-			for(int i = 0; i < runeId.length; i++) {
-				runeId[i] = Long.parseLong(runes[i]);
-				System.out.println(runeId[i]);
-			}
+			Long id = Long.parseLong(request.getParameter("id"));
 			RunePageLogic rpl = new RunePageLogic(new Hibernate());
-			rpl.makeNewRunePage(name, account, champion, runeId);
-			JSONUtility.sendOK(response, true);
+			JSONObject json = rpl.getMasteryBuldByItemBuldId(id);
+			if(json != null) 
+				JSONUtility.sendJSON(response, json);
+			else 
+				JSONUtility.sendError(response, "Runepage not found.");
 		} catch(NumberFormatException e) {
-			JSONUtility.sendError(response, "Something went wrong while creating runepage<br>Try logging out and in again.");
+			JSONUtility.sendError(response, "Incorrect id format.");
 		}
-		
 	}
 
 }
