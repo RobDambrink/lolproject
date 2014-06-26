@@ -1,0 +1,1692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" automaticImage="JPEG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="control.Account.Login" project="Project 2.4" 
+    file="/Project 2.4/src/control/Account/Login.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="288" x="802" y="148"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="control.Account.EditAccount" project="Project 2.4" 
+    file="/Project 2.4/src/control/Account/EditAccount.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="288" x="1130" y="148"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="control.Account.CreateAccount" project="Project 2.4" 
+    file="/Project 2.4/src/control/Account/CreateAccount.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="288" x="1458" y="148"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="control.Champion.GetByName" project="Project 2.4" 
+    file="/Project 2.4/src/control/Champion/GetByName.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="934" y="387"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="control.Champion.GetChampionById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Champion/GetChampionById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1262" y="387"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="control.Champion.GetChampionOverview" project="Project 2.4" 
+    file="/Project 2.4/src/control/Champion/GetChampionOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1590" y="387"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="control.Custom.Build.GetBuildById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Custom/Build/GetBuildById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="947" y="578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="control.Custom.Build.GetBuildByAccountId" project="Project 2.4" 
+    file="/Project 2.4/src/control/Custom/Build/GetBuildByAccountId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1275" y="578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="control.Custom.Rune.CreateCustomRunepage" project="Project 2.4" 
+    file="/Project 2.4/src/control/Custom/Rune/CreateCustomRunepage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="949" y="726"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="control.Custom.Rune.GetCustomRunePageById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Custom/Rune/GetCustomRunePageById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1277" y="726"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="control.Item.GetItemsByName" project="Project 2.4" 
+    file="/Project 2.4/src/control/Item/GetItemsByName.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="947" y="893"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="control.Item.GetItemOverview" project="Project 2.4" 
+    file="/Project 2.4/src/control/Item/GetItemOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1275" y="893"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="control.Item.GetItemById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Item/GetItemById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1603" y="893"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="control.Mastery.GetMasteryById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Mastery/GetMasteryById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="945" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="control.Mastery.GetMasteryOverview" project="Project 2.4" 
+    file="/Project 2.4/src/control/Mastery/GetMasteryOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1273" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="control.Matches.GetMatchesFromSummoner" project="Project 2.4" 
+    file="/Project 2.4/src/control/Matches/GetMatchesFromSummoner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="940" y="1203"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="control.Matches.GetMatchById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Matches/GetMatchById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1268" y="1203"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="control.Rune.GetRuneOverview" project="Project 2.4" 
+    file="/Project 2.4/src/control/Rune/GetRuneOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="933" y="1375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="control.Rune.GetRuneById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Rune/GetRuneById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1261" y="1375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="control.Rune.GetAllRunes" project="Project 2.4" 
+    file="/Project 2.4/src/control/Rune/GetAllRunes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1589" y="1375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="control.Spell.GetSpellById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Spell/GetSpellById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="934" y="1526"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="control.Spell.GetSpellOverview" project="Project 2.4" 
+    file="/Project 2.4/src/control/Spell/GetSpellOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1262" y="1526"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="control.Summoner.GetSummonerById" project="Project 2.4" 
+    file="/Project 2.4/src/control/Summoner/GetSummonerById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="945" y="1676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="control.Summoner.GetRuneBySummonerId" project="Project 2.4" 
+    file="/Project 2.4/src/control/Summoner/GetRuneBySummonerId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1273" y="1676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="control.Summoner.GetMasteryBySummonerId" project="Project 2.4" 
+    file="/Project 2.4/src/control/Summoner/GetMasteryBySummonerId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1601" y="1676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="control.Summoner.GetSummonerByName" project="Project 2.4" 
+    file="/Project 2.4/src/control/Summoner/GetSummonerByName.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1929" y="1676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="databaseConnection.Hibernate" project="Project 2.4" 
+    file="/Project 2.4/src/databaseConnection/Hibernate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="263" y="385"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="databaseConnection.CouchDB" project="Project 2.4" 
+    file="/Project 2.4/src/databaseConnection/CouchDB.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="233" x="466" y="1016"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="exeption.AccountNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/AccountNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="428" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="exeption.ToLargeVariableExeption" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/ToLargeVariableExeption.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="629" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="exeption.MasteryNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/MasteryNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="830" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="exeption.PageNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/PageNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1005" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="exeption.SummonerNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/SummonerNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1187" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="exeption.ItemNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/ItemNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1368" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="exeption.NameNotExist" project="Project 2.4" 
+    file="/Project 2.4/src/exeption/NameNotExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1539" y="-64"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="logica.RunePageLogic" project="Project 2.4" 
+    file="/Project 2.4/src/logica/RunePageLogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-458" y="849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="logica.ObjectToByteConvert" project="Project 2.4" 
+    file="/Project 2.4/src/logica/ObjectToByteConvert.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-770" y="1285"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="logica.CommentLogic" project="Project 2.4" 
+    file="/Project 2.4/src/logica/CommentLogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-758" y="332"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="logica.StaticDataGet" project="Project 2.4" 
+    file="/Project 2.4/src/logica/StaticDataGet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="422" y="1628"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="logica.MasteriesPageLogic" project="Project 2.4" 
+    file="/Project 2.4/src/logica/MasteriesPageLogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-845" y="849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="logica.ItemBuldBlock" project="Project 2.4" 
+    file="/Project 2.4/src/logica/ItemBuldBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1308" y="1330"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="logica.MD5Hashing" project="Project 2.4" 
+    file="/Project 2.4/src/logica/MD5Hashing.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-991" y="278"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="logica.ConvertJSONToMap" project="Project 2.4" 
+    file="/Project 2.4/src/logica/ConvertJSONToMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="29" y="1294"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="logica.MasteryPage" project="Project 2.4" 
+    file="/Project 2.4/src/logica/MasteryPage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-514" y="1456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="logica.SummonerLogica" project="Project 2.4" 
+    file="/Project 2.4/src/logica/SummonerLogica.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-100" y="957"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="logica.RunePage" project="Project 2.4" 
+    file="/Project 2.4/src/logica/RunePage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-261" y="1456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="logica.StaticDataInsert" project="Project 2.4" 
+    file="/Project 2.4/src/logica/StaticDataInsert.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="192" y="822"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="logica.ItemBuldLogica" project="Project 2.4" 
+    file="/Project 2.4/src/logica/ItemBuldLogica.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1225" y="849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="mappingHibernate.Accounts" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/Accounts.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2852" y="-563"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="mappingHibernate.RuneNameId" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/RuneNameId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2671" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="mappingHibernate.MasteryNameId" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/MasteryNameId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2504" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="mappingHibernate.MasterypageSummoner" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/MasterypageSummoner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2320" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="mappingHibernate.ChampionNameId" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/ChampionNameId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2136" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="mappingHibernate.MatchHistory" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/MatchHistory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1955" y="-590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="mappingHibernate.BuildComment" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/BuildComment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1763" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="mappingHibernate.MasteryComment" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/MasteryComment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1575" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="mappingHibernate.MasteryPageDatabase" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/MasteryPageDatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1373" y="-536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="mappingHibernate.RunepageSummoner" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/RunepageSummoner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1173" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="mappingHibernate.Comments" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/Comments.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-989" y="-590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="mappingHibernate.ItemNameId" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/ItemNameId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-813" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="mappingHibernate.Build" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/Build.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-634" y="-536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="mappingHibernate.RuneComment" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/RuneComment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-444" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="mappingHibernate.RunePageDatabase" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/RunePageDatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-255" y="-536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="mappingHibernate.SummonerSpelNameId" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/SummonerSpelNameId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-62" y="-617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="mappingHibernate.Summoner" project="Project 2.4" 
+    file="/Project 2.4/src/mappingHibernate/Summoner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="147" y="-536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="66" language="java" name="org.riot.ApiEnums.Season" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3363" y="654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="67" language="java" name="org.riot.ApiEnums.ItemData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2737" y="798"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="68" language="java" name="org.riot.ApiEnums.Locale" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-4144" y="636"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="69" language="java" name="org.riot.ApiEnums.ChampData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2535" y="771"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="70" language="java" name="org.riot.ApiEnums.ItemListData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2956" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="71" language="java" name="org.riot.ApiEnums" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3082" y="-313"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="org.riot.ApiRequest" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiRequest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2436" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="73" language="java" name="org.riot.ApiEnums.MasteryData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1857" y="681"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="74" language="java" name="org.riot.Main" project="Project 2.4" file="/Project 2.4/src/org/riot/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1755" y="181"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="75" language="java" name="org.riot.ApiEnums.RankedType" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2088" y="663"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="76" language="java" name="org.riot.ApiEnums.MasteryListData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3782" y="690"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="77" language="java" name="org.riot.ApiEnums.RuneListData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2321" y="807"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="78" language="java" name="org.riot.ApiEnums.RuneData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3550" y="798"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="79" language="java" name="org.riot.HttpsClient" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/HttpsClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1583" y="708"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="80" language="java" name="org.riot.ApiEnums.SpellData" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3176" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="81" language="java" name="org.riot.ResponseException" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ResponseException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1662" y="1135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="82" language="java" name="org.riot.ApiEnums.Version" project="Project 2.4" 
+    file="/Project 2.4/src/org/riot/ApiEnums.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3985" y="636"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="83" language="java" name="util.JSONUtility" project="Project 2.4" 
+    file="/Project 2.4/src/util/JSONUtility.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="271" x="-1775" y="-254"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="util.HibernateUtil" project="Project 2.4" 
+    file="/Project 2.4/src/util/HibernateUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="204" x="-1464" y="-254"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="86">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="38"/>  
+  </dependency>  
+  <dependency id="87">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="56"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="89">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="90">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="70"/>  
+  </dependency>  
+  <dependency id="91">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="92">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="93">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="74"/>  
+  </dependency>  
+  <nesting id="94">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="68"/>  
+  </nesting>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="72"/>  
+  </dependency>  
+  <nesting id="96">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="80"/>  
+  </nesting>  
+  <dependency id="97">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="98">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="73"/>  
+  </dependency>  
+  <dependency id="99">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="100">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="102">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="55"/>  
+  </dependency>  
+  <dependency id="103">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="104">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="84"/>  
+  </dependency>  
+  <dependency id="105">    
+    <bendpoint x="-1732" y="596"/>    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="106">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="107">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="108">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="109">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="110">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="111">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="112">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="113">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="114">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="115">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="54"/>  
+  </dependency>  
+  <dependency id="116">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="70"/>  
+  </dependency>  
+  <dependency id="117">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <dependency id="118">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="120">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="76"/>  
+  </dependency>  
+  <association id="121">    
+    <end type="SOURCE" refId="72" navigable="false">      
+      <attribute id="122" name="client"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="79" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="124">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="125">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="51"/>  
+  </dependency>  
+  <dependency id="126">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="127">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="128">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="129">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="65"/>  
+  </dependency>  
+  <dependency id="130">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="131">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="34"/>  
+  </dependency>  
+  <nesting id="132">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="67"/>  
+  </nesting>  
+  <dependency id="133">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="134">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="80"/>  
+  </dependency>  
+  <dependency id="135">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <nesting id="136">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="78"/>  
+  </nesting>  
+  <dependency id="137">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="138">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="139">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <dependency id="140">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="141">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="142">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="143">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="40"/>  
+  </dependency>  
+  <dependency id="144">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="145">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <association id="146">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="147" name="couch"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="149">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="150">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="151">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="152">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="153">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="154">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="64"/>  
+  </dependency>  
+  <dependency id="155">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="156">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="62"/>  
+  </dependency>  
+  <dependency id="157">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="158">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="159" name="itemBlockList"/>      
+      <multiplicity id="160" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="161">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="61"/>  
+  </dependency>  
+  <dependency id="162">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="163">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="164">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <nesting id="165">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="75"/>  
+  </nesting>  
+  <dependency id="166">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="167">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="168">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="169">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="50"/>  
+  </dependency>  
+  <dependency id="170">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="57"/>  
+  </dependency>  
+  <dependency id="171">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="58"/>  
+  </dependency>  
+  <dependency id="172">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="173">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="174">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="175">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="176">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="177">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="64"/>  
+  </dependency>  
+  <dependency id="178">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="35"/>  
+  </dependency>  
+  <dependency id="179">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <nesting id="180">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="69"/>  
+  </nesting>  
+  <dependency id="181">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="66"/>  
+  </dependency>  
+  <dependency id="182">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="183">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="184" name="couch"/>      
+      <multiplicity id="185" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="186">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="52"/>  
+  </dependency>  
+  <association id="187">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="188" name="hib"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="190">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <association id="191">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="192" name="hib"/>      
+      <multiplicity id="193" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="194">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="66"/>  
+  </nesting>  
+  <dependency id="195">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="48"/>  
+  </dependency>  
+  <dependency id="196">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="197">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="50"/>  
+  </dependency>  
+  <dependency id="198">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="199">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="80"/>  
+  </dependency>  
+  <dependency id="200">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="201">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="202">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <association id="203">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="204" name="hib"/>      
+      <multiplicity id="205" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="206">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="61"/>  
+  </dependency>  
+  <dependency id="207">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="78"/>  
+  </dependency>  
+  <association id="208">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="209" name="hib"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="211">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="53"/>  
+  </dependency>  
+  <dependency id="212">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <association id="213">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="214" name="hib"/>      
+      <multiplicity id="215" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="216">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="73"/>  
+  </nesting>  
+  <dependency id="217">    
+    <end type="SOURCE" refId="79"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="218">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="219">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="220">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="221">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="46"/>  
+  </dependency>  
+  <dependency id="222">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <nesting id="223">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="76"/>  
+  </nesting>  
+  <dependency id="224">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="225">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="69"/>  
+  </dependency>  
+  <dependency id="226">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="227">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="228">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="229">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="230">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="69"/>  
+  </dependency>  
+  <dependency id="231">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="232">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="46"/>  
+  </dependency>  
+  <dependency id="233">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <association id="234">    
+    <end type="SOURCE" refId="74" navigable="false">      
+      <attribute id="235" name="api"/>      
+      <multiplicity id="236" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="72" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="237">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="238">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="53"/>  
+  </dependency>  
+  <dependency id="239">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="240">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="241">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="242">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="243">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="244">    
+    <bendpoint x="-1692" y="-353"/>    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="79"/>  
+  </dependency>  
+  <dependency id="245">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="246">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="247">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="248">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="249">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="250">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="59"/>  
+  </dependency>  
+  <dependency id="251">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="252">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="253">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="254">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="255">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="256">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <dependency id="257">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="77"/>  
+  </dependency>  
+  <dependency id="258">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <association id="259">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="260" name="couch"/>      
+      <multiplicity id="261" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="262">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="263">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="48"/>  
+  </dependency>  
+  <dependency id="264">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="265">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <association id="266">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="267" name="hib"/>      
+      <multiplicity id="268" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="269">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="40"/>  
+  </dependency>  
+  <dependency id="270">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="43"/>  
+  </dependency>  
+  <dependency id="271">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <nesting id="272">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="70"/>  
+  </nesting>  
+  <dependency id="273">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="274">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="275">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="276">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="277">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="67"/>  
+  </dependency>  
+  <dependency id="278">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="77"/>  
+  </dependency>  
+  <dependency id="279">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="51"/>  
+  </dependency>  
+  <dependency id="280">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <dependency id="281">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="282">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="283">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="284">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="285">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="286">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="287">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="43"/>  
+  </dependency>  
+  <dependency id="288">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="289">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="290">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="291">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="292">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="31"/>  
+  </dependency>  
+  <dependency id="293">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="294">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="295">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="296">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
+  <dependency id="297">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="48"/>  
+  </dependency>  
+  <dependency id="298">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="75"/>  
+  </dependency>  
+  <dependency id="299">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="300">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <nesting id="301">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="82"/>  
+  </nesting>  
+  <dependency id="302">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="303">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="63"/>  
+  </dependency>  
+  <dependency id="304">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="63"/>  
+  </dependency>  
+  <dependency id="305">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="306">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <dependency id="307">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="308">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <association id="309">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="310" name="hib"/>      
+      <multiplicity id="311" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="312">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="313">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="314">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <dependency id="315">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="316">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="317">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="318">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <dependency id="319">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="320">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="81"/>  
+  </dependency>  
+  <dependency id="321">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="57"/>  
+  </dependency>  
+  <dependency id="322">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="323">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="83"/>  
+  </dependency>  
+  <nesting id="324">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="77"/>  
+  </nesting>  
+  <dependency id="325">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="326">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="72"/>  
+  </dependency>  
+  <dependency id="327">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="328">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="76"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
