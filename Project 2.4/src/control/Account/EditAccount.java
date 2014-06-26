@@ -52,7 +52,14 @@ public class EditAccount extends HttpServlet {
 			String summoner = request.getParameter("summoner");
 			Long id=null;
 			if (summoner!=null && summoner!="-1"){
-				id = new SummonerLogica(new Hibernate(), new CouchDB()).getSummonerByName(request.getParameter("summoner")).getLong("id");
+				SummonerLogica sum = new SummonerLogica(new Hibernate(), new CouchDB());
+				if (sum.getSummonerByName(request.getParameter("summoner"))!=null){
+					id = sum.getSummonerByName(request.getParameter("summoner")).getLong("id");
+				}
+				else{
+					JSONUtility.sendError(response, "This summoner does not exist");
+					return;
+				}
 			}
 			else if(summoner.contains("-1"))
 				id =-1l;
